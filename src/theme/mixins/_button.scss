@@ -44,11 +44,10 @@
 	color: $color;
 	background-color: $background-color;
 	border-color: $border-color;
-  
 	&:hover,
 	&:focus {
-	  background: mix($--color-white, $background-color, $--button-hover-tint-percent);
-	  border-color: mix($--color-white, $border-color, $--button-hover-tint-percent);
+	  background: mix($--color-black, $background-color, $--button-hover-tint-percent);
+	  border-color: mix($--color-black, $border-color, $--button-hover-tint-percent);
 	  color: $color;
 	}
 	
@@ -58,6 +57,7 @@
 	  color: $color;
 	  outline: none;
 	}
+	
   
 	&.is-active {
 	  background: mix($--color-black, $background-color, $--button-active-shade-percent);

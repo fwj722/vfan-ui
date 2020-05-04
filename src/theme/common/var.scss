@@ -1,6 +1,7 @@
 // color
-$--color-primary: #0770ff !default;
+$--color-primary: #3280fc !default;
 $--color-white: #FFFFFF !default;
+$--color-navyblue: #0035cc !default;
 $--color-black: #000000 !default;
 $--color-success: #67c23a !default;
 $--color-warning: #f90 !default;
@@ -8,19 +9,6 @@ $--color-danger: #ff4d4f !default;
 $--color-info: #6c757d !default;
 $--color-purple:#6200ea !default;
 
-/* alert 和message预留变量
-$--color-success-light: mix($--color-white, $--color-success, 80%) !default;
-$--color-warning-light: mix($--color-white, $--color-warning, 80%) !default;
-$--color-danger-light: mix($--color-white, $--color-danger, 80%) !default;
-$--color-info-light: mix($--color-white, $--color-info, 80%) !default;
-$--color-purple-light: mix($--color-white, $--color-purple, 80%) !default;
-
-$--color-success-lighter: mix($--color-white, $--color-success, 90%) !default;
-$--color-warning-lighter: mix($--color-white, $--color-warning, 90%) !default;
-$--color-danger-lighter: mix($--color-white, $--color-danger, 90%) !default;
-$--color-info-lighter: mix($--color-white, $--color-info, 90%) !default;
-$--color-purple-lighter: mix($--color-white, $--color-purple, 90%) !default;
-*/
 //primary主题色的混入函数
 $--color-primary-light-1: mix($--color-white, $--color-primary, 10%) !default; /* 53a8ff */
 $--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default; /* 66b1ff */
@@ -29,9 +17,6 @@ $--color-primary-light-4: mix($--color-white, $--color-primary, 40%) !default; /
 $--color-primary-light-5: mix($--color-white, $--color-primary, 50%) !default; /* a0cfff */
 $--color-primary-light-6: mix($--color-white, $--color-primary, 60%) !default; /* b3d8ff */
 $--color-primary-light-7: mix($--color-white, $--color-primary, 70%) !default; /* c6e2ff */
-$--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default; /* d9ecff */
-$--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default; /* ecf5ff */
-
 //color Font text
 $--color-text-primary: #303133 !default;
 $--color-text-regular: #606266 !default;
@@ -178,7 +163,8 @@ $--button-purple-font-color: $--color-white !default;
 /// color||Color|0
 $--button-purple-background-color: $--color-purple !default;
 
-$--button-hover-tint-percent: 20% !default;
+$--button-hover-tint-percent: 10% !default;
 $--button-active-shade-percent: 10% !default;
+$--button-active-shade-percent-2: 20% !default;
 
 

@@ -3,6 +3,7 @@
 // 统一导出
 // 导入颜色选择器组件
 import VButton from "./button";
+import vueDrag from '@/utils/vue-drag'
 // import Dialog from './dialog'
 // import Input from './input'
 // import Checkbox from './checkbox'
@@ -21,6 +22,8 @@ const install = function(Vue) {
   components.forEach(item => {
     Vue.component(item.name, item);
   });
+  // 指令
+  Vue.use(vueDrag);
 };
 
 // 判断是否是直接引入文件,如果是，就不用调用 Vue.use()

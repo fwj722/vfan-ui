@@ -26,12 +26,7 @@
   
 	@include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, $--button-border-radius);
   
-	&:hover,
-	&:focus {
-	  color: $--color-primary;
-	  border-color: $--color-primary-light-7;
-	  background-color: $--color-primary-light-9;
-	}
+
   //非plain，不指定type时的样式
 	&:active {
 	  color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
@@ -121,7 +116,7 @@
 	  padding: $--button-padding-vertical;
 	}
 	@include m(primary) {
-	  @include button-variant($--button-primary-font-color, $--color-primary-light-1, $--color-primary-light-1);
+	  @include button-variant($--button-primary-font-color, $--color-primary, $--color-primary);
 	}
 	@include m(success) {
 	  @include button-variant($--button-success-font-color, $--button-success-background-color, $--button-success-background-color);
