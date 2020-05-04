@@ -3,6 +3,8 @@
 // 统一导出
 // 导入颜色选择器组件
 import VButton from "./button";
+import VCard from "./card";
+
 import vueDrag from '@/utils/vue-drag'
 // import Dialog from './dialog'
 // import Input from './input'
@@ -16,7 +18,7 @@ import vueDrag from '@/utils/vue-drag'
 // import './fonts/font.scss'
 
 // 存储组件列表
-const components = [VButton];
+const components = [VButton,VCard];
 const install = function(Vue) {
   // 全局注册所有的组件
   components.forEach(item => {

@@ -168,3 +168,13 @@ $--button-active-shade-percent: 10% !default;
 $--button-active-shade-percent-2: 20% !default;
 
 
+/* Card
+--------------------------*/
+$--card-border-color: $--border-color-lighter !default;
+$--card-border-radius: 4px !default;
+$--card-padding: 20px !default;
+
+// Box-shadow
+$--box-shadow-base: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04) !default;
+$--box-shadow-dark: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .12) !default;
+$--box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1) !default;
