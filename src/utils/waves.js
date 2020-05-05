@@ -44,8 +44,19 @@ class MavesClass {
     );
   };
 }
+
 const waves = e => {
   const m = new MavesClass();
   m.showWaves(e.currentTarget, e);
 };
-export default waves;
+
+if (typeof exports == "object") {
+  module.exports = waves
+} else if (typeof define == "function" && define.amd) {
+  define([], function () {
+    return waves
+  })
+} else if (window.Vue) {
+  window.waves = waves
+  Vue.use(waves)
+}
