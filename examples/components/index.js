@@ -5,7 +5,7 @@
 import VButton from "./button";
 import VCard from "./card";
 
-import vueDrag from '@/utils/vue-drag'
+import vueDrag from './../utils/vue-drag'
 // import Dialog from './dialog'
 // import Input from './input'
 // import Checkbox from './checkbox'

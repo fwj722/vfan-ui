@@ -26,10 +26,14 @@
 </template>
 
 <script>
-import waves from "@/utils/waves";
+import waves from "./../../utils/waves";
 export default {
   name: "VButton",
   props: {
+    hasWaves:{  // 开启水波纹效果
+      type:Boolean,
+      default:true
+    },
     type: {
       type: String,
       default: "default"
@@ -60,7 +64,7 @@ export default {
   },
   methods: {
     wavesFun(e) {
-      waves(e);
+      this.hasWaves && waves(e);
     }
     /*
     * 内部引入wave效果

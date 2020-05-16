@@ -7,6 +7,7 @@
     <v-button type="danger">危险按钮</v-button>
     <v-button type="purple">其他按钮</v-button>
     <v-button type="info">信息按钮</v-button>
+    <div style="height:50px"></div>
     <div>
       <div class="demo2" v-drag="'#dragable'">
         <div id="dragable">
@@ -39,6 +40,8 @@ export default {
     return {
       currentDate: new Date()
     };
+  },
+  methods:{
   }
 };
 </script>

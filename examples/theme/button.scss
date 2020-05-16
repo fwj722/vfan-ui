@@ -18,6 +18,7 @@
 	outline: none;
 	margin: 0;
 	transition: .1s;
+	box-shadow:$--btn-shadow;
 	font-weight: $--button-font-weight;
 	@include utils-user-select(none);
 	& + & {
