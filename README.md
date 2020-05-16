@@ -8,7 +8,7 @@ npm install vfan-ui  --save
 ### 全局引入
 ```
  import VFanUI from 'vfan-ui'
- import 'vfan-ui/lib/vfan-ui.css'
+ import 'vfan-ui/dist/vfan-ui.css'
     
     Vue.use(VFanUI)
 ```
