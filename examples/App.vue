@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <v-button id="btn1" type="default">默认按钮</v-button>
-    <v-button type="primary">主要按钮</v-button>
-    <v-button type="success">成功按钮</v-button>
-    <v-button type="warning">警告按钮</v-button>
-    <v-button type="danger">危险按钮</v-button>
-    <v-button type="purple">其他按钮</v-button>
-    <v-button type="info">信息按钮</v-button>
+    <v-button type="primary"   @click="getMessage(1)">主要按钮</v-button>
+    <v-button type="success"   @click="getMessage(2)">成功按钮</v-button>
+    <v-button type="warning"   @click="getMessage(3)">警告按钮</v-button>
+    <v-button type="danger"   @click="getMessage(4)">危险按钮</v-button>
+    <v-button type="purple"  @click="getMessage(5)">消息弹框</v-button>
+    <v-button type="info"  @click="getMessage(6)">信息按钮</v-button>
     <div style="height:50px"></div>
     <div>
       <div class="demo2" v-drag="'#dragable'">
@@ -40,7 +40,16 @@ export default {
       currentDate: new Date()
     };
   },
+  mounted(){},
   methods: {
+    getMessage(n) {
+      this.$message.message({
+        message: "信息提示",
+        type: n===1?"info":n===2?"success":n===3?"warning":n===4?"error":"info",
+        autoClose: true,
+        showClose: false
+      });
+    },
   }
 };
 </script>

@@ -2,6 +2,7 @@
   <button
     class="v-button waves"
     @mousedown="wavesFun"
+    @click="$emit('click')"
     :disabled="buttonDisabled || loading"
     :autofocus="autofocus"
     :type="nativeType"
@@ -65,7 +66,7 @@ export default {
   methods: {
     wavesFun(e) {
       this.hasWaves && waves(e);
-    }
+    },
     /*
     * 内部引入wave效果
     wavesFun(e) {
