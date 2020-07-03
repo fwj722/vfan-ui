@@ -98,7 +98,7 @@ var messageBox = Object.assign({
     };
     //移除
     removeFn = function () {
-      $message&&$message.parentNode.removeChild($message)
+      $message&&$message.parentNode&&$message.parentNode.removeChild($message)
       defaults.onClose(defaults);
       clearTimeout(timer);
     };

@@ -1,0 +1,52 @@
+// --------------------------------------------------------------
+// Control buttons
+// --------------------------------------------------------------
+
+.vplayer__control {
+  background: transparent;
+  border: 0;
+  border-radius: $vplayer-control-radius;
+  color: inherit;
+  cursor: pointer;
+  flex-shrink: 0;
+  overflow: visible; // IE11
+  padding: $vplayer-control-padding;
+  position: relative;
+  transition: all 0.3s ease;
+
+  svg {
+    display: block;
+    fill: currentColor;
+    height: $vplayer-control-icon-size;
+    pointer-events: none;
+    width: $vplayer-control-icon-size;
+  }
+
+  // Default focus
+  &:focus {
+    outline: 0;
+  }
+
+  // Tab focus
+  &.vplayer__tab-focus {
+    @include vplayer-tab-focus();
+  }
+}
+
+// Remove any link styling
+a.vplayer__control {
+  text-decoration: none;
+
+  &::after,
+  &::before {
+    display: none;
+  }
+}
+
+// Change icons on state change
+.vplayer__control:not(.vplayer__control--pressed) .icon--pressed,
+.vplayer__control.vplayer__control--pressed .icon--not-pressed,
+.vplayer__control:not(.vplayer__control--pressed) .label--pressed,
+.vplayer__control.vplayer__control--pressed .label--not-pressed {
+  display: none;
+}

@@ -1,0 +1,93 @@
+// ==========================================================================
+// Mixins
+// ==========================================================================
+
+// Nicer focus styles
+// ---------------------------------------
+@mixin vplayer-tab-focus($color: $vplayer-tab-focus-color) {
+  outline-color: $color;
+  outline-offset: 2px;
+  outline-style: dotted;
+  outline-width: 3px;
+}
+
+// Font smoothing
+// ---------------------------------------
+@mixin vplayer-font-smoothing($mode: true) {
+  @if $mode {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+// <input type="range"> styling
+// ---------------------------------------
+@mixin vplayer-range-track() {
+  background: transparent;
+  border: 0;
+  border-radius: calc(#{$vplayer-range-track-height} / 2);
+  height: $vplayer-range-track-height;
+  transition: box-shadow 0.3s ease;
+  user-select: none;
+}
+
+@mixin vplayer-range-thumb() {
+  background: $vplayer-range-thumb-background;
+  border: 0;
+  border-radius: 100%;
+  box-shadow: $vplayer-range-thumb-shadow;
+  height: $vplayer-range-thumb-height;
+  position: relative;
+  transition: all 0.2s ease;
+  width: $vplayer-range-thumb-height;
+}
+
+@mixin vplayer-range-thumb-active($color) {
+  box-shadow: $vplayer-range-thumb-shadow, 0 0 0 $vplayer-range-thumb-active-shadow-width $color;
+}
+
+// Fullscreen styles
+// ---------------------------------------
+@mixin vplayer-fullscreen-active() {
+  background: #000;
+  border-radius: 0 !important;
+  height: 100%;
+  margin: 0;
+  width: 100%;
+
+  video {
+    height: 100%;
+  }
+
+  .vplayer__video-wrapper {
+    height: 100%;
+    position: static;
+  }
+
+  // Vimeo requires some different styling
+  &.vplayer--vimeo .vplayer__video-wrapper {
+    height: 0;
+    position: relative;
+  }
+
+  // Display correct icon
+  .vplayer__control .icon--exit-fullscreen {
+    display: block;
+
+    + svg {
+      display: none;
+    }
+  }
+
+  // Hide cursor in fullscreen when controls hidden
+  &.vplayer--hide-controls {
+    cursor: none;
+  }
+
+  // Large captions in full screen on larger screens
+  @media (min-width: $vplayer-bp-lg) {
+    .vplayer__captions {
+      font-size: $vplayer-font-size-captions-large;
+    }
+  }
+}

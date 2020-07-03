@@ -1,0 +1,40 @@
+// ==========================================================================
+// Sliders
+// ==========================================================================
+
+// Thumb
+$vplayer-range-thumb-height: var(--vplayer-range-thumb-height, 13px) !default;
+$vplayer-range-thumb-background: var(--vplayer-range-thumb-background, #fff) !default;
+$vplayer-range-thumb-shadow: var(
+  --vplayer-range-thumb-shadow,
+  0 1px 1px rgba($vplayer-color-gray-900, 0.15),
+  0 0 0 1px rgba($vplayer-color-gray-900, 0.2)
+) !default;
+
+// Active state
+$vplayer-range-thumb-active-shadow-width: var(--vplayer-range-thumb-active-shadow-width, 3px) !default;
+
+// Track
+$vplayer-range-track-height: var(--vplayer-range-track-height, 5px) !default;
+
+// Fill
+$vplayer-range-fill-background: var(--vplayer-range-fill-background, var(--vplayer-color-main, $vplayer-color-main)) !default;
+
+// Type specific
+$vplayer-video-range-track-background: var(
+  --vplayer-video-range-track-background,
+  $vplayer-video-progress-buffered-background
+) !default;
+$vplayer-video-range-thumb-active-shadow-color: var(
+  --vplayer-audio-range-thumb-active-shadow-color,
+  rgba(#fff, 0.5)
+) !default;
+
+$vplayer-audio-range-track-background: var(
+  --vplayer-audio-range-track-background,
+  $vplayer-audio-progress-buffered-background
+) !default;
+$vplayer-audio-range-thumb-active-shadow-color: var(
+  --vplayer-audio-range-thumb-active-shadow-color,
+  rgba($vplayer-color-gray-900, 0.1)
+) !default;

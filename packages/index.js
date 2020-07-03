@@ -9,6 +9,8 @@ import "./theme/index.scss";
 import "./guide/style/guide.scss";
 import "./utils/guide";
 
+import VPlayer from "./vplayer/src/vplayer"
+
 import vueDrag from "./utils/vue-drag";
 // import Dialog from './dialog'
 // import Input from './input'
@@ -22,9 +24,15 @@ import vueDrag from "./utils/vue-drag";
 // import './fonts/font.scss'
 
 // 存储组件列表
-const components = [VButton, VCard];
-const install = function(Vue) {
+const components = [VButton, VCard,VPlayer];
+const install = function(Vue,options = {}) {
   // 全局注册所有的组件
+  if (options.vplayer) {
+    VPlayer.props.options.default = () => { return { ...options.vplayer } }
+  }
+  if (options.emit) {
+    VPlayer.props.emit.default = () => { return [...options.emit] }
+  }
   components.forEach((item) => {
     Vue.component(item.name, item);
   });

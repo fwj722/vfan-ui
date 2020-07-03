@@ -1,18 +1,18 @@
-function detectmob() {
-	if( navigator.userAgent.match(/Android/i)
-	|| navigator.userAgent.match(/webOS/i)
-	|| navigator.userAgent.match(/iPhone/i)
-	|| navigator.userAgent.match(/iPad/i)
-	|| navigator.userAgent.match(/iPod/i)
-	|| navigator.userAgent.match(/BlackBerry/i)
-	|| navigator.userAgent.match(/Windows Phone/i)
-	){
-		return true;
-	}
-	else {
-		return false;
-	}
-}
+// function detectmob() {
+// 	if( navigator.userAgent.match(/Android/i)
+// 	|| navigator.userAgent.match(/webOS/i)
+// 	|| navigator.userAgent.match(/iPhone/i)
+// 	|| navigator.userAgent.match(/iPad/i)
+// 	|| navigator.userAgent.match(/iPod/i)
+// 	|| navigator.userAgent.match(/BlackBerry/i)
+// 	|| navigator.userAgent.match(/Windows Phone/i)
+// 	){
+// 		return true;
+// 	}
+// 	else {
+// 		return false;
+// 	}
+// }
 (function () {
 	var vueDrag = {}
 	vueDrag.install = function (Vue) {
@@ -76,12 +76,15 @@ function detectmob() {
 	}
 	if (typeof exports == "object") {
 		module.exports = vueDrag
+	// eslint-disable-next-line no-undef
 	} else if (typeof define == "function" && define.amd) {
+		// eslint-disable-next-line no-undef
 		define([], function () {
 			return vueDrag
 		})
 	} else if (window.Vue) {
 		window.vueDrag = vueDrag
+		// eslint-disable-next-line no-undef
 		Vue.use(vueDrag)
 	}
 })()

@@ -52,11 +52,14 @@ const waves = e => {
 
 if (typeof exports == "object") {
   module.exports = waves
+// eslint-disable-next-line no-undef
 } else if (typeof define == "function" && define.amd) {
+  // eslint-disable-next-line no-undef
   define([], function () {
     return waves
   })
 } else if (window.Vue) {
   window.waves = waves
+  // eslint-disable-next-line no-undef
   Vue.use(waves)
 }

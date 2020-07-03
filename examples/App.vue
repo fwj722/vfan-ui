@@ -31,13 +31,24 @@
     <v-card shadow="hover">鼠标悬浮时显示</v-card>
     <br />
     <v-card shadow="never">从不显示</v-card>
+   <div style="width:800px">
+     <v-media type="video" 
+     :videoData="videoData" 
+     poster="https://image.ms200.cn/icon/bg1.jpg">
+   </v-media>
+   </div>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      currentDate: new Date()
+      currentDate: new Date(),
+      videoData:[{
+        src:"https://image.ms200.cn/video/0eae571cd79f52f3e5e4522ebdc5d1d5.mp4",
+        size:720
+      }]
+     
     };
   },
   mounted(){},
