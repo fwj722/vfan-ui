@@ -1,6 +1,6 @@
 <template>
   <button
-    class="v-button waves"
+    class="v-button"
     @mousedown="wavesFun"
     @click="$emit('click')"
     :disabled="buttonDisabled || loading"
@@ -10,28 +10,30 @@
       type ? 'v-button--' + type : '',
       buttonSize ? 'v-button--' + buttonSize : '',
       {
+        'waves':waves,
         'is-disabled': buttonDisabled,
         'is-loading': loading,
         'is-plain': plain,
         'is-round': round,
-        'is-circle': circle
+        'is-circle': circle,
+        'is-shadow':shadow
       }
     ]"
   >
     <i class="el-icon-loading" v-if="loading"></i>
-    <i :class="icon" v-if="icon && !loading"></i>
-    <span v-if="$slots.default">
+    <i class="icon" :class="icon" v-if="icon && !loading"></i>
+    <span class="defaultCls" v-if="$slots.default">
       <slot></slot>
     </span>
   </button>
 </template>
 
 <script>
-import waves from "./../../utils/waves";
+import Vue from "vue"
 export default {
   name: "VButton",
   props: {
-    hasWaves:{  // 开启水波纹效果
+    waves:{  // 开启水波纹效果
       type:Boolean,
       default:true
     },
@@ -53,7 +55,8 @@ export default {
     plain: Boolean,
     autofocus: Boolean,
     round: Boolean,
-    circle: Boolean
+    circle: Boolean,
+    shadow:Boolean
   },
   computed: {
     buttonSize() {
@@ -65,8 +68,8 @@ export default {
   },
   methods: {
     wavesFun(e) {
-      this.hasWaves && waves(e);
-    },
+      this.waves && Vue.prototype.waves(e);
+    }
     /*
     * 内部引入wave效果
     wavesFun(e) {

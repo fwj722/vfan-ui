@@ -26,13 +26,6 @@ var messageBox = Object.assign({
       autoClose: true,
       onClose: function () { },
     };
-    // var one = function(dom, type, callback) {  
-    //   var handle = function() {  
-    //         callback() 
-    //         dom.removeEventListener(type, handle)
-    //     }  
-    //     dom.addEventListener(type, handle)  
-    // }
     if (typeof options === "string") {
       defaults.message = options;
     }
@@ -121,9 +114,6 @@ var messageBox = Object.assign({
     }
   },
 });
-
-// https://www.jb51.net/article/93036.htm
-// https://www.cnblogs.com/moqiutao/p/9991678.html
 
 function checkIcon(value) {
   const PICTURE_EXPRESSION = /\.(png|jpe?g|gif|svg)(\?.*)?$/; // 图片

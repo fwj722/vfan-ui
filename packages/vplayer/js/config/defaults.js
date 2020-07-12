@@ -1,132 +1,122 @@
-// ==========================================================================
-// VPlayer default config
-// ==========================================================================
-
+/**
+ * VPlayer 默认配置
+ * author ferrycoln
+ */
 const defaults = {
-  // Disable
+  // 是否禁用
   enabled: true,
-
-  // Custom media title
+  // 定义播放器的标题
   title: '',
-
-  // Logging to console
+  // 是否开启debug模式
   debug: false,
 
-  // Auto play (if supported)
+  //是否自动播放----有的浏览器不支持网页播放器的自动播放，如果浏览器支持自动播放则使用此开关控制  ，如果不支持则无效
   autoplay: false,
 
-  // Only allow one media playing at once (vimeo only)
-  autopause: true,
+  // playsinline: true,
 
-  // Allow inline playback on iOS (this effects YouTube/Vimeo - HTML5 requires the attribute present)
-  // TODO: Remove iosNative fullscreen option in favour of this (logic needs work)
-  playsinline: true,
-
-  // Default time to skip when rewind/fast forward
+  // 快进快退事跳过的时间
   seekTime: 10,
 
-  // Default volume
+  // 默认音量
   volume: 1,
+  // 是否静音
   muted: false,
 
-  // Pass a custom duration
+  // 自定义持续时间
   duration: null,
 
-  // Display the media duration on load in the current time position
-  // If you have opted to display both duration and currentTime, this is ignored
+ // 是否显示持续时间
+ //----如果想同时显示持续时间和当前的时间，则该配置可以忽略
   displayDuration: true,
 
-  // Invert the current time to be a countdown
+  // 是否显示当前时间的倒计时
   invertTime: true,
 
-  // Clicking the currentTime inverts it's value to show time left rather than elapsed
+  // 点击当前时间将转换为剩余的时间
   toggleInvert: true,
 
-  // Force an aspect ratio
-  // The format must be `'w:h'` (e.g. `'16:9'`)
+  // 强制显示宽高比例，格式为 `'w:h'` 例如：(`'16:9'`)
   ratio: null,
 
-  // Click video container to play/pause
+  // 点击视频整个视频的容器来控制播放和暂停
   clickToPlay: true,
 
-  // Auto hide the controls
+  // 是否自动隐藏播放器的控件
   hideControls: true,
 
-  // Reset to start when playback ended
+  // 当播放完后是否重置到开始
   resetOnEnd: false,
 
-  // Disable the standard context menu
+  // 禁用标准的上下文菜单
   disableContextMenu: true,
 
-  // Sprite (for icons)
+  // 加载控制雪碧图
   loadSprite: true,
   iconPrefix: 'vplayer',
   iconUrl: require("./../../sprite/vplayer.svg"),
 
-  // Blank video (used to prevent errors on source change)
+  //当视频出错或者视频是空帧时的默认填充
   blankVideo: './../../sprite/blank.mp4',
 
-  // Quality default
+  // 视频的默认质量
   quality: {
     default: 576,
-    // The options to display in the UI, if available for the source media
+    // 当使用流媒体时，在界面上显示视频的质量
     options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240],
     forced: false,
     onChange: null,
   },
 
-  // Set loops
+  // 设置是否循环
   loop: {
     active: false,
     // start: null,
     // end: null,
   },
 
-  // Speed default and options to display
+  // 速度选中的默认值选项
   speed: {
     selected: 1,
-    // The options to display in the UI, if available for the source media (e.g. Vimeo and YouTube only support 0.5x-4x)
+    // 视频的播放速度
     options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 4],
   },
 
-  // Keyboard shortcut settings
+  // 使用键盘快捷键来控制
   keyboard: {
     focused: true,
     global: false,
   },
 
-  // Display tooltips
+  // 显示工具项提示
   tooltips: {
     controls: false,
     seek: true,
   },
 
-  // Captions settings
+  // 屏幕的字幕设置
   captions: {
     active: false,
     language: 'auto',
-    // Listen to new tracks added after VPlayer is initialized.
-    // This is needed for streaming captions, but may result in unselectable options
+    // 初始化后的新视频或音频
+    // ----这对于流字幕来说是必需要设置的，但是可能导致无法选择的选项，此处还待完善
     update: false,
   },
 
-  // Fullscreen settings
+  // 全屏控制
   fullscreen: {
-    enabled: true, // Allow fullscreen?
-    fallback: true, // Fallback using full viewport/window
-    iosNative: false, // Use the native fullscreen in iOS (disables custom controls)
-    // Selector for the fullscreen container so contextual / non-player content can remain visible in fullscreen mode
-    // Non-ancestors of the player element will be ignored
-    // container: null, // defaults to the player element
+    enabled: true, // 是否全屏
+    fallback: true, // 是否全屏到window/视口
+    iosNative: false, // 控制IOS下，使用自带的全屏，不支持自定义的控件来全屏
   },
 
-  // Local storage
+  // 本地存储
   storage: {
     enabled: true,
     key: 'vplayer',
   },
 
-  // Default controls
+  // 罗列出播放器里面默认的控件
   controls: [
     'play-large',
     // 'restart',
@@ -147,7 +137,7 @@ const defaults = {
   ],
   settings: ['captions', 'quality', 'speed'],
 
-  // Localisation
+  // 默认的语言
   i18n: {
     restart: 'Restart',
     rewind: 'Rewind {seektime}s',
@@ -197,21 +187,12 @@ const defaults = {
   // URLs
   urls: {
     download: null,
-    // vimeo: {
-    //   sdk: 'https://player.vimeo.com/api/player.js',
-    //   iframe: 'https://player.vimeo.com/video/{0}?{1}',
-    //   api: 'https://vimeo.com/api/v2/video/{0}.json',
-    // },
-    // youtube: {
-    //   sdk: 'https://www.youtube.com/iframe_api',
-    //   api: 'https://noembed.com/embed?url=https://www.youtube.com/watch?v={0}',
-    // },
     // googleIMA: {
     //   sdk: 'https://imasdk.googleapis.com/js/sdkloader/ima3.js',
     // },
   },
 
-  // Custom control listeners
+  // 自定义控件监听器
   listeners: {
     seek: null,
     play: null,
@@ -257,7 +238,7 @@ const defaults = {
     'ratechange',
     'cuechange',
 
-    // Custom events
+    // 自定义事件
     'download',
     'enterfullscreen',
     'exitfullscreen',
@@ -268,13 +249,11 @@ const defaults = {
     'controlsshown',
     'ready',
 
-    // YouTube
-    // 'statechange',
 
     // Quality
     'qualitychange',
 
-    // Ads
+    // 投放广告
     'adsloaded',
     'adscontentpause',
     'adscontentresume',
@@ -286,8 +265,8 @@ const defaults = {
     'adsclick',
   ],
 
-  // Selectors
-  // Change these to match your template if using custom HTML
+  // 选择器
+  // 当时用自定义的HTML时，需要更改这里来适配自定义的模板
   selectors: {
     editable: 'input, textarea, select, [contenteditable]',
     container: '.vplayer',
@@ -330,7 +309,7 @@ const defaults = {
     caption: '.vplayer__caption',
   },
 
-  // Class hooks added to the player in different states
+  // 将class类挂载到播放器
   classNames: {
     type: 'vplayer--{0}',
     provider: 'vplayer--{0}',
@@ -413,30 +392,7 @@ const defaults = {
   previewThumbnails: {
     enabled: false,
     src: '',
-  },
-
-  // Vimeo plugin
-  // vimeo: {
-  //   byline: false,
-  //   portrait: false,
-  //   title: false,
-  //   speed: true,
-  //   transparent: false,
-  //   // Whether the owner of the video has a Pro or Business account
-  //   // (which allows us to properly hide controls without CSS hacks, etc)
-  //   premium: false,
-  //   // Custom settings from VPlayer
-  //   referrerPolicy: null, // https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/referrerPolicy
-  // },
-
-  // YouTube plugin
-  // youtube: {
-  //   noCookie: true, // Whether to use an alternative version of YouTube without cookies
-  //   rel: 0, // No related vids
-  //   showinfo: 0, // Hide info
-  //   iv_load_policy: 3, // Hide annotations
-  //   modestbranding: 1, // Hide logos as much as possible (they still show one in the corner when paused)
-  // },
+  }
 };
 
 export default defaults;

@@ -1,0 +1,22 @@
+// --------------------------------------------------------------
+// Faux poster overlay
+// --------------------------------------------------------------
+
+.vplayer__poster {
+  background-color: #000;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: opacity 0.2s ease;
+  width: 100%;
+  z-index: 1;
+}
+
+.vplayer--stopped.vplayer__poster-enabled .vplayer__poster {
+  opacity: 1;
+}

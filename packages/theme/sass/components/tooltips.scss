@@ -1,0 +1,88 @@
+// --------------------------------------------------------------
+// Tooltips
+// --------------------------------------------------------------
+
+.vplayer__tooltip {
+  background: $vplayer-tooltip-background;
+  border-radius: $vplayer-tooltip-radius;
+  bottom: 100%;
+  box-shadow: $vplayer-tooltip-shadow;
+  color: $vplayer-tooltip-color;
+  font-size: $vplayer-font-size-small;
+  font-weight: $vplayer-font-weight-regular;
+  left: 50%;
+  line-height: 1.3;
+  margin-bottom: calc(#{$vplayer-tooltip-padding} * 2);
+  opacity: 0;
+  padding: $vplayer-tooltip-padding calc(#{$vplayer-tooltip-padding} * 1.5);
+  pointer-events: none;
+  position: absolute;
+  transform: translate(-50%, 10px) scale(0.8);
+  transform-origin: 50% 100%;
+  transition: transform 0.2s 0.1s ease, opacity 0.2s 0.1s ease;
+  white-space: nowrap;
+  z-index: 2;
+
+  // The background triangle
+  &::before {
+    border-left: $vplayer-tooltip-arrow-size solid transparent;
+    border-right: $vplayer-tooltip-arrow-size solid transparent;
+    border-top: $vplayer-tooltip-arrow-size solid $vplayer-tooltip-background;
+    bottom: calc(#{$vplayer-tooltip-arrow-size} * -1);
+    content: '';
+    height: 0;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 0;
+    z-index: 2;
+  }
+}
+
+// Displaying
+.vplayer .vplayer__control:hover .vplayer__tooltip,
+.vplayer .vplayer__control.vplayer__tab-focus .vplayer__tooltip,
+.vplayer__tooltip--visible {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.vplayer .vplayer__control:hover .vplayer__tooltip {
+  z-index: 3;
+}
+
+// First tooltip
+.vplayer__controls > .vplayer__control:first-child .vplayer__tooltip,
+.vplayer__controls > .vplayer__control:first-child + .vplayer__control .vplayer__tooltip {
+  left: 0;
+  transform: translate(0, 10px) scale(0.8);
+  transform-origin: 0 100%;
+
+  &::before {
+    left: calc((#{$vplayer-control-icon-size} / 2) + #{$vplayer-control-padding});
+  }
+}
+
+// Last tooltip
+.vplayer__controls > .vplayer__control:last-child .vplayer__tooltip {
+  left: auto;
+  right: 0;
+  transform: translate(0, 10px) scale(0.8);
+  transform-origin: 100% 100%;
+
+  &::before {
+    left: auto;
+    right: calc((#{$vplayer-control-icon-size} / 2) + #{$vplayer-control-padding});
+    transform: translateX(50%);
+  }
+}
+
+.vplayer__controls > .vplayer__control:first-child,
+.vplayer__controls > .vplayer__control:first-child + .vplayer__control,
+.vplayer__controls > .vplayer__control:last-child {
+  &:hover .vplayer__tooltip,
+  &.vplayer__tab-focus .vplayer__tooltip,
+  .vplayer__tooltip--visible {
+    transform: translate(0, 0) scale(1);
+  }
+}

@@ -1,0 +1,20 @@
+// ==========================================================================
+// Typography
+// ==========================================================================
+
+$vplayer-font-family: var(--vplayer-font-family, inherit) !default;
+$vplayer-font-size-base: var(--vplayer-font-size-base, 15px) !default;
+$vplayer-font-size-small: var(--vplayer-font-size-small, 13px) !default;
+$vplayer-font-size-large: var(--vplayer-font-size-large, 18px) !default;
+$vplayer-font-size-xlarge: var(--vplayer-font-size-xlarge, 21px) !default;
+
+$vplayer-font-size-time: var(--vplayer-font-size-time, $vplayer-font-size-small) !default;
+$vplayer-font-size-menu: var(--vplayer-font-size-menu, $vplayer-font-size-small) !default;
+$vplayer-font-size-badge: var(--vplayer-font-size-badge, 9px) !default;
+
+$vplayer-font-weight-regular: var(--vplayer-font-weight-regular, 400) !default;
+$vplayer-font-weight-bold: var(--vplayer-font-weight-bold, 600) !default;
+
+$vplayer-line-height: var(--vplayer-line-height, 1.7) !default;
+
+$vplayer-font-smoothing: var(--vplayer-font-smoothing, false) !default;

@@ -27,7 +27,7 @@
 <script>
 import VPlayer from "./../js/vplayer"
 export default {
-  name: 'VMedia',
+  name: 'VPlayer',
   props: {
     type: {
       type: String,

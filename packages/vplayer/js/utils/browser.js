@@ -1,8 +1,7 @@
-// ==========================================================================
-// Browser sniffing
-// Unfortunately, due to mixed support, UA sniffing is required
-// ==========================================================================
-
+/**
+ * 浏览器嗅探
+ * 确定访问者使用的网页浏览器，并满足和兼容该浏览器的一些业务需要
+ */
 const browser = {
   isIE: /* @cc_on!@ */ false || !!document.documentMode,
   isEdge: window.navigator.userAgent.includes('Edge'),

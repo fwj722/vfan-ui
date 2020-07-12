@@ -1,0 +1,61 @@
+// --------------------------------------------------------------
+// Audio styles
+// --------------------------------------------------------------
+
+// Container
+.vplayer--audio {
+  display: block;
+}
+
+// Controls container
+.vplayer--audio .vplayer__controls {
+  background: $vplayer-audio-controls-background;
+  border-radius: inherit;
+  color: $vplayer-audio-control-color;
+  padding: $vplayer-control-spacing;
+}
+
+// Control elements
+.vplayer--audio .vplayer__control {
+  &.vplayer__tab-focus,
+  &:hover,
+  &[aria-expanded='true'] {
+    background: $vplayer-audio-control-background-hover;
+    color: $vplayer-audio-control-color-hover;
+  }
+}
+
+// Range inputs
+.vplayer--full-ui.vplayer--audio input[type='range'] {
+  &::-webkit-slider-runnable-track {
+    background-color: $vplayer-audio-range-track-background;
+  }
+
+  &::-moz-range-track {
+    background-color: $vplayer-audio-range-track-background;
+  }
+
+  &::-ms-track {
+    background-color: $vplayer-audio-range-track-background;
+  }
+
+  // Pressed styles
+  &:active {
+    &::-webkit-slider-thumb {
+      @include vplayer-range-thumb-active($vplayer-audio-range-thumb-active-shadow-color);
+    }
+
+    &::-moz-range-thumb {
+      @include vplayer-range-thumb-active($vplayer-audio-range-thumb-active-shadow-color);
+    }
+
+    &::-ms-thumb {
+      @include vplayer-range-thumb-active($vplayer-audio-range-thumb-active-shadow-color);
+    }
+  }
+}
+
+// Progress
+.vplayer--audio .vplayer__progress__buffer {
+  color: $vplayer-audio-progress-buffered-background;
+}

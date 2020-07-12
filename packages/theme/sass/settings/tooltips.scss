@@ -1,0 +1,11 @@
+// ==========================================================================
+// Tooltips
+// ==========================================================================
+
+$vplayer-tooltip-background: var(--vplayer-tooltip-background, rgba(#fff, 0.9)) !default;
+$vplayer-tooltip-color: var(--vplayer-tooltip-color, $vplayer-color-gray-700) !default;
+$vplayer-tooltip-padding: calc(#{$vplayer-control-spacing} / 2);
+$vplayer-tooltip-padding: var(--vplayer-tooltip-padding, $vplayer-tooltip-padding) !default;
+$vplayer-tooltip-arrow-size: var(--vplayer-tooltip-arrow-size, 4px) !default;
+$vplayer-tooltip-radius: var(--vplayer-tooltip-radius, 3px) !default;
+$vplayer-tooltip-shadow: var(--vplayer-tooltip-shadow, 0 1px 2px rgba(0, 0, 0, 0.15)) !default;

@@ -8,6 +8,7 @@ import Message from "./message/src/message.js"
 import "./theme/index.scss";
 import "./guide/style/guide.scss";
 import "./utils/guide";
+import waves from "./utils/waves"
 
 import VPlayer from "./vplayer/src/vplayer"
 
@@ -38,7 +39,8 @@ const install = function(Vue,options = {}) {
   });
   // 指令
   Vue.use(vueDrag);
-  Vue.prototype.$message = Message;
+  Vue.prototype.$message = Message.message;
+  Vue.prototype.waves = waves;
 };
 // 判断是否是直接引入文件,如果是，就不用调用 Vue.use()
 if (typeof window !== "undefined" && window.Vue) {

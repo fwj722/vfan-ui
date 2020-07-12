@@ -1,6 +1,6 @@
 //涟漪类，使其相对独立
 class MavesClass {
-  showWaves = function(_this, e) {
+  showWaves = function (_this, e) {
     let wavesDiv = _this.getElementsByClassName("waves");
 
     //第一次没有涟漪div，动态生成
@@ -50,16 +50,4 @@ const waves = e => {
   m.showWaves(e.currentTarget, e);
 };
 
-if (typeof exports == "object") {
-  module.exports = waves
-// eslint-disable-next-line no-undef
-} else if (typeof define == "function" && define.amd) {
-  // eslint-disable-next-line no-undef
-  define([], function () {
-    return waves
-  })
-} else if (window.Vue) {
-  window.waves = waves
-  // eslint-disable-next-line no-undef
-  Vue.use(waves)
-}
+export default  waves

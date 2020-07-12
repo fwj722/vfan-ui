@@ -1,7 +1,6 @@
-// ==========================================================================
-// Animation utils
-// ==========================================================================
-
+/**
+ * 动画工具
+ */
 import is from './is';
 
 export const transitionEndEvent = (() => {
@@ -19,7 +18,7 @@ export const transitionEndEvent = (() => {
   return is.string(type) ? events[type] : false;
 })();
 
-// Force repaint of element
+// 强制重涂
 export function repaint(element, delay) {
   setTimeout(() => {
     try {
@@ -32,7 +31,7 @@ export function repaint(element, delay) {
       // eslint-disable-next-line no-param-reassign
       element.hidden = false;
     } catch (e) {
-      // Do nothing
+      console.log(e)
     }
   }, delay);
 }

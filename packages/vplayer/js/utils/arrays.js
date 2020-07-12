@@ -1,10 +1,9 @@
-// ==========================================================================
-// Array utils
-// ==========================================================================
-
+/**
+ * Array 数组工具
+ */
 import is from './is';
 
-// Remove duplicates in an array
+// 删除数组中重复的数据
 export function dedupe(array) {
   if (!is.array(array)) {
     return array;
@@ -13,7 +12,7 @@ export function dedupe(array) {
   return array.filter((item, index) => array.indexOf(item) === index);
 }
 
-// Get the closest value in an array
+//获取数组中最接近指定值的值
 export function closest(array, value) {
   if (!is.array(array) || !array.length) {
     return null;
