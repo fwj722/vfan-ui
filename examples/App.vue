@@ -77,8 +77,13 @@ export default {
       this.$message({
         message: "信息提示",
         type: n===1?"info":n===2?"success":n===3?"warning":n===4?"error":"info",
-        autoClose: true,
-        showClose: false
+        autoClose: false,
+        showClose: false,
+        icoImg:"https://ms200.cn/wp-content/uploads/2020/05/cropped-ico-180x180.png",
+        style:{
+          color:"red",
+          "font-size":"20px"
+        }
       });
     },
     ccc(e){

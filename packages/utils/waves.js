@@ -21,10 +21,10 @@ class MavesClass {
       _this.offsetWidth > _this.offsetHeight
         ? _this.offsetWidth
         : _this.offsetHeight;
-    let iX = e.pageX - _this.offsetLeft;
-    let iY = e.pageY - _this.offsetTop;
-    let nX = iX - wH / 2;
-    let nY = iY - wH / 2;
+    // let iX = e.pageX - _this.offsetLeft;
+    // let iY = e.pageY - _this.offsetTop;
+    let nX = e.offsetX - wH / 2;
+    let nY = e.offsetY - wH / 2;
 
     let DivDom = null;
 

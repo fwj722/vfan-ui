@@ -17,13 +17,14 @@
 var messageBox = Object.assign({
   message: function (options) {
     var defaults = {
-      message: " 操作成功",
+      message: " 提示消息",
       time: "2000",
       type: "success",
       showClose: false,
       icoImg: "",
       iconFont: "",
       autoClose: true,
+      style:"",
       onClose: function () { },
     };
     if (typeof options === "string") {
@@ -49,6 +50,9 @@ var messageBox = Object.assign({
     if (defaults.icoImg) {
       if (defaults.iconFont) {
         icoEle.className = "c-message--icon " + defaults.iconFont;
+        if(defaults.style){
+          icoEle["style"].cssText=JSON.stringify(defaults.style).replace(/^{|}|"|'$/g,"").replace(",",";")
+        }
       } else {
         icoEle.className = "c-message--icon";
         var imgDom = document.createElement("img");
@@ -60,6 +64,9 @@ var messageBox = Object.assign({
     } else {
       if (defaults.iconFont) {
         icoEle.className = "c-message--icon " + defaults.iconFont;
+        if(defaults.style){
+          icoEle["style"].cssText=JSON.stringify(defaults.style).replace(/^{|}|"|'$/g,"").replace(",",";")
+        }
       } else {
         icoEle.className = " c-message--icon c-message--" + defaults.type;
       }
