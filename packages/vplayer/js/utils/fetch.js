@@ -1,14 +1,12 @@
-// ==========================================================================
-// Fetch wrapper
-// Using XHR to avoid issues with older browsers
-// ==========================================================================
-
+/**
+ * 使用XHR避免旧版浏览器出现问题
+ */
 export default function fetch(url, responseType = 'text') {
   return new Promise((resolve, reject) => {
     try {
       const request = new XMLHttpRequest();
 
-      // Check for CORS support
+      // 判断CORS支持情况
       if (!('withCredentials' in request)) {
         return;
       }
@@ -31,7 +29,7 @@ export default function fetch(url, responseType = 'text') {
 
       request.open('GET', url, true);
 
-      // Set the required response type
+      // 设置响应类型
       request.responseType = responseType;
 
       request.send();

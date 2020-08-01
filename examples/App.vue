@@ -24,16 +24,7 @@
           <v-button type="primary" size="small" round>小型按钮</v-button>
           <v-button type="success" size="mini" round>超小按钮</v-button>
     <div style="height:50px"></div>
-    <div>
-      <div class="demo2" v-drag="'#dragable'">
-        <div id="dragable">
-          <span>这里可以拖动</span>
-        </div>
-        <div class="content">
-          <span>这里不可以</span>
-        </div>
-      </div>
-    </div>
+   
     <v-card class="box-card">
       <div slot="header" class="clearfix">
         <span>卡片名w称</span>
@@ -49,7 +40,7 @@
     <v-card shadow="hover">鼠标悬浮时显示</v-card>
     <br />
     <v-card shadow="never">从不显示</v-card>
-   <div style="width:800px">
+   <div style="width:800px;height:500px;margin:10px auto 100px;">
      <v-player type="video" 
      :videoData="videoData" 
      poster="https://image.ms200.cn/icon/bg1.jpg">
@@ -62,7 +53,6 @@
 export default {
   data() {
     return {
-      currentDate: new Date(),
       videoData:[{
         src:"https://image.ms200.cn/video/0eae571cd79f52f3e5e4522ebdc5d1d5.mp4",
         size:720

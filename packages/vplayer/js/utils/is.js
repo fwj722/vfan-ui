@@ -1,54 +1,56 @@
-// ==========================================================================
-// Type checking utils
-// ==========================================================================
+/**
+ * 类型检查工具
+ * author fanenjing
+ * emil 1508488207@qq.com
+ */
 
-const getConstructor = input => (input !== null && typeof input !== 'undefined' ? input.constructor : null);
-const instanceOf = (input, constructor) => Boolean(input && constructor && input instanceof constructor);
-const isNullOrUndefined = input => input === null || typeof input === 'undefined';
-const isObject = input => getConstructor(input) === Object;
-const isNumber = input => getConstructor(input) === Number && !Number.isNaN(input);
-const isString = input => getConstructor(input) === String;
-const isBoolean = input => getConstructor(input) === Boolean;
-const isFunction = input => getConstructor(input) === Function;
-const isArray = input => Array.isArray(input);
-const isWeakMap = input => instanceOf(input, WeakMap);
-const isNodeList = input => instanceOf(input, NodeList);
-const isElement = input => instanceOf(input, Element);
-const isTextNode = input => getConstructor(input) === Text;
-const isEvent = input => instanceOf(input, Event);
-const isKeyboardEvent = input => instanceOf(input, KeyboardEvent);
-const isCue = input => instanceOf(input, window.TextTrackCue) || instanceOf(input, window.VTTCue);
-const isTrack = input => instanceOf(input, TextTrack) || (!isNullOrUndefined(input) && isString(input.kind));
-const isPromise = input => instanceOf(input, Promise) && isFunction(input.then);
+const getConstructor = obj => (obj !== null && typeof obj !== 'undefined' ? obj.constructor : null)
+const instanceOf = (obj, constructor) => Boolean(obj && constructor && obj instanceof constructor)
+const isNullOrUndefined = obj => obj === null || typeof obj === 'undefined'
+const isObject = obj => getConstructor(obj) === Object
+const isNumber = obj => getConstructor(obj) === Number && !Number.isNaN(obj)
+const isString = obj => getConstructor(obj) === String
+const isBoolean = obj => getConstructor(obj) === Boolean
+const isFunction = obj => getConstructor(obj) === Function
+const isArray = obj => Array.isArray(obj)
+const isWeakMap = obj => instanceOf(obj, WeakMap)
+const isNodeList = obj => instanceOf(obj, NodeList)
+const isElement = obj => instanceOf(obj, Element)
+const isTextNode = obj => getConstructor(obj) === Text
+const isEvent = obj => instanceOf(obj, Event)
+const isKeyboardEvent = obj => instanceOf(obj, KeyboardEvent) // 键盘事件
+const isCue = obj => instanceOf(obj, window.TextTrackCue) || instanceOf(obj, window.VTTCue)  //监测webVTT字幕
+const isTrack = obj => instanceOf(obj, TextTrack) || (!isNullOrUndefined(obj) && isString(obj.kind))
+const isPromise = obj => instanceOf(obj, Promise) && isFunction(obj.then)
 
-const isEmpty = input =>
-  isNullOrUndefined(input) ||
-  ((isString(input) || isArray(input) || isNodeList(input)) && !input.length) ||
-  (isObject(input) && !Object.keys(input).length);
+const isEmpty = obj =>
+  isNullOrUndefined(obj) ||
+  ((isString(obj) || isArray(obj) || isNodeList(obj)) && !obj.length) ||
+  (isObject(obj) && !Object.keys(obj).length)
 
-const isUrl = input => {
-  // Accept a URL object
-  if (instanceOf(input, window.URL)) {
-    return true;
+const isUrl = url => {
+  // 判断url对象
+  if (instanceOf(url, window.URL)) {
+    return true
   }
 
-  // Must be string from here
-  if (!isString(input)) {
-    return false;
+  // 判断是否为字符串，这里要求必须是字符串
+  if (!isString(url)) {
+    return false
   }
 
-  // Add the protocol if required
-  let string = input;
-  if (!input.startsWith('http://') || !input.startsWith('https://')) {
-    string = `http://${input}`;
+  // 根据需要添加协议
+  let string = url
+  if (!url.startsWith('http://') || !url.startsWith('https://')) {
+    string = `http://${url}`
   }
 
   try {
-    return !isEmpty(new URL(string).hostname);
+    return !isEmpty(new URL(string).hostname)
   } catch (e) {
-    return false;
+    return false
   }
-};
+}
 
 export default {
   nullOrUndefined: isNullOrUndefined,
@@ -69,4 +71,4 @@ export default {
   promise: isPromise,
   url: isUrl,
   empty: isEmpty,
-};
+}

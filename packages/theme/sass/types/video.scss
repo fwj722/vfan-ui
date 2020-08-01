@@ -68,7 +68,8 @@ $embed-padding: ((100 / 16) * 9);
 
   @media (min-width: $vplayer-bp-sm) {
     padding: $vplayer-control-spacing;
-    padding-top: calc(#{$vplayer-control-spacing} * 3.5);
+    // padding-top: calc(#{$vplayer-control-spacing} * 3.5);
+    border-top: 1px solid #3a3a3a;
   }
 }
 
@@ -85,7 +86,7 @@ $embed-padding: ((100 / 16) * 9);
   &.vplayer__tab-focus,
   &:hover,
   &[aria-expanded='true'] {
-    background: $vplayer-video-control-background-hover;
+    // background: $vplayer-video-control-background-hover;
     color: $vplayer-video-control-color-hover;
   }
 }
@@ -98,7 +99,7 @@ $embed-padding: ((100 / 16) * 9);
   color: $vplayer-video-control-color;
   display: none;
   left: 50%;
-  opacity: 0.9;
+  opacity: 0.8;
   padding: calc(#{$vplayer-control-spacing} * 1.5);
   position: absolute;
   top: 50%;

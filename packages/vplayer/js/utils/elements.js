@@ -6,26 +6,20 @@ import { extend } from './objects';
 
 // Wrap an element
 export function wrap(elements, wrapper) {
-  // Convert `elements` to an array, if necessary.
+  // 如果不是数组或者不具有length属性时，将元素转成数组
   const targets = elements.length ? elements : [elements];
 
-  // Loops backwards to prevent having to clone the wrapper on the
-  // first element (see `child` below).
-  Array.from(targets)
-    .reverse()
-    .forEach((element, index) => {
+  // 从第一个元素开始循环遍历
+  Array.from(targets).reverse().forEach((element, index) => {
       const child = index > 0 ? wrapper.cloneNode(true) : wrapper;
-      // Cache the current parent and sibling.
+      //将同级和父级缓存起来
       const parent = element.parentNode;
       const sibling = element.nextSibling;
 
-      // Wrap the element (is automatically removed from its current
-      // parent).
+      // 元素保包装
       child.appendChild(element);
 
-      // If the element had a sibling, insert the wrapper before
-      // the sibling to maintain the HTML structure; otherwise, just
-      // append it to the parent.
+      // 如果元素有同级，则在同级之前插入wrapper以维护HTML结构； 否则，只需将其附加到父项即可
       if (sibling) {
         parent.insertBefore(child, sibling);
       } else {
@@ -34,39 +28,34 @@ export function wrap(elements, wrapper) {
     });
 }
 
-// Set attributes
+// 属性设置
 export function setAttributes(element, attributes) {
   if (!is.element(element) || is.empty(attributes)) {
     return;
   }
-
-  // Assume null and undefined attributes should be left out,
-  // Setting them would otherwise convert them to "null" and "undefined"
   Object.entries(attributes)
-    .filter(([, value]) => !is.nullOrUndefined(value))
+    .filter(([,value]) => !is.nullOrUndefined(value))
     .forEach(([key, value]) => element.setAttribute(key, value));
 }
 
-// Create a DocumentFragment
+// 创建一个DocumentFragment
 export function createElement(type, attributes, text) {
-  // Create a new <element>
+  // 创建一个新的元素
   const element = document.createElement(type);
 
-  // Set all passed attributes
+  // 给所有符合要求的元素设置属性
   if (is.object(attributes)) {
     setAttributes(element, attributes);
   }
 
-  // Add text node
+  // 添加文本节点
   if (is.string(text)) {
     element.innerText = text;
   }
-
-  // Return built element
   return element;
 }
 
-// Inaert an element after another
+// 插入一个元素
 export function insertAfter(element, target) {
   if (!is.element(element) || !is.element(target)) {
     return;
@@ -75,7 +64,7 @@ export function insertAfter(element, target) {
   target.parentNode.insertBefore(element, target.nextSibling);
 }
 
-// Insert a DocumentFragment
+// 插入一个DocumentFragment
 export function insertElement(type, parent, attributes, text) {
   if (!is.element(parent)) {
     return;
@@ -84,7 +73,7 @@ export function insertElement(type, parent, attributes, text) {
   parent.appendChild(createElement(type, attributes, text));
 }
 
-// Remove element(s)
+// 删除一个（多个）元素
 export function removeElement(element) {
   if (is.nodeList(element) || is.array(element)) {
     Array.from(element).forEach(removeElement);
@@ -98,7 +87,7 @@ export function removeElement(element) {
   element.parentNode.removeChild(element);
 }
 
-// Remove all child elements
+// 删除所有子元素
 export function emptyElement(element) {
   if (!is.element(element)) {
     return;
@@ -112,7 +101,7 @@ export function emptyElement(element) {
   }
 }
 
-// Replace element
+// 替换元素
 export function replaceElement(newChild, oldChild) {
   if (!is.element(oldChild) || !is.element(oldChild.parentNode) || !is.element(newChild)) {
     return null;
@@ -123,35 +112,33 @@ export function replaceElement(newChild, oldChild) {
   return newChild;
 }
 
-// Get an attribute object from a string selector
-export function getAttributesFromSelector(sel, existingAttributes) {
-  // For example:
-  // '.test' to { class: 'test' }
-  // '#test' to { id: 'test' }
-  // '[data-test="test"]' to { 'data-test': 'test' }
-
+// 获取属性对象
+// 例如：'.test' to { class: 'test' }
+// '#test' to { id: 'test' }
+// '[data-test="test"]' to { 'data-test': 'test' }
+export function getAttributesFromSelector(sel, attribute) {
   if (!is.string(sel) || is.empty(sel)) {
     return {};
   }
 
   const attributes = {};
-  const existing = extend({}, existingAttributes);
+  const existing = extend({}, attribute);
 
   sel.split(',').forEach(s => {
-    // Remove whitespace
+    // 去除空格
     const selector = s.trim();
     const className = selector.replace('.', '');
     const stripped = selector.replace(/[[\]]/g, '');
-    // Get the parts and value
+
     const parts = stripped.split('=');
     const [key] = parts;
     const value = parts.length > 1 ? parts[1].replace(/["']/g, '') : '';
-    // Get the first character
+    // 获取第一个字符
     const start = selector.charAt(0);
 
     switch (start) {
       case '.':
-        // Add to existing classname
+        // 类选择器 添加现有的classname
         if (is.string(existing.class)) {
           attributes.class = `${existing.class} ${className}`;
         } else {
@@ -160,12 +147,12 @@ export function getAttributesFromSelector(sel, existingAttributes) {
         break;
 
       case '#':
-        // ID selector
+        // ID 选择器
         attributes.id = selector.replace('#', '');
         break;
 
       case '[':
-        // Attribute selector
+        // 属性选择器
         attributes[key] = value;
 
         break;
@@ -178,7 +165,7 @@ export function getAttributesFromSelector(sel, existingAttributes) {
   return extend(existing, attributes);
 }
 
-// Toggle hidden
+// 切换到隐藏
 export function toggleHidden(element, hidden) {
   if (!is.element(element)) {
     return;
@@ -194,7 +181,7 @@ export function toggleHidden(element, hidden) {
   element.hidden = hide;
 }
 
-// Mirror Element.classList.toggle, with IE compatibility for "force" argument
+// class切换，兼容IE
 export function toggleClass(element, className, force) {
   if (is.nodeList(element)) {
     return Array.from(element).map(e => toggleClass(e, className, force));
@@ -213,12 +200,12 @@ export function toggleClass(element, className, force) {
   return false;
 }
 
-// Has class name
+// 有class
 export function hasClass(element, className) {
   return is.element(element) && element.classList.contains(className);
 }
 
-// Element matches selector
+// 元素匹配选择器
 export function matches(element, selector) {
   const { prototype } = Element;
 
@@ -236,7 +223,7 @@ export function matches(element, selector) {
   return method.call(element, selector);
 }
 
-// Closest ancestor element matching selector (also tests element itself)
+// 最接近的祖先元素匹配选择器（也测试元素本身）
 export function closest(element, selector) {
   const { prototype } = Element;
 
@@ -256,26 +243,26 @@ export function closest(element, selector) {
   return method.call(element, selector);
 }
 
-// Find all elements
+// 获取所有的元素
 export function getElements(selector) {
   return this.elements.container.querySelectorAll(selector);
 }
 
-// Find a single element
+// 获取单个元素
 export function getElement(selector) {
   return this.elements.container.querySelector(selector);
 }
 
-// Set focus and tab focus class
+// 设置焦点和标签焦点类
 export function setFocus(element = null, tabFocus = false) {
   if (!is.element(element)) {
     return;
   }
 
-  // Set regular focus
+  // 设置焦点 方式滚动
   element.focus({ preventScroll: true });
 
-  // If we want to mimic keyboard focus via tab
+  // 通过标签模拟键盘焦点
   if (tabFocus) {
     toggleClass(element, this.config.classNames.tabFocus);
   }

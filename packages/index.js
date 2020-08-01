@@ -12,7 +12,6 @@ import waves from "./utils/waves"
 
 import VPlayer from "./vplayer/src/vplayer"
 
-import vueDrag from "./utils/vue-drag";
 // import Dialog from './dialog'
 // import Input from './input'
 // import Checkbox from './checkbox'
@@ -37,8 +36,8 @@ const install = function(Vue,options = {}) {
   components.forEach((item) => {
     Vue.component(item.name, item);
   });
+  
   // 指令
-  Vue.use(vueDrag);
   Vue.prototype.$message = Message.message;
   Vue.prototype.waves = waves;
 };

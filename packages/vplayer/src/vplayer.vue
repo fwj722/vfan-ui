@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="vplay-wrap">
     <video v-if="type==='video'"
            :poster="poster"
            :src="defaultSrc">

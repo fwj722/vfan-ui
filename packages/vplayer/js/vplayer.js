@@ -1,14 +1,11 @@
 // ==========================================================================
 // VPlayer
-// vplayer.js v3.6.2
-// https://github.com/sampotts/vplayer
-// License: The MIT License (MIT)
 // ==========================================================================
 
 import captions from './captions';
 import defaults from './config/defaults';
 import { pip } from './config/states';
-import { getProviderByUrl, providers, types } from './config/types';
+import { providers, types } from './config/types';
 import Console from './console';
 import controls from './controls';
 import Fullscreen from './fullscreen';
@@ -165,10 +162,7 @@ class VPlayer {
 
         // <iframe> type
         if (is.element(iframe)) {
-          // Detect provider
           url = parseUrl(iframe.getAttribute('src'));
-          this.provider = getProviderByUrl(url.toString());
-
           // Rework elements
           this.elements.container = this.media;
           this.media = iframe;

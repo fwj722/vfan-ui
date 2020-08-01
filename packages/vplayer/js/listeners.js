@@ -1,7 +1,6 @@
-// ==========================================================================
-// VPlayer Event Listeners
-// ==========================================================================
-
+/**
+ * 事件监听
+ */
 import controls from './controls';
 import ui from './ui';
 import { repaint } from './utils/animation';

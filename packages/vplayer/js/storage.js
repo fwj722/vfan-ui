@@ -1,7 +1,6 @@
-// ==========================================================================
-// VPlayer storage
-// ==========================================================================
-
+/**
+ * 存储
+ */
 import is from './utils/is';
 import { extend } from './utils/objects';
 
@@ -11,20 +10,15 @@ class Storage {
     this.key = player.config.storage.key;
   }
 
-  // Check for actual support (see if we can use it)
+  // 检查支持情况，判断是否可以使用
   static get supported() {
     try {
       if (!('localStorage' in window)) {
         return false;
       }
-
       const test = '___test';
-
-      // Try to use it (it might be disabled, e.g. user is in private mode)
-      // see: https://github.com/sampotts/vplayer/issues/131
       window.localStorage.setItem(test, test);
       window.localStorage.removeItem(test);
-
       return true;
     } catch (e) {
       return false;
@@ -48,30 +42,29 @@ class Storage {
   }
 
   set(object) {
-    // Bail if we don't have localStorage support or it's disabled
+    //如果浏览器不支持localStorage或已将其禁用，则将其禁掉
     if (!Storage.supported || !this.enabled) {
       return;
     }
 
-    // Can only store objectst
+    // 只可以存储对象
     if (!is.object(object)) {
       return;
     }
 
-    // Get current storage
+    // 获取当前存储
     let storage = this.get();
 
-    // Default to empty object
+    // 默认为空对象
     if (is.empty(storage)) {
       storage = {};
     }
 
-    // Update the working copy of the values
+    // 将object源对象复制到目标对象storage
     extend(storage, object);
 
-    // Update storage
+    // storage对象存储更新
     window.localStorage.setItem(this.key, JSON.stringify(storage));
   }
 }
-
 export default Storage;

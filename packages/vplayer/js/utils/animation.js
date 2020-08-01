@@ -1,5 +1,7 @@
 /**
  * 动画工具
+ * author fanenjing
+ * emil 1508488207@qq.com
  */
 import is from './is';
 
@@ -20,6 +22,7 @@ export const transitionEndEvent = (() => {
 
 // 强制重涂
 export function repaint(element, delay) {
+  debugger
   setTimeout(() => {
     try {
       // eslint-disable-next-line no-param-reassign

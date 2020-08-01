@@ -3,7 +3,7 @@
 // ==========================================================================
 
 export const providers = {
-  html5: 'html5',
+  html5: 'html5'
 };
 
 export const types = {

@@ -1,14 +1,11 @@
-// ==========================================================================
-// Event utils
-// ==========================================================================
-
+/**
+ * 事件工具
+ */
 import is from './is';
 
-// Check for passive event listener support
-// https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md
-// https://www.youtube.com/watch?v=NPM6172J22g
+//监测被动监听事件的支持情况
 const supportsPassiveListeners = (() => {
-  // Test via a getter in the options object to see if the passive property is accessed
+  // 通过options对象中的getter进行测试，以查看是否访问了被动属性
   let supported = false;
   try {
     const options = Object.defineProperty({}, 'passive', {
@@ -20,39 +17,37 @@ const supportsPassiveListeners = (() => {
     window.addEventListener('test', null, options);
     window.removeEventListener('test', null, options);
   } catch (e) {
-    // Do nothing
+    console.log(e)
   }
-
   return supported;
 })();
 
-// Toggle event listener
+//事件监听切换
 export function toggleListener(element, event, callback, toggle = false, passive = true, capture = false) {
-  // Bail if no element, event, or callback
+  // 如果没有元素，事件或回调，则不监听
   if (!element || !('addEventListener' in element) || is.empty(event) || !is.function(callback)) {
     return;
   }
 
-  // Allow multiple events
+  // 允许多事件
   const events = event.split(' ');
-  // Build options
-  // Default to just the capture boolean for browsers with no passive listener support
+ //构建选项,对于不支持被动侦听器的浏览器，默认为捕获布尔值
   let options = capture;
 
-  // If passive events listeners are supported
+  // 如果支持被动事件侦听
   if (supportsPassiveListeners) {
     options = {
-      // Whether the listener can be passive (i.e. default never prevented)
+      // 事件监听是否可以是被动的（即永远不会阻止默认设置）
       passive,
-      // Whether the listener is a capturing listener or not
+      // 监听对象是否是捕获监听
       capture,
     };
   }
 
-  // If a single node is passed, bind the event listener
+  // 如果传了一个节点，请绑定事件监听
   events.forEach(type => {
     if (this && this.eventListeners && toggle) {
-      // Cache event listener
+      // 缓存事件监听
       this.eventListeners.push({ element, type, callback, options });
     }
 
@@ -60,17 +55,17 @@ export function toggleListener(element, event, callback, toggle = false, passive
   });
 }
 
-// Bind event handler
+// 绑定事件
 export function on(element, events = '', callback, passive = true, capture = false) {
   toggleListener.call(this, element, events, callback, true, passive, capture);
 }
 
-// Unbind event handler
+// 不绑定事件
 export function off(element, events = '', callback, passive = true, capture = false) {
   toggleListener.call(this, element, events, callback, false, passive, capture);
 }
 
-// Bind once-only event handler
+// 仅仅绑定一次事件
 export function once(element, events = '', callback, passive = true, capture = false) {
   const onceCallback = (...args) => {
     off(element, events, onceCallback, passive, capture);
@@ -80,24 +75,24 @@ export function once(element, events = '', callback, passive = true, capture = f
   toggleListener.call(this, element, events, onceCallback, true, passive, capture);
 }
 
-// Trigger event
+// 事件触发
 export function triggerEvent(element, type = '', bubbles = false, detail = {}) {
   // Bail if no element
   if (!is.element(element) || is.empty(type)) {
     return;
   }
 
-  // Create and dispatch the event
+  // 创建和派发事件
   const event = new CustomEvent(type, {
     bubbles,
     detail: { ...detail, vplayer: this },
   });
 
-  // Dispatch the event
+  // 事件派发
   element.dispatchEvent(event);
 }
 
-// Unbind all cached event listeners
+//取消绑定所有缓存的事件监听
 export function unbindListeners() {
   if (this && this.eventListeners) {
     this.eventListeners.forEach(item => {
@@ -109,7 +104,7 @@ export function unbindListeners() {
   }
 }
 
-// Run method when / if player is ready
+//如果播放器准备就绪，则运行方法
 export function ready() {
   return new Promise(resolve =>
     this.ready ? setTimeout(resolve, 0) : on.call(this, this.elements.container, 'ready', resolve),

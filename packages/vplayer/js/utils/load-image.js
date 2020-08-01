@@ -1,9 +1,7 @@
-// ==========================================================================
-// Load image avoiding xhr/fetch CORS issues
-// Server status can't be obtained this way unfortunately, so this uses "naturalWidth" to determine if the image has loaded
-// By default it checks if it is at least 1px, but you can add a second argument to change this
-// ==========================================================================
-
+/**
+ * 因此使用“ naturalWidth”来确定图像是否已加载
+ * 默认情况下，它检查是否至少为1px，也可以添加第二个参数来更改此值
+ */
 export default function loadImage(src, minWidth = 1) {
   return new Promise((resolve, reject) => {
     const image = new Image();

@@ -1,13 +1,11 @@
 /**
- * Returns a number whose value is limited to the given range.
- *
- * Example: limit the output of this computation to between 0 and 255
- * (x * 255).clamp(0, 255)
+ * 返回一个数字，其值限制在给定范围内
+ * 例如：将此计算的输出限制为0到255之间 ：(x * 255).clamp(0, 255)
  *
  * @param {Number} input
- * @param {Number} min The lower boundary of the output range
- * @param {Number} max The upper boundary of the output range
- * @returns A number in the range [min, max]
+ * @param {Number} min 输出范围的下限
+ * @param {Number} max 输出范围的上限
+ * @returns 范围是[min，max]的数字
  * @type Number
  */
 export function clamp(input = 0, min = 0, max = 255) {

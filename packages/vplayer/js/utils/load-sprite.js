@@ -1,12 +1,11 @@
-// ==========================================================================
-// Sprite loader
-// ==========================================================================
-
+/**
+ * 加载精灵图
+ */
 import Storage from '../storage';
 import fetch from './fetch';
 import is from './is';
 
-// Load an external SVG sprite
+// 加载外部SVG精灵图
 export default function loadSprite(url, id) {
   if (!is.string(url)) {
     return;
@@ -21,19 +20,18 @@ export default function loadSprite(url, id) {
     // eslint-disable-next-line no-param-reassign
     container.innerHTML = data;
 
-    // Check again incase of race condition
     if (hasId && exists()) {
       return;
     }
 
-    // Inject the SVG to the body
+    //将SVG注入body中
     document.body.insertAdjacentElement('afterbegin', container);
   };
 
-  // Only load once if ID set
+  // 如果设置了ID，则只加载一次
   if (!hasId || !exists()) {
     const useStorage = Storage.supported;
-    // Create container
+
     const container = document.createElement('div');
     container.setAttribute('hidden', '');
 
@@ -41,7 +39,7 @@ export default function loadSprite(url, id) {
       container.setAttribute('id', id);
     }
 
-    // Check in cache
+    //  检查缓存
     if (useStorage) {
       const cached = window.localStorage.getItem(`${prefix}-${id}`);
       isCached = cached !== null;
@@ -52,7 +50,7 @@ export default function loadSprite(url, id) {
       }
     }
 
-    // Get the sprite
+    // 获得精灵图
     fetch(url)
       .then(result => {
         if (is.empty(result)) {

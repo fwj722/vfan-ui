@@ -1,6 +1,6 @@
 // ==========================================================================
 // VPlayer Captions
-// TODO: Create as class
+// TODO: 创建字幕相关的类
 // ==========================================================================
 
 import controls from './controls';
@@ -23,16 +23,16 @@ import { getHTML } from './utils/strings';
 import { parseUrl } from './utils/urls';
 
 const captions = {
-  // Setup captions
+  // 字幕设置
   setup() {
-    // Requires UI support
+    // 用户界面支持判断
     if (!this.supported.ui) {
       return;
     }
 
-    // Only Vimeo and HTML5 video supported at this point
+    // 支持HTML5视频和文字轨道
     if (!this.isVideo  || (this.isHTML5 && !support.textTracks)) {
-      // Clear menu and hide
+      // 清除菜单并隐藏
       if (
         is.array(this.config.controls) &&
         this.config.controls.includes('settings') &&
@@ -40,7 +40,6 @@ const captions = {
       ) {
         controls.setCaptionsMenu.call(this);
       }
-
       return;
     }
 

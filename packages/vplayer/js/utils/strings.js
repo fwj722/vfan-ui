@@ -4,21 +4,21 @@
 
 import is from './is';
 
-// Generate a random ID
+//  生成一个随机ID
 export function generateId(prefix) {
   return `${prefix}-${Math.floor(Math.random() * 10000)}`;
 }
 
-// Format string
-export function format(input, ...args) {
-  if (is.empty(input)) {
-    return input;
+// 格式字符串
+export function format(str, ...args) {
+  if (is.empty(str)) {
+    return str;
   }
 
-  return input.toString().replace(/{(\d+)}/g, (match, i) => args[i].toString());
+  return str.toString().replace(/{(\d+)}/g, (match, i) => args[i].toString());
 }
 
-// Get percentage
+// 取得百分比
 export function getPercentage(current, max) {
   if (current === 0 || max === 0 || Number.isNaN(current) || Number.isNaN(max)) {
     return 0;
@@ -27,17 +27,17 @@ export function getPercentage(current, max) {
   return ((current / max) * 100).toFixed(2);
 }
 
-// Replace all occurances of a string in a string
+// 替换字符串中所有出现的字符串
 export const replaceAll = (input = '', find = '', replace = '') =>
   input.replace(new RegExp(find.toString().replace(/([.*+?^=!:${}()|[\]/\\])/g, '\\$1'), 'g'), replace.toString());
 
-// Convert to title case
-export const toTitleCase = (input = '') =>
-  input.toString().replace(/\w\S*/g, text => text.charAt(0).toUpperCase() + text.substr(1).toLowerCase());
+// 标题大小写转换
+export const toTitleCase = (str = '') =>
+str.toString().replace(/\w\S*/g, text => text.charAt(0).toUpperCase() + text.substr(1).toLowerCase());
 
-// Convert string to pascalCase
-export function toPascalCase(input = '') {
-  let string = input.toString();
+
+export function toPascalCase(str = '') {
+  let string = str.toString();
 
   // Convert kebab case
   string = replaceAll(string, '-', ' ');
@@ -63,7 +63,7 @@ export function toCamelCase(input = '') {
   return string.charAt(0).toLowerCase() + string.slice(1);
 }
 
-// Remove HTML from a string
+// 从字符串中删除HTML
 export function stripHTML(source) {
   const fragment = document.createDocumentFragment();
   const element = document.createElement('div');
@@ -72,7 +72,7 @@ export function stripHTML(source) {
   return fragment.firstChild.innerText;
 }
 
-// Like outerHTML, but also works for DocumentFragment
+// 获得html，也适用于DocumentFragment
 export function getHTML(element) {
   const wrapper = document.createElement('div');
   wrapper.appendChild(element);

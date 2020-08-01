@@ -1,20 +1,19 @@
-// ==========================================================================
-// Object utils
-// ==========================================================================
-
+/**
+ * 对象工具
+ */
 import is from './is';
 
-// Clone nested objects
+// 深拷贝嵌套对象
 export function cloneDeep(object) {
   return JSON.parse(JSON.stringify(object));
 }
 
-// Get a nested value in an object
+// 获取对象中的指定值
 export function getDeep(object, path) {
   return path.split('.').reduce((obj, key) => obj && obj[key], object);
 }
 
-// Deep extend destination object with N more objects
+// 将所有可枚举属性的值从一个或多个源对象复制到目标对象，类似于Object.assign
 export function extend(target = {}, ...sources) {
   if (!sources.length) {
     return target;
