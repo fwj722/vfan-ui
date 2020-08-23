@@ -81,15 +81,18 @@ $embed-padding: ((100 / 16) * 9);
 }
 
 // Control elements
-.vplayer--video .vplayer__control {
-  // Hover and tab focus
-  &.vplayer__tab-focus,
-  &:hover,
-  &[aria-expanded='true'] {
-    // background: $vplayer-video-control-background-hover;
-    color: $vplayer-video-control-color-hover;
+.vplayer--video .vplayer__menu__container{
+  .vplayer__control {
+    // Hover and tab focus
+    &.vplayer__tab-focus,
+    &:hover,
+    &[aria-expanded='true'] {
+      background: #eaeaea; //$vplayer-video-control-background-hover
+      // color: $vplayer-video-control-color-hover;
+    }
   }
 }
+
 
 // Large play button (video only)
 .vplayer__control--overlaid {

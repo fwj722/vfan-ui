@@ -1,5 +1,5 @@
 // ==========================================================================
-// VPlayer HTML5 helpers
+// VPlayer HTML5
 // ==========================================================================
 
 import support from './support';
@@ -17,7 +17,7 @@ const html5 = {
 
     const sources = Array.from(this.media.querySelectorAll('source'));
 
-    // Filter out unsupported sources (if type is specified)
+    //在指定了类型时,过滤掉不受支持的源
     return sources.filter(source => {
       const type = source.getAttribute('type');
 
@@ -29,14 +29,14 @@ const html5 = {
     });
   },
 
-  // Get quality levels
+  // 获取质量等级
   getQualityOptions() {
-    // Whether we're forcing all options (e.g. for streaming)
+    // 流式传输时，是否强制所有选项
     if (this.config.quality.forced) {
       return this.config.quality.options;
     }
 
-    // Get sizes from <source> elements
+    // 从<source>元素获取size
     return html5.getSources
       .call(this)
       .map(source => Number(source.getAttribute('size')))
@@ -50,10 +50,10 @@ const html5 = {
 
     const player = this;
 
-    // Set speed options from config
+    // 通过配置设置速度选项
     player.options.speed = player.config.speed.options;
 
-    // Set aspect ratio if fixed
+    // 当固定时，设置宽高比
     if (!is.empty(this.config.ratio)) {
       setAspectRatio.call(player);
     }
@@ -61,11 +61,11 @@ const html5 = {
     // Quality
     Object.defineProperty(player.media, 'quality', {
       get() {
-        // Get sources
+        // 获取sources的值
         const sources = html5.getSources.call(player);
         const source = sources.find(s => s.getAttribute('src') === player.source);
 
-        // Return size, if match is found
+        //如果找到匹配项，返回大小
         return source && Number(source.getAttribute('size'));
       },
       set(input) {
@@ -73,45 +73,45 @@ const html5 = {
           return;
         }
 
-        // If we're using an an external handler...
+        // 如果使用的是一个external扩展程序
         if (player.config.quality.forced && is.function(player.config.quality.onChange)) {
           player.config.quality.onChange(input);
         } else {
-          // Get sources
+          // 获取资源
           const sources = html5.getSources.call(player);
-          // Get first match for requested size
+          // 获得要求尺寸的首次匹配规则
           const source = sources.find(s => Number(s.getAttribute('size')) === input);
 
-          // No matching source found
+          // 找不到匹配的源
           if (!source) {
             return;
           }
 
-          // Get current state
+          // 获取当前状态
           const { currentTime, paused, preload, readyState, playbackRate } = player.media;
 
-          // Set new source
+          // 设定新source源
           player.media.src = source.getAttribute('src');
 
-          // Prevent loading if preload="none" and the current source isn't loaded (#1044)
+          // 如果preload 为“ none”并且当前源未加载，则阻止加载
           if (preload !== 'none' || readyState) {
-            // Restore time
+            // 重播时间
             player.once('loadedmetadata', () => {
               player.speed = playbackRate;
               player.currentTime = currentTime;
 
-              // Resume playing
+              //如果没有暂停时
               if (!paused) {
                 silencePromise(player.play());
               }
             });
 
-            // Load new source
+            // 加载新的source源
             player.media.load();
           }
         }
 
-        // Trigger change event
+        // 触发变更事件t
         triggerEvent.call(player, player.media, 'qualitychange', false, {
           quality: input,
         });
@@ -119,28 +119,23 @@ const html5 = {
     });
   },
 
-  // Cancel current network requests
-  // See https://github.com/sampotts/vplayer/issues/174
+  //取消当前的网络请求
   cancelRequests() {
     if (!this.isHTML5) {
       return;
     }
 
-    // Remove child sources
+    // 删除子资源
     removeElement(html5.getSources.call(this));
 
-    // Set blank video src attribute
-    // This is to prevent a MEDIA_ERR_SRC_NOT_SUPPORTED error
-    // Info: http://stackoverflow.com/questions/32231579/how-to-properly-dispose-of-an-html5-video-and-close-socket-or-connection
+    // 设置空白视频src属性，是为了防止MEDIA_ERR_SRC_NOT_SUPPORTED错误
     this.media.setAttribute('src', this.config.blankVideo);
 
-    // Load the new empty source
-    // This will cancel existing requests
-    // See https://github.com/sampotts/vplayer/issues/174
+    // 加载新的空源，将会取消现有请求
     this.media.load();
 
-    // Debugging
-    this.debug.log('Cancelled network requests');
+    // 调试
+    this.debug.log('取消网络请求');
   },
 };
 

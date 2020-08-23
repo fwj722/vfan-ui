@@ -51,8 +51,7 @@ export default function loadSprite(url, id) {
     }
 
     // 获得精灵图
-    fetch(url)
-      .then(result => {
+    fetch(url).then(result => {
         if (is.empty(result)) {
           return;
         }

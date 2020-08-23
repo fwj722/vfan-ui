@@ -24,7 +24,7 @@ class Listeners {
     this.firstTouch = this.firstTouch.bind(this);
   }
 
-  // Handle key presses
+  // 按键操作
   handleKey(event) {
     const { player } = this;
     const { elements } = player;
@@ -32,29 +32,24 @@ class Listeners {
     const pressed = event.type === 'keydown';
     const repeat = pressed && code === this.lastKey;
 
-    // Bail if a modifier key is set
+    // 如果设置了修饰键，释放，直接返回false，结束执行
     if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
       return;
     }
 
-    // If the event is bubbled from the media element
-    // Firefox doesn't get the keycode for whatever reason
     if (!is.number(code)) {
       return;
     }
 
-    // Seek by the number keys
+    // 按数字键查找
     const seekByKey = () => {
-      // Divide the max duration into 10th's and times by the number value
+      // 将最大持续时间除以十
       player.currentTime = (player.duration / 10) * (code - 48);
     };
 
-    // Handle the key on keydown
-    // Reset on keyup
+  //处理按键时的按键,重置键盘
     if (pressed) {
-      // Check focused element
-      // and if the focused element is not editable (e.g. text input)
-      // and any that accept key input http://webaim.org/techniques/keyboard/
+      // 检查焦点元素，并且焦点元素不可编辑，以及任何接受键输入的内容，例如： 文本输入text input
       const focused = document.activeElement;
       if (is.element(focused)) {
         const { editable } = player.config.selectors;
@@ -69,10 +64,10 @@ class Listeners {
         }
       }
 
-      // Which keycodes should we prevent default
+      // 应该阻止以下默认键码
       const preventDefault = [32, 37, 38, 39, 40, 48, 49, 50, 51, 52, 53, 54, 56, 57, 67, 70, 73, 75, 76, 77, 79];
 
-      // If the code is found prevent default (e.g. prevent scrolling for arrows)
+     
       if (preventDefault.includes(code)) {
         event.preventDefault();
         event.stopPropagation();
@@ -97,53 +92,53 @@ class Listeners {
 
         case 32:
         case 75:
-          // Space and K key
+          // Space空格键 and k键
           if (!repeat) {
             silencePromise(player.togglePlay());
           }
           break;
 
         case 38:
-          // Arrow up
+          // 向上键
           player.increaseVolume(0.1);
           break;
 
         case 40:
-          // Arrow down
+          // 向下键
           player.decreaseVolume(0.1);
           break;
 
         case 77:
-          // M key
+          // M键
           if (!repeat) {
             player.muted = !player.muted;
           }
           break;
 
         case 39:
-          // Arrow forward
+          // 向右键（前进键）
           player.forward();
           break;
 
         case 37:
-          // Arrow back
+          //向左键（返回键）
           player.rewind();
           break;
 
         case 70:
-          // F key
+          // F 键
           player.fullscreen.toggle();
           break;
 
         case 67:
-          // C key
+          // C 键
           if (!repeat) {
             player.toggleCaptions();
           }
           break;
 
         case 76:
-          // L key
+          // L 键
           player.loop = !player.loop;
           break;
 
@@ -163,32 +158,31 @@ class Listeners {
           break;
       }
 
-      // Escape is handle natively when in full screen
-      // So we only need to worry about non native
+      //在全屏模式下，Esc键是本地处理的,我们只需要考虑是否active
       if (code === 27 && !player.fullscreen.usingNative && player.fullscreen.active) {
         player.fullscreen.toggle();
       }
 
-      // Store last code for next cycle
+
       this.lastKey = code;
     } else {
       this.lastKey = null;
     }
   }
 
-  // Toggle menu
+  //切换菜单
   toggleMenu(event) {
     controls.toggleMenu.call(this.player, event);
   }
 
-  // Device is touch enabled
+  //设备已启用touch（是否启用触摸模式）
   firstTouch() {
     const { player } = this;
     const { elements } = player;
 
     player.touch = true;
 
-    // Add touch class
+    // 增加touch的class类
     toggleClass(elements.container, player.config.classNames.isTouch, true);
   }
 
@@ -198,41 +192,39 @@ class Listeners {
 
     clearTimeout(this.focusTimer);
 
-    // Ignore any key other than tab
+    // 忽略tab以外的任何键
     if (event.type === 'keydown' && event.which !== 9) {
       return;
     }
 
-    // Store reference to event timeStamp
+    // 存储对事件timeStamp的引用
     if (event.type === 'keydown') {
       this.lastKeyDown = event.timeStamp;
     }
 
-    // Remove current classes
+    //删除当前classes
     const removeCurrent = () => {
       const className = player.config.classNames.tabFocus;
       const current = getElements.call(player, `.${className}`);
       toggleClass(current, className, false);
     };
 
-    // Determine if a key was pressed to trigger this event
+    // 判断是否按下了一个按键来触发此事件
     const wasKeyDown = event.timeStamp - this.lastKeyDown <= 20;
 
-    // Ignore focus events if a key was pressed prior
+    // 如果事先按下某个键，则忽略焦点事件
     if (event.type === 'focus' && !wasKeyDown) {
       return;
     }
-
-    // Remove all current
+    //移除当前所有的事件
     removeCurrent();
 
-    // Delay the adding of classname until the focus has changed
-    // This event fires before the focusin event
+    //延迟类名的添加，直到焦点改变,此事件在事件焦点之前触发
     if (event.type !== 'focusout') {
       this.focusTimer = setTimeout(() => {
         const focused = document.activeElement;
 
-        // Ignore if current focus element isn't inside the player
+        // 忽略当前焦点元素是否不在播放器内部
         if (!elements.container.contains(focused)) {
           return;
         }
@@ -242,36 +234,36 @@ class Listeners {
     }
   }
 
-  // Global window & document listeners
+
   global(toggle = true) {
     const { player } = this;
 
-    // Keyboard shortcuts
+    // 键盘快捷键
     if (player.config.keyboard.global) {
       toggleListener.call(player, window, 'keydown keyup', this.handleKey, toggle, false);
     }
 
-    // Click anywhere closes menu
+    // 单击任意位置关闭菜单
     toggleListener.call(player, document.body, 'click', this.toggleMenu, toggle);
 
-    // Detect touch by events
+    // 通过事件检测触摸
     once.call(player, document.body, 'touchstart', this.firstTouch);
 
-    // Tab focus detection
+    // 标签焦点检测
     toggleListener.call(player, document.body, 'keydown focus blur focusout', this.setTabFocus, toggle, false, true);
   }
 
-  // Container listeners
+  // 容器监听
   container() {
     const { player } = this;
     const { config, elements, timers } = player;
 
-    // Keyboard shortcuts
+    // 键盘快捷键
     if (!config.keyboard.global && config.keyboard.focused) {
       on.call(player, elements.container, 'keydown keyup', this.handleKey, false);
     }
 
-    // Toggle controls on mouse events and entering fullscreen
+    // 切换鼠标事件并进入全屏模式
     on.call(
       player,
       elements.container,
@@ -279,26 +271,27 @@ class Listeners {
       event => {
         const { controls: controlsElement } = elements;
 
-        // Remove button states for fullscreen
+        // 删除全屏按钮状态
         if (controlsElement && event.type === 'enterfullscreen') {
           controlsElement.pressed = false;
           controlsElement.hover = false;
         }
 
-        // Show, then hide after a timeout unless another control event occurs
+        //显示，然后在超时后隐藏，除非发生另一个控制事件
         const show = ['touchstart', 'touchmove', 'mousemove'].includes(event.type);
         let delay = 0;
 
         if (show) {
           ui.toggleControls.call(player, true);
-          // Use longer timeout for touch devices
+          // 为触摸设备使用更长的超时时间
           delay = player.touch ? 3000 : 2000;
         }
 
-        // Clear timer
+        //清除定时器
         clearTimeout(timers.controls);
 
         // Set new timer to prevent flicker when seeking
+        //设置新的定时器，以防止操作时闪烁闪烁的问题
         timers.controls = setTimeout(() => ui.toggleControls.call(player, false), delay);
       },
     );
@@ -316,10 +309,9 @@ class Listeners {
       target.style.maxWidth = toggle ? `${(y / videoY) * videoX}px` : null;
       target.style.margin = toggle ? '0 auto' : null;
     };
-
-    // Resize on fullscreen change
+    // 当全屏发生更改时调整大小
     const setPlayerSize = measure => {
-      // If we don't need to measure the viewport
+      //当不需要监听视口时
       if (!measure) {
         return setAspectRatio.call(player);
       }
@@ -338,24 +330,22 @@ class Listeners {
     on.call(player, elements.container, 'enterfullscreen exitfullscreen', event => {
       const { target, usingNative } = player.fullscreen;
 
-      // Ignore events not from target
+      // 将不是target的事件忽略掉
       if (target !== elements.container) {
         return;
       }
 
-      // If it's not an embed and no ratio specified
+      // 如果不是嵌入且未指定比率
       if (!player.isEmbed && is.empty(player.config.ratio)) {
         return;
       }
 
       const isEnter = event.type === 'enterfullscreen';
-      // Set the player size when entering fullscreen to viewport size
+       // 如果未使用浏览器自带全屏API，则需要检查视口的大小
       const { padding, ratio } = setPlayerSize(isEnter);
 
       // Set Vimeo gutter
       setGutter(ratio, padding, isEnter);
-
-      // If not using native browser fullscreen API, we need to check for resizes of viewport
       if (!usingNative) {
         if (isEnter) {
           on.call(player, window, 'resize', resized);
@@ -366,67 +356,68 @@ class Listeners {
     });
   }
 
-  // Listen for media events
+  //对media事件进行监听
   media() {
     const { player } = this;
     const { elements } = player;
 
-    // Time change on media
+    // 媒体时间变更
     on.call(player, player.media, 'timeupdate seeking seeked', event => controls.timeUpdate.call(player, event));
 
-    // Display duration
+    // 显示持续时间
     on.call(player, player.media, 'durationchange loadeddata loadedmetadata', event =>
       controls.durationUpdate.call(player, event),
     );
 
-    // Handle the media finishing
+
     on.call(player, player.media, 'ended', () => {
-      // Show poster on end
+      // 结束时显示poster
       if (player.isHTML5 && player.isVideo && player.config.resetOnEnd) {
-        // Restart
+        // 重播
         player.restart();
 
-        // Call pause otherwise IE11 will start playing the video again
+        //结束后暂停，否则IE11将再次开始播放视频
         player.pause();
       }
     });
 
-    // Check for buffer progress
+    // 检查缓冲区进度
     on.call(player, player.media, 'progress playing seeking seeked', event =>
       controls.updateProgress.call(player, event),
     );
 
-    // Handle volume changes
+    // 处理音量变化
     on.call(player, player.media, 'volumechange', event => controls.updateVolume.call(player, event));
 
-    // Handle play/pause
+    // 处理播放/暂停
     on.call(player, player.media, 'playing play pause ended emptied timeupdate', event =>
       ui.checkPlaying.call(player, event),
     );
 
-    // Loading state
+    // 加载状态
     on.call(player, player.media, 'waiting canplay seeked playing', event => ui.checkLoading.call(player, event));
 
-    // Click video
+    //点击视频
     if (player.supported.ui && player.config.clickToPlay && !player.isAudio) {
-      // Re-fetch the wrapper
+      //重新获取容器
       const wrapper = getElement.call(player, `.${player.config.classNames.video}`);
 
-      // Bail if there's no wrapper (this should never happen)
+      // 如果没有容器包裹则停止并返回，这永远不会发生
       if (!is.element(wrapper)) {
         return;
       }
 
-      // On click play, pause or restart
+      // 点击播放时，暂停或重新启动
       on.call(player, elements.container, 'click', event => {
         const targets = [elements.container, wrapper];
 
-        // Ignore if click if not container or in video wrapper
+
+        //如果没有容器，就忽略是否单击
         if (!targets.includes(event.target) && !wrapper.contains(event.target)) {
           return;
         }
 
-        // Touch devices will just show controls (if hidden)
+        //如果隐藏，触摸设备将仅显示控件
         if (player.touch && player.config.hideControls) {
           return;
         }
@@ -452,7 +443,7 @@ class Listeners {
       });
     }
 
-    // Disable right click
+    // 禁用右键
     if (player.supported.ui && player.config.disableContextMenu) {
       on.call(
         player,
@@ -465,43 +456,42 @@ class Listeners {
       );
     }
 
-    // Volume change
+    // 音量变化
     on.call(player, player.media, 'volumechange', () => {
-      // Save to storage
+      // 保存到storage存储
       player.storage.set({
         volume: player.volume,
         muted: player.muted,
       });
     });
 
-    // Speed change
+    // Speed速度改变
     on.call(player, player.media, 'ratechange', () => {
-      // Update UI
+      // 更新界面
       controls.updateSetting.call(player, 'speed');
 
-      // Save to storage
+      //保存到storage存储
       player.storage.set({ speed: player.speed });
     });
 
-    // Quality change
+    // 画质改变
     on.call(player, player.media, 'qualitychange', event => {
-      // Update UI
+      // 更新界面
       controls.updateSetting.call(player, 'quality', null, event.detail.quality);
     });
 
-    // Update download link when ready and if quality changes
+    //画质发生变化时更新下载链接
     on.call(player, player.media, 'ready qualitychange', () => {
       controls.setDownloadUrl.call(player);
     });
 
-    // Proxy events to container
-    // Bubble up key events for Edge
+    // 使Edge的关键事件冒泡
     const proxyEvents = player.config.events.concat(['keyup', 'keydown']).join(' ');
 
     on.call(player, player.media, proxyEvents, event => {
       let { detail = {} } = event;
 
-      // Get error details from media
+      //从媒体获取错误详细信息
       if (event.type === 'error') {
         detail = player.media.error;
       }
@@ -510,25 +500,25 @@ class Listeners {
     });
   }
 
-  // Run default and custom handlers
+  // 运行默认或自定义的handler
   proxy(event, defaultHandler, customHandlerKey) {
     const { player } = this;
     const customHandler = player.config.listeners[customHandlerKey];
     const hasCustomHandler = is.function(customHandler);
     let returned = true;
 
-    // Execute custom handler
+    // 执行自定义的handler
     if (hasCustomHandler) {
       returned = customHandler.call(player, event);
     }
 
-    // Only call default handler if not prevented in custom handler
+    //如果未在自定义handler中阻止，则仅调用默认handler
     if (returned !== false && is.function(defaultHandler)) {
       defaultHandler.call(player, event);
     }
   }
 
-  // Trigger custom and default handlers
+  // 触发自定义和默认handler
   bind(element, type, defaultHandler, customHandlerKey, passive = true) {
     const { player } = this;
     const customHandler = player.config.listeners[customHandlerKey];
@@ -543,14 +533,15 @@ class Listeners {
     );
   }
 
-  // Listen for control events
+  // 监听控制事件
   controls() {
     const { player } = this;
     const { elements } = player;
-    // IE doesn't support input event, so we fallback to change
+
+    //IE不支持input事件，因此回退以进行更改
     const inputEvent = browser.isIE ? 'change' : 'input';
 
-    // Play/pause toggle
+    // 播放/暂停切换
     if (elements.buttons.play) {
       Array.from(elements.buttons.play).forEach(button => {
         this.bind(
@@ -564,7 +555,7 @@ class Listeners {
       });
     }
 
-    // Pause
+    // 暂停
     this.bind(elements.buttons.restart, 'click', player.restart, 'restart');
 
     // Rewind
@@ -573,7 +564,7 @@ class Listeners {
     // Rewind
     this.bind(elements.buttons.fastForward, 'click', player.forward, 'fastForward');
 
-    // Mute toggle
+    // 静音切换
     this.bind(
       elements.buttons.mute,
       'click',
@@ -583,10 +574,10 @@ class Listeners {
       'mute',
     );
 
-    // Captions toggle
+    // 字幕切换
     this.bind(elements.buttons.captions, 'click', () => player.toggleCaptions());
 
-    // Download
+    // 下载
     this.bind(
       elements.buttons.download,
       'click',
@@ -596,7 +587,7 @@ class Listeners {
       'download',
     );
 
-    // Fullscreen toggle
+    // 全屏切换
     this.bind(
       elements.buttons.fullscreen,
       'click',
@@ -606,7 +597,7 @@ class Listeners {
       'fullscreen',
     );
 
-    // Picture-in-Picture
+    //画中画
     this.bind(
       elements.buttons.pip,
       'click',
@@ -616,15 +607,15 @@ class Listeners {
       'pip',
     );
 
-    // Airplay
+    // airplay
     this.bind(elements.buttons.airplay, 'click', player.airplay, 'airplay');
 
-    // Settings menu - click toggle
+    //设置菜单-单击切换
     this.bind(
       elements.buttons.settings,
       'click',
       event => {
-        // Prevent the document click listener closing the menu
+        //防止文档单击侦听器关闭菜单
         event.stopPropagation();
         event.preventDefault();
 
@@ -632,11 +623,10 @@ class Listeners {
       },
       null,
       false,
-    ); // Can't be passive as we're preventing default
+    ); 
 
-    // Settings menu - keyboard toggle
-    // We have to bind to keyup otherwise Firefox triggers a click when a keydown event handler shifts focus
-    // https://bugzilla.mozilla.org/show_bug.cgi?id=1220143
+    // 设置菜单-键盘切换
+    //必须绑定到keyup，否则当keydown事件处理程序转移焦点时，Firefox会触发单击
     this.bind(
       elements.buttons.settings,
       'keyup',

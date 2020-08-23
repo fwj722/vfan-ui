@@ -52,12 +52,12 @@ const defaults = {
   disableContextMenu: true,
 
   // 加载控制雪碧图
-  loadSprite: true,
-  iconPrefix: 'vplayer',
-  iconUrl: require("./../../sprite/vplayer.svg"),
+  // loadSprite: true,
+  // iconPrefix: 'vplayer',
+  // iconUrl: '',
 
   //当视频出错或者视频是空帧时的默认填充
-  blankVideo: './../../sprite/blank.mp4',
+  blankVideo: require('./../../sprite/blank.mp4'),
 
   // 视频的默认质量
   quality: {
@@ -116,15 +116,15 @@ const defaults = {
     key: 'vplayer',
   },
 
-  // 罗列出播放器里面默认的控件
+  // 播放器里面默认的控件
   controls: [
     'play-large',
     'restart',
     // 'rewind',
     'play',
     // 'fast-forward',
-    'progress',
     'current-time',
+    'progress',
     'duration',
     'mute',
     'volume',
@@ -132,7 +132,7 @@ const defaults = {
     'settings',
     'pip',
     'airplay',
-    'download',
+    // 'download',
     'fullscreen',
   ],
   settings: ['captions', 'quality', 'speed'],
@@ -147,8 +147,8 @@ const defaults = {
     seek: 'Seek',
     seekLabel: '{currentTime} of {duration}',
     played: 'Played',
-    buffered: 'Buffered',
     currentTime: 'Current time',
+    buffered: 'Buffered',
     duration: 'Duration',
     volume: 'Volume',
     mute: 'Mute',
@@ -162,18 +162,18 @@ const defaults = {
     captions: 'Captions',
     settings: 'Settings',
     pip: 'PIP',
-    menuBack: 'Go back to previous menu',
+    menuBack: '',
     speed: '速度',
     normal: '正常',
-    quality: 'Quality',
+    quality: '画质',
     loop: 'Loop',
-    start: 'Start',
-    end: 'End',
+    start: '开始',
+    end: '结束',
     all: 'All',
     reset: 'Reset',
     disabled: 'Disabled',
     enabled: 'Enabled',
-    advertisement: 'Ad',
+    advertisement: '广告',
     qualityBadge: {
       2160: '4K',
       1440: 'HD',
@@ -186,10 +186,7 @@ const defaults = {
 
   // URLs
   urls: {
-    download: null,
-    // googleIMA: {
-    //   sdk: 'https://imasdk.googleapis.com/js/sdkloader/ima3.js',
-    // },
+    download: null
   },
 
   // 自定义控件监听器
@@ -212,11 +209,8 @@ const defaults = {
     loop: null,
     language: null,
   },
-
-  // Events to watch and bubble
+   // 时间监听HTML媒体元素
   events: [
-    // Events to watch on HTML5 media elements and bubble
-    // https://developer.mozilla.org/en/docs/Web/Guide/Events/Media_events
     'ended',
     'progress',
     'stalled',
@@ -250,19 +244,19 @@ const defaults = {
     'ready',
 
 
-    // Quality
+    // 质量
     'qualitychange',
 
-    // 投放广告
-    'adsloaded',
-    'adscontentpause',
-    'adscontentresume',
-    'adstarted',
-    'adsmidpoint',
-    'adscomplete',
-    'adsallcomplete',
-    'adsimpression',
-    'adsclick',
+    // // 投放广告
+    // 'adsloaded',
+    // 'adscontentpause',
+    // 'adscontentresume',
+    // 'adstarted',
+    // 'adsmidpoint',
+    // 'adscomplete',
+    // 'adsallcomplete',
+    // 'adsimpression',
+    // 'adsclick',
   ],
 
   // 选择器
@@ -319,7 +313,7 @@ const defaults = {
     embedContainer: 'vplayer__video-embed__container',
     poster: 'vplayer__poster',
     posterEnabled: 'vplayer__poster-enabled',
-    ads: 'vplayer__ads',
+    // ads: 'vplayer__ads',
     control: 'vplayer__control',
     controlPressed: 'vplayer__control--pressed',
     playing: 'vplayer--playing',
@@ -361,34 +355,23 @@ const defaults = {
     },
     tabFocus: 'vplayer__tab-focus',
     previewThumbnails: {
-      // Tooltip thumbs
       thumbContainer: 'vplayer__preview-thumb',
       thumbContainerShown: 'vplayer__preview-thumb--is-shown',
       imageContainer: 'vplayer__preview-thumb__image-container',
       timeContainer: 'vplayer__preview-thumb__time-container',
-      // Scrubbing
       scrubbingContainer: 'vplayer__preview-scrubbing',
       scrubbingContainerShown: 'vplayer__preview-scrubbing--is-shown',
     },
   },
 
-  // Embed attributes
+  // 嵌入属性
   attributes: {
     embed: {
       provider: 'data-vplayer-provider',
       id: 'data-vplayer-embed-id',
     },
   },
-
-  // Advertisements plugin
-  // Register for an account here: http://vi.ai/publisher-video-monetization/?aid=vplayerio
-  ads: {
-    enabled: false,
-    publisherId: '',
-    tagUrl: '',
-  },
-
-  // Preview Thumbnails plugin
+  // 预览缩略图插件
   previewThumbnails: {
     enabled: false,
     src: '',

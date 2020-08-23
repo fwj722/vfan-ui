@@ -43,15 +43,15 @@ const captions = {
       return;
     }
 
-    // Inject the container
+    // 注入容器
     if (!is.element(this.elements.captions)) {
       this.elements.captions = createElement('div', getAttributesFromSelector(this.config.selectors.captions));
 
       insertAfter(this.elements.captions, this.elements.wrapper);
     }
 
-    // Fix IE captions if CORS is used
-    // Fetch captions and inject as blobs instead (data URIs not supported!)
+    // 如果使用CORS，则需要对IE的标题进行兼容处理
+    // 提取标题并注入为blob，目前还不支持数据URI！
     if (browser.isIE && window.URL) {
       const elements = this.media.querySelectorAll('track');
 
@@ -75,18 +75,17 @@ const captions = {
       });
     }
 
-    // Get and set initial data
-    // The "preferred" options are not realized unless / until the wanted language has a match
-    // * languages: Array of user's browser languages.
-    // * language:  The language preferred by user settings or config
-    // * active:    The state preferred by user settings or config
-    // * toggled:   The real captions state
+    // 获取并设置初始数据
+    // * languages: 用户浏览器语言的数组.
+    // * language:  用户设置或配置首选的语言
+    // * active:    用户配置默认的状态
+    // * toggled:   真实字幕状态
 
     const browserLanguages = navigator.languages || [navigator.language || navigator.userLanguage || 'en'];
     const languages = dedupe(browserLanguages.map(language => language.split('-')[0]));
     let language = (this.storage.get('language') || this.config.captions.language || 'auto').toLowerCase();
 
-    // Use first browser language when language is 'auto'
+    // language参数为“自动”时使用第一（默认）浏览器语言
     if (language === 'auto') {
       [language] = languages;
     }
@@ -103,59 +102,54 @@ const captions = {
       languages,
     });
 
-    // Watch changes to textTracks and update captions menu
+    // 监听textTracks的更改并更新字幕菜单
     if (this.isHTML5) {
       const trackEvents = this.config.captions.update ? 'addtrack removetrack' : 'removetrack';
       on.call(this, this.media.textTracks, trackEvents, captions.update.bind(this));
     }
-
-    // Update available languages in list next tick (the event must not be triggered before the listeners)
+    // 在下一个刻度中更新列表中可用的语言（不得在侦听器之前触发事件）
     setTimeout(captions.update.bind(this), 0);
   },
 
-  // Update available language options in settings based on tracks
+  // 根据tracks曲目更新设置中的可用语言选项
   update() {
     const tracks = captions.getTracks.call(this, true);
-    // Get the wanted language
+    // 获取所需的语言
     const { active, language, meta, currentTrackNode } = this.captions;
     const languageExists = Boolean(tracks.find(track => track.language === language));
 
-    // Handle tracks (add event listener and "pseudo"-default)
+    // 处理轨道（添加事件监听器和默认）
     if (this.isHTML5 && this.isVideo) {
       tracks
         .filter(track => !meta.get(track))
         .forEach(track => {
           this.debug.log('Track added', track);
 
-          // Attempt to store if the original dom element was "default"
+          // 尝试存储原始dom元素是否为“默认”
           meta.set(track, {
             default: track.mode === 'showing',
           });
 
-          // Turn off native caption rendering to avoid double captions
-          // Note: mode='hidden' forces a track to download. To ensure every track
-          // isn't downloaded at once, only 'showing' tracks should be reassigned
-          // eslint-disable-next-line no-param-reassign
+          // 关闭本地字幕渲染，以避免出现双重字幕
+         //注意：mode ='hidden'强制下载曲目。 确保每条轨道不会立即下载，仅应重新分配“显示”曲目
           if (track.mode === 'showing') {
-            // eslint-disable-next-line no-param-reassign
             track.mode = 'hidden';
           }
 
-          // Add event listener for cue changes
+          // 添加事件监听器来更改提示
           on.call(this, track, 'cuechange', () => captions.updateCues.call(this));
         });
     }
-
-    // Update language first time it matches, or if the previous matching track was removed
+    // 第一次匹配时更新语言，或者如果先前的匹配音轨已删除，则更新
     if ((languageExists && this.language !== language) || !tracks.includes(currentTrackNode)) {
       captions.setLanguage.call(this, language);
       captions.toggle.call(this, active && languageExists);
     }
 
-    // Enable or disable captions based on track length
+     // 根据track长度启用或禁用字幕
     toggleClass(this.elements.container, this.config.classNames.captions.enabled, !is.empty(tracks));
 
-    // Update available languages in list
+    // 更新列表中的可用语言
     if (
       is.array(this.config.controls) &&
       this.config.controls.includes('settings') &&
@@ -165,73 +159,68 @@ const captions = {
     }
   },
 
-  // Toggle captions display
-  // Used internally for the toggleCaptions method, with the passive option forced to false
+  // 切换字幕显示
+  // 在内部用于toggleCaptions方法，将被动选项强制设置为false
   toggle(input, passive = true) {
-    // If there's no full support
+    // 如果全都不支持
     if (!this.supported.ui) {
       return;
     }
 
-    const { toggled } = this.captions; // Current state
+    const { toggled } = this.captions; // 当前状态
     const activeClass = this.config.classNames.captions.active;
-    // Get the next state
-    // If the method is called without parameter, toggle based on current value
+    // 获取下一个状态,如果在没有参数的情况下调用该方法，请根据当前值进行切换
     const active = is.nullOrUndefined(input) ? !toggled : input;
 
-    // Update state and trigger event
+    // 更新状态和触发事件
     if (active !== toggled) {
       // When passive, don't override user preferences
+      //当passive为true时，不能覆盖用户首选项
       if (!passive) {
         this.captions.active = active;
         this.storage.set({ captions: active });
       }
 
-      // Force language if the call isn't passive and there is no matching language to toggle to
+      // 如果passive为false，并且没有匹配到language，可切换为强制语言 
       if (!this.language && active && !passive) {
         const tracks = captions.getTracks.call(this);
         const track = captions.findTrack.call(this, [this.captions.language, ...this.captions.languages], true);
 
-        // Override user preferences to avoid switching languages if a matching track is added
+        // 覆盖用户首选项，以避免在添加匹配音轨时切换语言
         this.captions.language = track.language;
 
-        // Set caption, but don't store in localStorage as user preference
+        // 设置标题，但不作为用户首选项存储在localStorage中
         captions.set.call(this, tracks.indexOf(track));
         return;
       }
 
-      // Toggle button if it's enabled
+      // 切换按钮（按钮已启用情况下）
       if (this.elements.buttons.captions) {
         this.elements.buttons.captions.pressed = active;
       }
-
-      // Add class hook
       toggleClass(this.elements.container, activeClass, active);
 
       this.captions.toggled = active;
 
-      // Update settings menu
+      // 更新设置菜单
       controls.updateSetting.call(this, 'captions');
 
-      // Trigger event (not used internally)
+      // 触发事件（不能使用在内部）
       triggerEvent.call(this, this.media, active ? 'captionsenabled' : 'captionsdisabled');
     }
 
-    // Wait for the call stack to clear before setting mode='hidden'
-    // on the active track - forcing the browser to download it
     setTimeout(() => {
       if (active && this.captions.toggled) {
         this.captions.currentTrackNode.mode = 'hidden';
       }
     });
   },
-
-  // Set captions by track index
-  // Used internally for the currentTrack setter with the passive option forced to false
+  //通过track索引设置字幕
+   //在内部用于currentTrack设置器，并将passive选项强制设置为false
   set(index, passive = true) {
     const tracks = captions.getTracks.call(this);
 
-    // Disable captions if setting to -1
+    //如果设置为-1，则禁用字幕
     if (index === -1) {
       captions.toggle.call(this, false, passive);
       return;
@@ -252,67 +241,65 @@ const captions = {
       const track = tracks[index];
       const { language } = track || {};
 
-      // Store reference to node for invalidation on remove
+
+      //存储对节点的引用，以便在删除时失效
       this.captions.currentTrackNode = track;
 
-      // Update settings menu
+      // 更新设置菜单
       controls.updateSetting.call(this, 'captions');
 
-      // When passive, don't override user preferences
+      // passive为false时,不能覆盖用户首选项
       if (!passive) {
         this.captions.language = language;
         this.storage.set({ language });
       }
 
-      // // Handle Vimeo captions
-      // if (this.isVimeo) {
-      //   this.embed.enableTextTrack(language);
-      // }
 
-      // Trigger event
+
+      // 触发事件
       triggerEvent.call(this, this.media, 'languagechange');
     }
 
-    // Show captions
+    // 显示字幕
     captions.toggle.call(this, true, passive);
 
     if (this.isHTML5 && this.isVideo) {
-      // If we change the active track while a cue is already displayed we need to update it
+      // 如果在提示已显示的情况下更改活动曲目，则需要对其进行更新
       captions.updateCues.call(this);
     }
   },
 
-  // Set captions by language
-  // Used internally for the language setter with the passive option forced to false
+  // 通过language设置字幕，内部用于语言设置器，并将passive选项强制设置为false
   setLanguage(input, passive = true) {
     if (!is.string(input)) {
       this.debug.warn('Invalid language argument', input);
       return;
     }
-    // Normalize
+    // 标准化
     const language = input.toLowerCase();
     this.captions.language = language;
 
-    // Set currentTrack
+    // 设置currentTrack
     const tracks = captions.getTracks.call(this);
     const track = captions.findTrack.call(this, [language]);
     captions.set.call(this, tracks.indexOf(track), passive);
   },
-
-  // Get current valid caption tracks
-  // If update is false it will also ignore tracks without metadata
-  // This is used to "freeze" the language options when captions.update is false
+  //获取当前有效的caption轨道
+//如果update为false，它也会忽略没有元数据的轨道
+//用于在字幕时“冻结”language选项,update为false
   getTracks(update = false) {
-    // Handle media or textTracks missing or null
+    // 处理媒体或文本轨道丢失或空时的情况
     const tracks = Array.from((this.media || {}).textTracks || []);
     // For HTML5, use cache instead of current tracks when it exists (if captions.update is false)
     // Filter out removed tracks and tracks that aren't captions/subtitles (for example metadata)
+    //对于HTML5，当它存在时，使用缓存代替当前的轨道(如果update为false)
+    //过滤掉已删除的曲目、captions和subtitles(例如元数据)
     return tracks
       .filter(track => !this.isHTML5 || update || this.captions.meta.has(track))
       .filter(track => ['captions', 'subtitles'].includes(track.kind));
   },
 
-  // Match tracks based on languages and get the first
+  // 匹配基于languages的轨道并获得第一个
   findTrack(languages, force = false) {
     const tracks = captions.getTracks.call(this);
     const sortIsDefault = track => Number((this.captions.meta.get(track) || {}).default);
@@ -321,19 +308,20 @@ const captions = {
 
     languages.every(language => {
       track = sorted.find(t => t.language === language);
-      return !track; // Break iteration if there is a match
+      return !track; // 如果有匹配，则中断
     });
 
     // If no match is found but is required, get first
+    //如果没有匹配到，但是是必需的，就获取sorted第一项
     return track || (force ? sorted[0] : undefined);
   },
 
-  // Get the current track
+  // 获取当前轨迹
   getCurrentTrack() {
     return captions.getTracks.call(this)[this.currentTrack];
   },
 
-  // Get UI label for track
+  //根据track获取当前的标签
   getLabel(track) {
     let currentTrack = track;
 
@@ -357,9 +345,9 @@ const captions = {
   },
 
   // Update captions using current track's active cues
-  // Also optional array argument in case there isn't any track (ex: vimeo)
+  // 使用当前轨道提示更新字幕
+  // 也可选数组参数，以防没有任何跟踪
   updateCues(input) {
-    // Requires UI
     if (!this.supported.ui) {
       return;
     }
@@ -369,7 +357,7 @@ const captions = {
       return;
     }
 
-    // Only accept array or empty input
+    // 只接受数组或空input
     if (!is.nullOrUndefined(input) && !Array.isArray(input)) {
       this.debug.warn('updateCues: Invalid input', input);
       return;
@@ -377,7 +365,7 @@ const captions = {
 
     let cues = input;
 
-    // Get cues from track
+    //从track获取cues
     if (!cues) {
       const track = captions.getCurrentTrack.call(this);
 
@@ -386,18 +374,18 @@ const captions = {
         .map(getHTML);
     }
 
-    // Set new caption text
+    // 设置新标题文本
     const content = cues.map(cueText => cueText.trim()).join('\n');
     const changed = content !== this.elements.captions.innerHTML;
 
     if (changed) {
-      // Empty the container and create a new child element
+      // 清空容器并创建一个新的子元素
       emptyElement(this.elements.captions);
       const caption = createElement('span', getAttributesFromSelector(this.config.selectors.caption));
       caption.innerHTML = content;
       this.elements.captions.appendChild(caption);
 
-      // Trigger event
+      // 监听事件
       triggerEvent.call(this, this.media, 'cuechange');
     }
   },

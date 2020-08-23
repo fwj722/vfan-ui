@@ -78,22 +78,35 @@
                 :videoData="videoData"
                 poster="https://image.ms200.cn/icon/bg1.jpg">
       </v-player>
+       <v-player type="audio"
+                :audioData="audioData"
+                poster="https://image.ms200.cn/icon/bg1.jpg">
+      </v-player>
     </div>
   </div>
 </template>
 <script>
 // import Vue from "vue"
+// import vm from "./assets/audioDemo.mp3"
+// import date from "./../packages/utils/date"
 export default {
   data () {
     return {
       videoData: [{
         src: "https://image.ms200.cn/video/0eae571cd79f52f3e5e4522ebdc5d1d5.mp4",
         size: 720
-      }]
+      }],
+      audioData:[require("./assets/audioDemo.mp3"),require("./assets/audioDemo.mp3")]
     };
   },
   mounted () {
+    // let time = new Date(1533686888*1000)
+    // let shijian = date.formatDate(time,"YYYY-MM-DD HH:ii 周w")
     //console.log(Vue.prototype.waves)
+
+    // let js = date.getTimeInterval(1567562605000, 1567649014000)
+
+    console.log(1)
   },
   methods: {
     getMessage (n) {

@@ -10,7 +10,6 @@ export default function fetch(url, responseType = 'text') {
       if (!('withCredentials' in request)) {
         return;
       }
-
       request.addEventListener('load', () => {
         if (responseType === 'text') {
           try {

@@ -10,10 +10,10 @@
   // !important is not always needed
   @if $vplayer-sr-only-important {
     border: 0 !important;
-    height: 1px !important;
+    // height: 1px !important;
     padding: 0 !important;
-    position: absolute !important;
-    width: 1px !important;
+    // position: absolute !important;
+    // width: 1px !important;
   } @else {
     border: 0;
     height: 1px;

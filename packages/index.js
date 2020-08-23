@@ -7,8 +7,9 @@ import VCard from "./card";
 import Message from "./message/src/message.js"
 import "./theme/index.scss";
 import "./guide/style/guide.scss";
-import "./utils/guide";
+import "./guide/utils/guide";
 import waves from "./utils/waves"
+
 
 import VPlayer from "./vplayer/src/vplayer"
 

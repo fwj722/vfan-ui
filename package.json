@@ -8,6 +8,10 @@
     "english name": "ferrycoln",
     "email": "1508488207@qq.com"
   },
+  "files": [
+    "packages",
+    "utils"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

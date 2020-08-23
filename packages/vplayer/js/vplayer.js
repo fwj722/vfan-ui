@@ -11,7 +11,6 @@ import controls from './controls';
 import Fullscreen from './fullscreen';
 import Listeners from './listeners';
 import media from './media';
-import Ads from './plugins/ads';
 import PreviewThumbnails from './plugins/preview-thumbnails';
 import source from './source';
 import Storage from './storage';
@@ -291,9 +290,9 @@ class VPlayer {
     this.listeners.global();
 
     // Setup ads if provided
-    if (this.config.ads.enabled) {
-      this.ads = new Ads(this);
-    }
+    // if (this.config.ads.enabled) {
+    //   this.ads = new Ads(this);
+    // }
 
     // Autoplay if required
     if (this.isHTML5 && this.config.autoplay) {
@@ -349,9 +348,9 @@ class VPlayer {
     }
 
     // Intecept play with ads
-    if (this.ads && this.ads.enabled) {
-      this.ads.managerPromise.then(() => this.ads.play()).catch(() => silencePromise(this.media.play()));
-    }
+    // if (this.ads && this.ads.enabled) {
+    //   this.ads.managerPromise.then(() => this.ads.play()).catch(() => silencePromise(this.media.play()));
+    // }
 
     // Return the promise (for HTML5)
     return this.media.play();

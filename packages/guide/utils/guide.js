@@ -1,4 +1,4 @@
-import Guide from "./../guide/src/";
+import Guide from "./../src/";
 let myGuide = (steps, params) => {
   const ops = {
     animate: true,

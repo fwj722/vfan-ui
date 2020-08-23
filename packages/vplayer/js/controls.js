@@ -1,6 +1,6 @@
 // ==========================================================================
 // VPlayer controls
-// TODO: This needs to be split into smaller files and cleaned up
+// 文件分割和处理
 // ==========================================================================
 
 import RangeTouch from 'rangetouch';
@@ -77,8 +77,8 @@ const controls = {
 
       // Display
       this.elements.display = {
-        buffer: getElement.call(this, this.config.selectors.display.buffer),
         currentTime: getElement.call(this, this.config.selectors.display.currentTime),
+        buffer: getElement.call(this, this.config.selectors.display.buffer),
         duration: getElement.call(this, this.config.selectors.display.duration),
       };
 
@@ -100,34 +100,26 @@ const controls = {
   },
 
   // Create <svg> icon
-  createIcon(type, attributes) {
-    
-    const namespace = 'http://www.w3.org/2000/svg';
-    const iconUrl = controls.getIconUrl.call(this);
-    const iconPath = `${!iconUrl.cors ? iconUrl.url : ''}#${this.config.iconPrefix}`;
-    // Create <svg>
-    const icon = document.createElementNS(namespace, 'svg');
+  createIcon(type, attr = {"class":"icon-control"}) {
+    const icon = document.createElement('div');
+    console.log(attr)
+    const attributes = { ...attr, class: ['icon-control '+attr.class, this.config.classNames.hidden].filter(Boolean).join(' ') };
     setAttributes(
       icon,
-      extend(attributes, {
-        'aria-hidden': 'true',
-        focusable: 'false',
-      }),
+      extend(attributes),
     );
 
     // Create the <use> to reference sprite
-    const use = document.createElementNS(namespace, 'use');
-    const path = `${iconPath}-${type}`;
+    // <use xlink:href="#icon-xxx"></use>
+    const use = document.createElement('img');
 
-    // Set `href` attributes
-    // https://github.com/sampotts/vplayer/issues/460
-    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlink:href
-    if ('href' in use) {
-      use.setAttributeNS('http://www.w3.org/1999/xlink', 'href', path);
-    }
+    const path = require(`./../images/${type}.png`);
+
+
 
     // Always set the older attribute even though it's "deprecated" (it'll be around for ages)
-    use.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', path);
+    use.setAttribute('src', path);
+
 
     // Add <use> to <svg>
 
@@ -235,7 +227,7 @@ const controls = {
         props.label = 'enterFullscreen';
         props.labelPressed = 'exitFullscreen';
         props.icon = 'enter-fullscreen';
-        props.iconPressed = 'exit-fullscreen';
+        props.iconPressed = 'iconquanping';
         break;
 
       case 'play-large':
