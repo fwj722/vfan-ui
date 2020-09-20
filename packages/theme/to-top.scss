@@ -1,0 +1,49 @@
+
+.h-backtop {
+	z-index:10;
+	position:fixed;
+	cursor:pointer;
+	display:none;
+	right:50px;
+	bottom:50px;
+	animation:h-ani-backtop-hide .2s linear
+}
+.h-backtop.h-backtop-show {
+	display:block;
+	animation:h-ani-backtop-show .2s linear
+}
+.h-backtop-default .h-backtop-inner {
+	background-color:rgba(0,0,0,0.6);
+	border-radius:2px;
+	box-shadow:0 1px 3px rgba(0,0,0,0.2);
+	transition:all .2s ease-in-out
+}
+.h-backtop-default .h-backtop-inner:hover {
+	background-color:rgba(0,0,0,0.7)
+}
+.h-backtop-default i {
+	color:#fff;
+	font-size:24px;
+	padding:8px 12px
+}
+@keyframes h-ani-backtop-show {
+	from {
+	opacity:0
+}
+50% {
+	opacity:.5
+}
+to {
+	opacity:1
+}
+}@keyframes h-ani-backtop-hide {
+	from {
+	opacity:1
+}
+50% {
+	opacity:.5
+}
+to {
+	opacity:0
+}
+}

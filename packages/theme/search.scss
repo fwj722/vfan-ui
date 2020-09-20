@@ -1,0 +1,111 @@
+
+.h-search {
+	min-width:150px;
+	position:relative;
+	display:inline-block;
+	vertical-align:middle
+}
+.h-search-block {
+	display:block
+}
+.h-search .h-search-container {
+	display:flex
+}
+.h-search .h-search-container .h-search-input {
+	position:relative;
+	flex:1
+}
+.h-search .h-search-container .h-search-input input {
+	width:100%;
+	padding-right:30px
+}
+.h-search>.h-icon-search,.h-search .h-icon-close {
+	position:absolute;
+	top:50%;
+	right:8px;
+	font-size:12px;
+	z-index:3;
+	cursor:pointer;
+	transition:color .2s ease;
+	color:#666666;
+	margin-top:-6px
+}
+.h-search>.h-icon-search:hover,.h-search .h-icon-close:hover {
+	color:#45b984 !important
+}
+.h-search>.h-icon-search:active,.h-search .h-icon-close:active {
+	color:#30815c !important
+}
+.h-search>.h-icon-search.h-pop-trigger .h-search>.h-icon-search,.h-search>.h-icon-search.h-pop-trigger .h-search .h-icon-close,.h-search .h-icon-close.h-pop-trigger .h-search>.h-icon-search,.h-search .h-icon-close.h-pop-trigger .h-search .h-icon-close {
+	color:#379469 !important
+}
+.h-search>.h-icon-search[disabled],.h-search .h-icon-close[disabled] {
+	color:#999999 !important;
+	cursor:default
+}
+.h-search.h-search-has-button input {
+	border-radius:4px 0 0 4px
+}
+.h-search.h-search-has-button .h-btn {
+	height:30px;
+	line-height:28px;
+	padding-top:0;
+	padding-bottom:0;
+	border-radius:0 4px 4px 0;
+	margin-left:-1px
+}
+.h-search.h-search-has-button .h-icon-search-end {
+	display:none
+}
+.h-search .h-icon-close {
+	display:none;
+	cursor:pointer;
+	transition:color .2s ease
+}
+.h-search .h-icon-close:hover {
+	color:#45b984 !important
+}
+.h-search .h-icon-close:active {
+	color:#30815c !important
+}
+.h-search .h-icon-close.h-pop-trigger .h-search .h-icon-close {
+	color:#379469 !important
+}
+.h-search .h-icon-close[disabled] {
+	color:#999999 !important;
+	cursor:default
+}
+.h-search-searching.h-search-end>.h-icon-search {
+	display:none
+}
+.h-search-searching .h-icon-close {
+	display:block
+}
+.h-search.h-search-front>.h-icon-search {
+	z-index:1;
+	left:8px;
+	right:auto
+}
+.h-search.h-search-front input {
+	padding-left:30px
+}
+.h-search.h-search-end>.h-icon-search {
+	cursor:pointer;
+	transition:color .2s ease
+}
+.h-search.h-search-end>.h-icon-search:hover {
+	color:#45b984 !important
+}
+.h-search.h-search-end>.h-icon-search:active {
+	color:#30815c !important
+}
+.h-search.h-search-end>.h-icon-search.h-pop-trigger .h-search.h-search-end>.h-icon-search {
+	color:#379469 !important
+}
+.h-search.h-search-end>.h-icon-search[disabled] {
+	color:#999999 !important;
+	cursor:default
+}
+.h-tree .h-search {
+	margin-bottom:5px
+}

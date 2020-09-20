@@ -1,0 +1,41 @@
+
+.h-collapse {
+	display:block
+}
+.h-collapse-item {
+	display:block
+}
+.h-collapse-item:last-of-type {
+	border-bottom:1px solid #eeeeee
+}
+.h-collapse-item-header {
+	height:40px;
+	line-height:40px;
+	border-top:1px solid #eeeeee;
+	padding:0 10px;
+	font-size:13px;
+	transition:all .2s
+}
+.h-collapse-item-header:hover {
+	cursor:pointer;
+	color:#45b984
+}
+.h-collapse-item-expand {
+	margin-top:13px;
+	margin-right:5px;
+	transform:rotateZ(0deg);
+	transition:all .2s;
+	font-size:12px
+}
+.h-collapse-item-content {
+	word-break:break-all
+}
+.h-collapse-item-content-box {
+	padding:10px 20px
+}
+.h-collapse-item.h-collapse-item-active .h-collapse-item-header .h-collapse-item-expand {
+	transform:rotateZ(90deg)
+}
+.h-collapse-transition {
+	transition:.3s height ease-in-out,.3s padding-top ease-in-out,.3s padding-bottom ease-in-out
+}

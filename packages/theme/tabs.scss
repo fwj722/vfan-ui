@@ -1,0 +1,67 @@
+
+@import "./common/var";
+.v-tabs{
+  &>.v-tabs-item {
+    cursor:pointer;
+    display:inline-block;
+    transition:.2s all;
+    position:relative
+  }
+  &-default {
+    padding:0 20px;
+    border-bottom:1px solid #eeeeee;
+    line-height:1;
+    font-size:15px;
+    &>.v-tabs-item {
+      padding:10px;
+      margin-bottom:-4px;
+      border-bottom:3px solid transparent;
+      &+div {
+        margin-left:20px;
+      }
+      &:hover,
+      &-selected {
+        color:$--color-primary;
+        border-bottom:3px solid $--color-primary
+      }
+    }
+  }
+  &-card {
+    border-bottom:1px solid #d3d3d3;
+    line-height:1;
+    &>.v-tabs-item {
+      padding:8px 16px;
+      margin-bottom:-1px;
+      border-radius:4px 4px 0 0;
+      border:1px solid transparent;
+      border-top:3px solid transparent;
+      &+div {
+        margin-left:5px
+      }
+      &:hover,
+      &-selected {
+        color:$--color-primary;
+        background:#ffffff;
+        border-color:#d3d3d3;
+        border-top-color:$--color-primary;
+        border-bottom-color:#ffffff
+      }
+    }
+  }
+  &-menu {
+    line-height:1;
+    font-size:15px;
+    &>.v-tabs-item {
+      display:block;
+      padding:12px 16px;
+      &+div {
+        margin-top:5px
+      }
+      &:hover,
+      &-selected {
+        color:$--color-primary
+      }
+
+    }
+  }
+}

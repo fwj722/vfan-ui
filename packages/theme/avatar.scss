@@ -1,0 +1,42 @@
+
+.h-avatar {
+	position:relative;
+	width:100%
+}
+.h-avatar-image-container {
+	position:absolute
+}
+.h-avatar-image-container.h-avatar-middle {
+	position:absolute;
+	top:50%;
+	transform:translate(0%,-50%)
+}
+.h-avatar-image-container .h-avatar-image {
+	position:absolute;
+	z-index:1;
+	background-size:cover;
+	background-position:center;
+	height:100%;
+	width:100%
+}
+.h-avatar.h-avatar-shape-circle .h-avatar-image {
+	border-radius:50%
+}
+.h-avatar.h-avatar-shape-square .h-avatar-image {
+	border-radius:4px
+}
+.h-avatar.h-avatar-no-info {
+	display:inline-block
+}
+.h-avatar.h-avatar-fit-contain .h-avatar-image-container .h-avatar-image {
+	background-size:contain
+}
+.h-avatar.h-avatar-fit-cover .h-avatar-image-container .h-avatar-image {
+	background-size:cover
+}
+.h-avatar.h-avatar-fit-fill .h-avatar-image-container .h-avatar-image {
+	background-size:100% 100%
+}
+.h-avatar.h-avatar-fit-none .h-avatar-image-container .h-avatar-image {
+	background-size:initial
+}

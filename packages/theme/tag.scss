@@ -1,0 +1,77 @@
+
+.h-tag,.h-tag-circle {
+	display:inline-block;
+	padding:4px 10px;
+	border:1px solid #eeeeee;
+	line-height:1;
+	border-radius:4px;
+	background:#ffffff;
+	font-size:13px;
+	vertical-align:middle;
+	cursor:default;
+	margin-right:5px
+}
+.h-tag-circle {
+	padding:4px 4px;
+	border-radius:50%
+}
+.h-tag-primary {
+	color:#379469;
+	background:#c7eada;
+	border-color:#c7eada
+}
+.h-tag-red {
+	color:#b31112;
+	background:#f6b8b8;
+	border-color:#f6b8b8
+}
+.h-tag-blue {
+	color:#0874ff;
+	background:#d0e5ff;
+	border-color:#d0e5ff
+}
+.h-tag-yellow {
+	color:#cc8b00;
+	background:#ffe7b3;
+	border-color:#ffe7b3
+}
+.h-tag-green {
+	color:#0f9f4f;
+	background:#b3efce;
+	border-color:#b3efce
+}
+.h-tag-gray {
+	color:#a8a8a8;
+	background:#fafafa;
+	border-color:#fafafa
+}
+.h-tag-bg-primary {
+	color:#ffffff;
+	background:#50be8b;
+	border-color:#50be8b
+}
+.h-tag-bg-red {
+	color:#ffffff;
+	background:#e91d1e;
+	border-color:#e91d1e
+}
+.h-tag-bg-blue {
+	color:#ffffff;
+	background:#4a9aff;
+	border-color:#4a9aff
+}
+.h-tag-bg-yellow {
+	color:#ffffff;
+	background:#ffb30f;
+	border-color:#ffb30f
+}
+.h-tag-bg-green {
+	color:#ffffff;
+	background:#14dc6d;
+	border-color:#14dc6d
+}
+.h-tag-bg-gray {
+	color:#ffffff;
+	background:#c9c9c9;
+	border-color:#c9c9c9
+}
