@@ -1,5 +1,5 @@
 @import "./mixins/config";
-$split-prefix-cls: "#{$namespace}split";
+$split-prefix-cls: "#{$namespace}-split";
 $trigger-width: 6px;
 $trigger-bar-width: 4px;
 $trigger-bar-offset: ($trigger-width - $trigger-bar-width) / 2;
