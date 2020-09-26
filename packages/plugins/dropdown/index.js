@@ -5,8 +5,8 @@ const Default = {
   trigger: 'click',
   html: true,
   placement: 'bottom-start',
-  template: `<div role="select" class="h-dropdown"><div class="h-dropdown-inner"></div></div>`,
-  innerSelector: '.h-dropdown-inner',
+  template: `<div role="select" class="v-dropdown"><div class="v-dropdown-inner"></div></div>`,
+  innerSelector: '.v-dropdown-inner',
   preventOverflow: true,
   type: 'dropdown',
   delay: 0,
@@ -20,7 +20,7 @@ class Dropdown extends Pop {
     if (!param.container) {
       param.getContainer = function (el) {
         let container = el || document.body;
-        while (container && container.tagName != 'BODY' && container.tagName != 'HTML' && !utils.hasClass(container, 'h-dropdown-common-container')) {
+        while (container && container.tagName != 'BODY' && container.tagName != 'HTML' && !utils.hasClass(container, 'v-dropdown-common-container')) {
           container = container.parentNode;
         }
         return container;

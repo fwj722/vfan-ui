@@ -1,4 +1,4 @@
-
+@import "./common/var.scss";
 html {
 	-ms-text-size-adjust:100%;
 	-webkit-text-size-adjust:100%
@@ -18,7 +18,7 @@ pre {
 a {
 	background-color:transparent;
   -webkit-text-decoration-skip:objects;
-  color:#45b984;
+  color:$--color-primary;
 	cursor:pointer;
 	text-decoration:none;
 	outline:none;
@@ -167,17 +167,17 @@ template,
 	clear:both
 }
 .link {
-	color:#45b984;
+	color:$--color-primary;
 	cursor:pointer;
 	text-decoration:none;
 	outline:none;
 	transition:color .2s ease
 }
 .link:hover {
-	color:#379469 !important
+	color:$--color-primary-light-1 !important
 }
 .link:active {
-	color:#296f4f !important
+	color:$--color-navyblue !important
 }
 .link:active,.link:hover {
 	outline:0;
@@ -259,13 +259,14 @@ input[type=text],input[type=password],input[type=search],input[type=number],inpu
 	-webkit-appearance:none;
 	font-family:inherit;
 	vertical-align:top;
-	outline:none
+  outline:none;
+  cursor: pointer;
 }
 input[type=text]:hover,input[type=password]:hover,input[type=search]:hover,input[type=number]:hover,input[type=tel]:hover,input[type=url]:hover,input.h-input:hover,textarea:hover,.h-textarea:hover {
-	border-color:#6ac79d
+	border-color:$--color-primary
 }
 input[type=text]:focus,input[type=password]:focus,input[type=search]:focus,input[type=number]:focus,input[type=tel]:focus,input[type=url]:focus,input.h-input:focus,textarea:focus,.h-textarea:focus {
-	border-color:#45b984;
+	border-color:$--color-primary-light-1;
 	box-shadow:0 0 0 2px rgba(69,185,132,0.2)
 }
 input[type=text][disabled],input[type=password][disabled],input[type=search][disabled],input[type=number][disabled],input[type=tel][disabled],input[type=url][disabled],input.h-input[disabled],textarea[disabled],.h-textarea[disabled],input[type=text][readonly],input[type=password][readonly],input[type=search][readonly],input[type=number][readonly],input[type=tel][readonly],input[type=url][readonly],input.h-input[readonly],textarea[readonly],.h-textarea[readonly] {

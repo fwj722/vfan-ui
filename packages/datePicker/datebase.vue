@@ -1,51 +1,51 @@
 <template>
-  <div class="h-date-content">
-    <div class="h-date-header" v-if="type != 'time'">
-      <span class="h-date-year-left-picker" @click.stop="updateView('default', -1)">
-        <i class="h-icon-left"></i>
-        <i class="h-icon-left"></i>
+  <div class="v-date-content">
+    <div class="v-date-header" v-if="type != 'time'">
+      <span class="v-date-year-left-picker" @click.stop="updateView('default', -1)">
+        <i class="v-icon-left"></i>
+        <i class="v-icon-left"></i>
       </span>
-      <span class="h-date-month-left-picker" @click.stop="updateView('month', -1)" v-show="view=='date'||view=='week'">
-        <i class="h-icon-left"></i>
+      <span class="v-date-montv-left-picker" @click.stop="updateView('month', -1)" v-show="view=='date'||view=='week'">
+        <i class="v-icon-left"></i>
       </span>
-      <span class="h-date-header-show" @click.stop="changeView('year')" v-if="view != 'year'">
+      <span class="v-date-header-show" @click.stop="changeView('year')" v-if="view != 'year'">
         {{nowView.year()}}{{'h.date.header.year'
         | hlang}}
       </span>
-      <span class="h-date-header-show" v-if="view == 'year'">
+      <span class="v-date-header-show" v-if="view == 'year'">
         {{nowView.year()-6}}&nbsp;&nbsp;-&nbsp;&nbsp;{{nowView.year()+5}}{{'h.date.header.year'
         | hlang}}
       </span>
-      <span class="h-date-header-show" @click.stop="changeView('month')" v-show="view != 'year' && view != 'month' && view != 'quarter'">
+      <span class="v-date-header-show" @click.stop="changeView('month')" v-show="view != 'year' && view != 'month' && view != 'quarter'">
         {{months[nowView.month()
         - 1]}}
       </span>
-      <span class="h-date-header-show" @click.stop="changeView('date')" v-show="view == 'hour' || view == 'minute'">
+      <span class="v-date-header-show" @click.stop="changeView('date')" v-show="view == 'hour' || view == 'minute'">
         {{nowView.date()}}{{'h.date.header.day'
         | hlang}}
       </span>
-      <span class="h-date-year-right-picker" @click.stop="updateView('default', 1)">
-        <i class="h-icon-right"></i>
-        <i class="h-icon-right"></i>
+      <span class="v-date-year-right-picker" @click.stop="updateView('default', 1)">
+        <i class="v-icon-right"></i>
+        <i class="v-icon-right"></i>
       </span>
-      <span class="h-date-month-right-picker" @click.stop="updateView('month', 1)" v-show="view=='date'||view=='week'">
-        <i class="h-icon-right"></i>
+      <span class="v-date-montv-right-picker" @click.stop="updateView('month', 1)" v-show="view=='date'||view=='week'">
+        <i class="v-icon-right"></i>
       </span>
     </div>
-    <div class="h-date-header" v-show="view=='minute'">
-      <span class="h-date-month-left-picker" @click.stop="updateView('hour', -1)">
-        <i class="h-icon-left"></i>
+    <div class="v-date-header" v-show="view=='minute'">
+      <span class="v-date-montv-left-picker" @click.stop="updateView('hour', -1)">
+        <i class="v-icon-left"></i>
       </span>
-      <span class="h-date-header-show" @click.stop="changeView('hour')">{{nowView | hoursString}}</span>
-      <span class="h-date-month-right-picker" @click.stop="updateView('hour', 1)">
-        <i class="h-icon-right"></i>
+      <span class="v-date-header-show" @click.stop="changeView('hour')">{{nowView | hoursString}}</span>
+      <span class="v-date-montv-right-picker" @click.stop="updateView('hour', 1)">
+        <i class="v-icon-right"></i>
       </span>
     </div>
     <div :class="dateBodyCls">
-      <div class="h-date-body-weeks" v-if="view=='date'">
+      <div class="v-date-body-weeks" v-if="view=='date'">
         <span v-for="w of weeks" :key="w">{{w}}</span>
       </div>
-      <div class="h-date-body-pickers">
+      <div class="v-date-body-pickers">
         <span v-for="d of dates" :key="d.string" :string="d.string" :class="getDateCls(d)" @click.stop="chooseDate(d)">{{d.show}}</span>
       </div>
     </div>
@@ -57,7 +57,7 @@ import config from './../utils/config';
 import utils from './../utils/utils';
 import Locale from './../mixins/locale';
 
-const dateprefix = 'h-date';
+const dateprefix = 'v-date';
 
 const viewType = ['year', 'month', 'date', 'hour', 'minute', 'second'];
 const weekViewType = ['year', 'month', 'week'];
@@ -232,13 +232,13 @@ export default {
         isRangeSelected = (this.valueTime.start < datetime && this.rangeEndTime > datetime) || (this.valueTime.start > datetime && this.rangeEndTime < datetime);
       }
       return {
-        'h-date-not-now-day': !d.isNowDays,
-        'h-date-today': d.isToday,
-        'h-date-selected': isSelected || isStartSelected || isEndSelected,
-        'h-date-range-selected': isRangeSelected,
-        'h-date-start-selected': isStartSelected,
-        'h-date-end-selected': isEndSelected,
-        'h-date-disabled': d.disabled
+        'v-date-not-now-day': !d.isNowDays,
+        'v-date-today': d.isToday,
+        'v-date-selected': isSelected || isStartSelected || isEndSelected,
+        'v-date-range-selected': isRangeSelected,
+        'v-date-start-selected': isStartSelected,
+        'v-date-end-selected': isEndSelected,
+        'v-date-disabled': d.disabled
       };
     },
     chooseDate(d) {

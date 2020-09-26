@@ -4,7 +4,7 @@ import router from "./router";
 import VfanUI from "./../packages/";
 import "./../packages/theme/index.scss";
 Vue.config.productionTip = false;
-import "./assets/font.css"
+// import "./assets/font.css"
 Vue.use(VfanUI);
 new Vue({
   router,

@@ -1,10 +1,10 @@
 <template>
   <div :class="dateCls">
     <template v-if="!inline">
-      <div v-if="noBorder" class="h-datetime-show text-hover">{{showDate||showPlaceholder}}</div>
-      <div v-else class="h-input h-datetime-show">
+      <div v-if="noBorder" class="v-datetime-show text-hover">{{showDate||showPlaceholder}}</div>
+      <div v-else class="v-input v-datetime-show">
         <input
-          class="h-input"
+          class="v-input"
           type="text"
           @change="changeEvent"
           @keydown.enter="changeEvent"
@@ -13,13 +13,13 @@
           :readonly="readonly || type == 'week' || type == 'quarter'"
           :placeholder="showPlaceholder"
         >
-        <i class="h-icon-calendar" v-if="!showDate||disabled||!clearable"></i>
-        <i class="h-icon-close text-hover" v-else @click.stop="clear"></i>
+        <i class="v-icon-calendar" v-if="!showDate||disabled||!clearable"></i>
+        <i class="v-icon-close text-hover" v-else @click.stop="clear"></i>
       </div>
     </template>
-    <div :class="datePickerCls" class="h-date-picker">
-      <div class="h-date-container" v-if="isShow">
-        <div v-if="shortcuts.length>0" class="h-date-shortcut">
+    <div :class="datePickerCls" class="v-date-picker">
+      <div class="v-date-container" v-if="isShow">
+        <div v-if="shortcuts.length>0" class="v-date-shortcut">
           <div v-for="s of shortcuts" @click="setShortcutValue(s)" :key="s.title">{{s.title}}</div>
         </div>
         <date-base
@@ -36,9 +36,9 @@
         ></date-base>
       </div>
 
-      <div class="h-date-footer" v-if="hasConfirm & !inline">
-        <button type="button" class="h-btn h-btn-text" @click="clear">{{'h.common.clear' | hlang}}</button>
-        <button type="button" class="h-btn h-btn-primary h-btn-s" @click="hide">{{'h.common.confirm' | hlang}}</button>
+      <div class="v-date-footer" v-if="hasConfirm & !inline">
+        <button type="button" class="v-btn v-btn-text" @click="clear">{{'h.common.clear' | hlang}}</button>
+        <button type="button" class="v-btn v-btn-primary v-btn-s" @click="hide">{{'h.common.confirm' | hlang}}</button>
       </div>
     </div>
   </div>
@@ -52,7 +52,7 @@ import Dropdown from './../plugins/dropdown';
 import dateBase from './datebase';
 import Locale from './../mixins/locale';
 
-const prefix = 'h-datetime';
+const prefix = 'v-datetime';
 
 const manbaType = {
   year: manba.YEAR,
@@ -156,8 +156,8 @@ export default {
     let that = this;
     this.$nextTick(() => {
       if (this.inline) return;
-      let el = (this.el = this.$el.querySelector(`.${prefix}>.h-datetime-show`));
-      let content = this.$el.querySelector(`.h-date-picker`);
+      let el = (this.el = this.$el.querySelector(`.${prefix}>.v-datetime-show`));
+      let content = this.$el.querySelector(`.v-date-picker`);
 
       this.dropdown = new Dropdown(el, {
         trigger: 'click',

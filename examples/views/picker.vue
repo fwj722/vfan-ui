@@ -23,7 +23,7 @@ export default {
       type: 'key',
       showChildCount: true,
       showAllLevels: true,
-      multiple: true,
+      multiple: false,
       param: {
         keyName: 'id',
         titleName: 'title',

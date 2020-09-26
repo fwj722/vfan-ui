@@ -1,7 +1,7 @@
-.h-date-picker {
+.v-date-picker {
 	border:1px solid #eeeeee
 }
-.h-date-picker .h-date-shortcut {
+.v-date-picker .v-date-shortcut {
 	border-radius:4px 0 0 4px;
 	width:104px;
 	font-size:12px;
@@ -10,96 +10,96 @@
 	border-right:1px solid #eeeeee;
 	padding:10px 0
 }
-.h-date-picker .h-date-shortcut>div {
+.v-date-picker .v-date-shortcut>div {
 	padding:3px 10px;
 	cursor:pointer
 }
-.h-date-picker .h-date-shortcut>div:hover {
+.v-date-picker .v-date-shortcut>div:hover {
 	background-color:#eeeeee
 }
-.h-date-picker .h-date-shortcut>div.disabled {
+.v-date-picker .v-date-shortcut>div.disabled {
 	cursor:default
 }
-.h-date-picker .h-date-shortcut>div.disabled:hover {
+.v-date-picker .v-date-shortcut>div.disabled:hover {
 	background-color:transparent
 }
-.h-date-picker .h-date-container {
+.v-date-picker .v-date-container {
 	display:flex
 }
-.h-date-picker .h-date-full-range-container {
+.v-date-picker .v-date-full-range-container {
 	display:block;
 	min-width:260px
 }
-.h-date-picker .h-date-full-range-container .h-tabs {
+.v-date-picker .v-date-full-range-container .v-tabs {
 	padding:0
 }
-.h-date-picker .h-date-full-range-container .h-tabs>.h-tabs-item+div {
+.v-date-picker .v-date-full-range-container .v-tabs>.v-tabs-item+div {
 	margin-left:5px;
 	padding:10px
 }
-.h-date-picker .h-date-range-container>.h-date-content:last-child {
+.v-date-picker .v-date-range-container>.v-date-content:last-child {
 	border-left:1px solid #eeeeee
 }
-.h-date-picker .h-date-content {
+.v-date-picker .v-date-content {
 	padding:10px
 }
-.h-date-picker .h-date-self-defined {
+.v-date-picker .v-date-self-defined {
 	padding:15px;
 	text-align:center
 }
-.h-date-picker .h-date-self-defined .h-input {
+.v-date-picker .v-date-self-defined .v-input {
 	width:110px
 }
-.h-date-picker .h-date-footer {
+.v-date-picker .v-date-footer {
 	padding:5px 10px;
 	text-align:right;
 	border-top:1px solid #eeeeee
 }
-.h-date-picker .h-date-header {
+.v-date-picker .v-date-header {
 	text-align:center;
 	line-height:30px
 }
-.h-date-picker .h-date-header>span {
+.v-date-picker .v-date-header>span {
 	cursor:pointer;
 	transition:color .2s ease;
 	display:inline-block
 }
-.h-date-picker .h-date-header>span:hover {
-	color:#45b984 !important
+.v-date-picker .v-date-header>span:hover {
+	color:$--color-primary-light-1 !important
 }
-.h-date-picker .h-date-header>span:active {
-	color:#30815c !important
+.v-date-picker .v-date-header>span:active {
+	color:$--color-navyblue !important
 }
-.h-date-picker .h-date-header>span.h-pop-trigger .h-date-picker .h-date-header>span {
-	color:#379469 !important
+.v-date-picker .v-date-header>span.v-pop-trigger .v-date-picker .v-date-header>span {
+	color:$--color-primary !important
 }
-.h-date-picker .h-date-header>span[disabled] {
+.v-date-picker .v-date-header>span[disabled] {
 	color:#999999 !important;
 	cursor:default
 }
-.h-date-picker .h-date-header-show {
+.v-date-picker .v-date-header-show {
 	margin:0 3px
 }
-.h-date-picker .h-date-header .h-date-year-left-picker>i+i,.h-date-picker .h-date-header .h-date-year-right-picker>i+i {
+.v-date-picker .v-date-header .v-date-year-left-picker>i+i,.v-date-picker .v-date-header .v-date-year-right-picker>i+i {
 	margin-left:-7px
 }
-.h-date-picker .h-date-header .h-date-month-left-picker,.h-date-picker .h-date-header .h-date-year-left-picker,.h-date-picker .h-date-header .h-date-month-right-picker,.h-date-picker .h-date-header .h-date-year-right-picker {
+.v-date-picker .v-date-header .v-date-montv-left-picker,.v-date-picker .v-date-header .v-date-year-left-picker,.v-date-picker .v-date-header .v-date-montv-right-picker,.v-date-picker .v-date-header .v-date-year-right-picker {
 	color:#999999;
 	font-size:12px;
 	margin:0 3px
 }
-.h-date-picker .h-date-header .h-date-month-left-picker,.h-date-picker .h-date-header .h-date-year-left-picker {
+.v-date-picker .v-date-header .v-date-montv-left-picker,.v-date-picker .v-date-header .v-date-year-left-picker {
 	float:left
 }
-.h-date-picker .h-date-header .h-date-month-right-picker,.h-date-picker .h-date-header .h-date-year-right-picker {
+.v-date-picker .v-date-header .v-date-montv-right-picker,.v-date-picker .v-date-header .v-date-year-right-picker {
 	float:right
 }
-.h-date-picker .h-date-body {
+.v-date-picker .v-date-body {
 	margin:8px auto 0;
 	font-size:13px;
 	width:224px
 }
-.h-date-picker .h-date-body>div>span {
+.v-date-picker .v-date-body>div>span {
 	width:32px;
 	height:32px;
 	line-height:32px;
@@ -107,64 +107,64 @@
 	text-align:center;
 	user-select:none
 }
-.h-date-picker .h-date-body-weeks {
+.v-date-picker .v-date-body-weeks {
 	font-weight:bold
 }
-.h-date-picker .h-date-body-pickers>span {
+.v-date-picker .v-date-body-pickers>span {
 	cursor:default
 }
-.h-date-picker .h-date-body-pickers>span:hover {
+.v-date-picker .v-date-body-pickers>span:hover {
 	background-color:#eeeeee
 }
-.h-date-picker .h-date-body-pickers>span.h-date-today {
-	color:#45b984
+.v-date-picker .v-date-body-pickers>span.v-date-today {
+	color:$--color-primary
 }
-.h-date-picker .h-date-body-pickers>span.h-date-selected {
-	background-color:#45b984;
+.v-date-picker .v-date-body-pickers>span.v-date-selected {
+	background-color:$--color-primary;
 	color:#ffffff
 }
-.h-date-picker .h-date-body-pickers>span.h-date-start-selected {
+.v-date-picker .v-date-body-pickers>span.v-date-start-selected {
 	border-top-right-radius:0;
 	border-bottom-right-radius:0
 }
-.h-date-picker .h-date-body-pickers>span.h-date-end-selected {
+.v-date-picker .v-date-body-pickers>span.v-date-end-selected {
 	border-top-left-radius:0;
 	border-bottom-left-radius:0
 }
-.h-date-picker .h-date-body-pickers>span.h-date-range-selected {
+.v-date-picker .v-date-body-pickers>span.v-date-range-selected {
 	border-radius:0;
 	background-color:rgba(69,185,132,0.15)
 }
-.h-date-picker .h-date-body-pickers>span.h-date-not-now-day {
+.v-date-picker .v-date-body-pickers>span.v-date-not-now-day {
 	color:#d3d3d3;
 	background-color:#ffffff
 }
-.h-date-picker .h-date-body-pickers>span.h-date-disabled {
+.v-date-picker .v-date-body-pickers>span.v-date-disabled {
 	background-color:#f5f5f5;
 	color:#999999;
 	pointer-events:none
 }
-.h-date-picker .h-date-body-month>div>span,.h-date-picker .h-date-body-year>div>span,.h-date-picker .h-date-body-date>div>span {
+.v-date-picker .v-date-body-month>div>span,.v-date-picker .v-date-body-year>div>span,.v-date-picker .v-date-body-date>div>span {
 	border-radius:50%
 }
-.h-date-picker .h-date-body-month>div>span,.h-date-picker .h-date-body-year>div>span {
+.v-date-picker .v-date-body-month>div>span,.v-date-picker .v-date-body-year>div>span {
 	height:50px;
 	width:50px;
 	line-height:50px;
 	margin:3px
 }
-.h-date-picker .h-date-body-week,.h-date-picker .h-date-body-quarter {
+.v-date-picker .v-date-body-week,.v-date-picker .v-date-body-quarter {
 	min-width:200px;
 	width:auto
 }
-.h-date-picker .h-date-body-week>div>span,.h-date-picker .h-date-body-quarter>div>span {
+.v-date-picker .v-date-body-week>div>span,.v-date-picker .v-date-body-quarter>div>span {
 	border-radius:5px;
 	width:100%;
 	display:block;
 	padding-left:10px;
 	padding-right:10px
 }
-.h-date-picker .h-date-body-minute>div>span,.h-date-picker .h-date-body-hour>div>span {
+.v-date-picker .v-date-body-minute>div>span,.v-date-picker .v-date-body-hour>div>span {
 	border-radius:5px;
 	height:30px;
 	width:50px;

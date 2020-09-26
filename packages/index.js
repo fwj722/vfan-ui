@@ -10,10 +10,11 @@ import DatePicker from "./datePicker"
 import DateRangePicker from "./dateRangePicker"
 import CategoryPicker from "./categoryPicker"
 import Poptip from "./poptip"
+import SwitchTab from "./switchTab"
 import Tabs from "./tabs"
 import Tooltip from "./tooltip"
 import "./theme/index.scss";
-import "./theme/index.css"
+// import "./theme/index.css"
 import "./guide/style/guide.scss";
 import "./guide/utils/guide";
 import waves from "./utils/waves"
@@ -34,9 +35,9 @@ import VPlayer from "./vplayer/src/vplayer"
 // import './fonts/font.scss'
 
 // 存储组件列表
-const components = [VButton, VCard,VPlayer,PanelSplit,DatePicker,DateRangePicker,CategoryPicker,Tabs,Poptip,Tooltip];
-const filters = {  hlang };
-const install = function(Vue,options = {}) {
+const components = [VButton, VCard, VPlayer, PanelSplit, DatePicker, DateRangePicker, CategoryPicker, Tabs, Poptip, Tooltip,SwitchTab];
+const filters = { hlang };
+const install = function (Vue, options = {}) {
   // 全局注册所有的组件
   if (options.vplayer) {
     VPlayer.props.options.default = () => { return { ...options.vplayer } }
@@ -51,7 +52,7 @@ const install = function(Vue,options = {}) {
   Object.keys(filters).forEach(key => {
     Vue.filter(key, filters[key]);
   });
-  
+
   // 指令
   Vue.prototype.$message = Message.message;
   Vue.prototype.waves = waves;

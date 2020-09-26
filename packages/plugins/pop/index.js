@@ -264,7 +264,7 @@ class Pop {
     if (!this.popNode) return this;
     if (!this.popperInstance) return this;
     this.hideTimeout = setTimeout(() => {
-      utils.removeClass(this.reference, 'h-pop-trigger');
+      utils.removeClass(this.reference, 'v-pop-trigger');
       if (this.options.events && utils.isFunction(this.options.events.hide)) {
         this.options.events.hide.call(null);
       }
