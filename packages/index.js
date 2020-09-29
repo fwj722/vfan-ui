@@ -16,7 +16,7 @@ import Tooltip from "./tooltip"
 import "./theme/index.scss";
 // import "./theme/index.css"
 import "./guide/style/guide.scss";
-import "./guide/utils/guide";
+import guide from  "./guide/utils/guide";
 import waves from "./utils/waves"
 import hlang from './filters/hlang';
 
@@ -56,6 +56,7 @@ const install = function (Vue, options = {}) {
   // 指令
   Vue.prototype.$message = Message.message;
   Vue.prototype.waves = waves;
+  Vue.prototype.$guide = guide;
 };
 // 判断是否是直接引入文件,如果是，就不用调用 Vue.use()
 if (typeof window !== "undefined" && window.Vue) {

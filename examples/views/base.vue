@@ -10,7 +10,8 @@
               @click="getMessage(2)">成a功按钮</v-button>
     <v-button type="warning"
               @click="getMessage(3)">警告按钮</v-button>
-    <v-button type="danger"
+    <v-button id="btn2"
+              type="danger"
               circle
               @click="getMessage(4)">1</v-button>
     <v-button type="purple"
@@ -19,7 +20,8 @@
               @click="getMessage(6)">信息按钮</v-button>
     <v-button type="default"
               circle>V</v-button>
-    <v-button type="primary"
+    <v-button id="btn3"
+              type="primary"
               circle>F</v-button>
     <v-button type="success"
               circle>A</v-button>
@@ -52,7 +54,8 @@
               round>超小按钮</v-button>
     <div style="height:50px"></div>
 
-    <v-card class="box-card">
+    <v-card id="card"
+            class="box-card">
       <div slot="header"
            class="clearfix">
         <span>卡片名w称</span>
@@ -66,14 +69,15 @@
     <br />
     <v-card shadow="always">总是显示
       <v-button type="primary"
-                shadow
-                @click="getMessage(1)">主要按钮</v-button>
+                shadow>主要按钮</v-button>
     </v-card>
     <br />
     <v-card shadow="hover">鼠标悬浮时显示</v-card>
     <br />
-    <v-card shadow="never">从不显示</v-card>
-    <div style="width:800px;height:500px;margin:10px auto 100px;">
+    <v-card class="never" shadow="never">从不显示</v-card>
+    <button  @click.stop="showGuide">显示引导层</button>
+    <div class="video"
+         style="width:800px;height:500px;margin:10px auto 100px;">
       <v-player type="video"
                 :videoData="videoData"
                 poster="https://image.ms200.cn/icon/bg1.jpg">
@@ -83,7 +87,7 @@
                 poster="https://image.ms200.cn/icon/bg1.jpg">
       </v-player>
     </div>
-   
+
     <DateRangePicker v-model="value2"
                      :format="format"></DateRangePicker>
     <DatePicker v-model="value1"
@@ -92,20 +96,18 @@
                 :readonly="readonly"
                 :disabled="disabled"
                 :clearable="clearable"></DatePicker>
-    <div>
-      <Poptip content="确定删除此段工作经历，是否永久删除？"
-              @confirm="confirm"><button class="h-btn h-btn-primary">删除</button></Poptip>
-    </div>
+   
     <!-- <Avatar :src="src" :width="100" :fit="f" noInfo></Avatar> -->
     <div class="row">
-       <CategoryPicker ref="CategoryPicker"
-                    :option="param"
-                    :type="type"
-                    :showAllLevels="showAllLevels"
-                    :multiple="multiple"
-                    :showChildCount="showChildCount"
-                    v-model="value3"></CategoryPicker>
+      <CategoryPicker ref="CategoryPicker"
+                      :option="param"
+                      :type="type"
+                      :showAllLevels="showAllLevels"
+                      :multiple="multiple"
+                      :showChildCount="showChildCount"
+                      v-model="value3"></CategoryPicker>
     </div>
+    
   </div>
 </template>
 <script>
@@ -149,16 +151,77 @@ export default {
     };
   },
   mounted () {
-    // this.param.datas = getTotalData();
-    // let time = new Date(1533686888*1000)
-    // let shijian = date.formatDate(time,"YYYY-MM-DD HH:ii 周w")
-    //console.log(Vue.prototype.waves)
-
-    // let js = date.getTimeInterval(1567562605000, 1567649014000)
-
-    console.log(1)
   },
   methods: {
+    showGuide () {
+      debugger
+      const guideArr = [{
+        element: '#btn1',
+        popover: {
+          // className: 'first-step-popover-class',
+          title: 'Title on Popover',
+          description: 'Body of the popover',
+          position: 'right'
+        }
+      },
+      {
+        element: '#btn2',
+        popover: {
+          title: 'Title on Popover',
+          description: 'Body of the popover',
+          position: 'bottom'
+        }
+      },
+      {
+        element: '#card',
+        popover: {
+          title: 'Title on Popover',
+          description: 'Body of the popover',
+          position: 'right'
+        }
+      }, {
+        element: '#btn3',
+        popover: {
+          title: 'Title on Popover',
+          description: 'Body of the popover',
+          position: 'right'
+        }
+      }, {
+        element: '.never',
+        popover: {
+          title: 'Title on Popover',
+          description: 'Body of the popover',
+          position: 'top'
+        }
+      }, {
+        element: '.row',
+        popover: {
+          title: 'Title on Popover',
+          description: 'Body of the popover',
+          position: 'bottom'
+        }
+      }, {
+        element: '.video',
+        popover: {
+          title: 'Title on Popover',
+          description: 'Body of the popover',
+          position: 'bottom'
+        }
+      }]
+      this.$guide(guideArr, {
+          doneBtnText: "完成", //结束按钮的文字
+          stageBackground: "#fff", //突出显示元素的背景颜色
+          nextBtnText: "下一步", //下一步按钮的文字
+          prevBtnText: "上一步", //上一步按钮的文字
+          closeBtnText: "关闭", //关闭按钮的文字
+          // onHighlightStarted:Element=> {},//元素即将突出显示时调用
+          // onHighlighted:Element=> {},//元素完全突出显示时调用
+          // onDeselected:Element=> {},//取消选择元素时调用
+          // onReset:Element=> {},//当要清除叠加时调用
+          // onNext:Element=> {},//在任何步骤中移动到下一步时调用
+          // onPrevious :Element=> {}//在任何步骤中移动到上一步时调用
+        })
+    },
     getMessage (n) {
       this.$message({
         message: "信息提示",
@@ -176,17 +239,12 @@ export default {
       this.waves(e);
       console.log(11)
     },
-    confirm () {
-      // this.$message.success({
-      //   type: '删除成功'
-      // });
-      this.getMessage(2)
-    }
+    
   }
 };
 </script>
 <style lang="scss">
-.row{
+.row {
   padding: 20px;
   margin: 0 auto;
 }

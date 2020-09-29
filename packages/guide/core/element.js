@@ -8,8 +8,8 @@ import { getStyleProperty } from './../utils/utils';
 import Position from './position';
 
 /**
- * Wrapper around DOMElements to enrich them
- * with the functionality necessary
+ * 对DOMElements进行包装实现对element的扩展
+ * 重要的功能
  */
 export default class Element {
   /**
@@ -42,7 +42,7 @@ export default class Element {
   }
 
   /**
-   * Checks if the current element is visible in viewport
+   * 检查当前元素在视口中是否可见
    * @returns {boolean}
    * @public
    */
@@ -69,7 +69,7 @@ export default class Element {
   }
 
   /**
-   * Manually scrolls to the position of element if `scrollIntoView` fails
+   * 如果`scrollIntoView`失败，则手动滚动到元素的位置
    * @private
    */
   scrollManually() {
@@ -81,16 +81,16 @@ export default class Element {
   }
 
   /**
-   * Brings the element to middle of the view port if not in view
+   * 如果不在视图中，则将元素带到视图窗口的中间
    * @public
    */
   bringInView() {
-    // If the node is not there or already is in view
+    // 如果该节点不存在或已在视图中
     if (!this.node || this.isInView()) {
       return;
     }
 
-    // If browser does not support scrollIntoView
+    // 如果浏览器不支持scrollIntoView
     if (!this.node.scrollIntoView) {
       this.scrollManually();
       return;
@@ -102,13 +102,13 @@ export default class Element {
         block: 'center',
       });
     } catch (e) {
-      // `block` option is not allowed in older versions of firefox, scroll manually
+      // 较旧版本的firefox不允许使用“ block”选项，需要手动进行滚动
       this.scrollManually();
     }
   }
 
   /**
-   * Gets the calculated position on screen, around which
+   * 获取屏幕上的计算位置，根据该位置进行绘制
    * we need to draw
    * @public
    * @return {Position}
@@ -131,7 +131,7 @@ export default class Element {
   }
 
   /**
-   * Gets the popover for the current element if any
+   * 获取当前元素的弹出窗口
    * @returns {Popover|*}
    * @public
    */
@@ -140,8 +140,7 @@ export default class Element {
   }
 
   /**
-   * Is called when element is about to be deselected
-   * i.e. when moving the focus to next element of closing
+   * 在即将取消选择元素时调用，即在将焦点移至下一个关闭元素时调用
    * @public
    */
   onDeselected(hideStage = false) {
@@ -153,7 +152,7 @@ export default class Element {
 
     this.removeHighlightClasses();
 
-    // If there was any animation in progress, cancel that
+    // 只要有任意一个动画进行，则清除该动画
     this.window.clearTimeout(this.animationTimeout);
 
     if (this.options.onDeselected) {
@@ -162,7 +161,7 @@ export default class Element {
   }
 
   /**
-   * Checks if the given element is same as the current element
+   * 检查指定元素是否与当前元素相同
    * @param {Element} element
    * @returns {boolean}
    * @public
@@ -176,7 +175,7 @@ export default class Element {
   }
 
   /**
-   * Is called when the element is about to be highlighted
+   * 在元素将要突出显示时调用
    * @public
    */
   onHighlightStarted() {
@@ -186,7 +185,7 @@ export default class Element {
   }
 
   /**
-   * Is called when the element has been successfully highlighted
+   * 成功突出显示元素时调用
    * @public
    */
   onHighlighted() {
@@ -195,9 +194,7 @@ export default class Element {
       highlightedElement.bringInView();
     }
 
-    // Show the popover and stage once the item has been
-    // brought in the view, this would allow us to handle
-    // the cases where the container has scroll overflow
+    // 当该选项渲染到视图，就显示弹出窗口和层级，这将能够处理容器发生滚动溢出的情况
     this.showPopover();
     this.showStage();
     this.addHighlightClasses();
@@ -208,7 +205,7 @@ export default class Element {
   }
 
   /**
-   * Removes the stacking context fix classes and the highlighter classes
+   * 删除上下文和高亮的类 
    * @private
    */
   removeHighlightClasses() {
@@ -222,19 +219,18 @@ export default class Element {
   }
 
   /**
-   * Adds the highlight class on the current element and "fixes"
-   * the parent nodes if they
+   * 在当前元素和固定的父级节点添加高亮类
    * @private
    */
   addHighlightClasses() {
     this.node.classList.add(CLASS_DRIVER_HIGHLIGHTED_ELEMENT);
 
-    // Don't make relative if element already has some position set
+    // 如果元素已经设置了定位，就不使其相对
     if (this.canMakeRelative()) {
       this.node.classList.add(CLASS_POSITION_RELATIVE);
     }
 
-    // Check and re-define the stacking context
+    // 检查并重新定义fixStackingContext
     this.fixStackingContext();
   }
 

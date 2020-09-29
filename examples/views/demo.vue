@@ -16,6 +16,11 @@
                 Right Pane
             </div>
         </panelSplit>
+         <div>
+      <Poptip content="确定删除此段工作经历，是否永久删除？"
+              @confirm="confirm"><v-button type="primary"
+              shadow>删除</v-button></Poptip>
+    </div>
     </div>
 </template>
 
@@ -28,6 +33,11 @@
                 split4: 0.5
             }
         },
+        methods:{
+          confirm () {
+            alert(1)
+          }
+        }
     }
 </script>
 <style>
