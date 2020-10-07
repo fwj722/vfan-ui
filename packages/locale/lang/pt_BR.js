@@ -33,7 +33,7 @@ const lang = {
       emptyContent: 'Nenhum resultado encontrado',
       total: 'total'
     },
-    categoryPicker: {
+    cityPicker: {
       nullOptionText: 'por favor escolha',
       placeholder: 'selecionar',
       total: 'total',

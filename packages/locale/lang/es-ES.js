@@ -27,7 +27,7 @@ export default {
       emptyContent: 'No se han encontrado resultados',
       total: 'total'
     },
-    categoryPicker: {
+    cityPicker: {
       nullOptionText: 'Seleccione',
       placeholder: 'Seleccione',
       total: 'total',

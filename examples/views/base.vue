@@ -99,13 +99,13 @@
    
     <!-- <Avatar :src="src" :width="100" :fit="f" noInfo></Avatar> -->
     <div class="row">
-      <CategoryPicker ref="CategoryPicker"
+      <CityPicker ref="CityPicker"
                       :option="param"
                       :type="type"
                       :showAllLevels="showAllLevels"
                       :multiple="multiple"
                       :showChildCount="showChildCount"
-                      v-model="value3"></CategoryPicker>
+                      v-model="value3"></CityPicker>
     </div>
     
   </div>

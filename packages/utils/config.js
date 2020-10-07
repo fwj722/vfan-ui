@@ -24,7 +24,7 @@ const config = {
       childrenName: 'children'
     }
   },
-  categoryPicker: {
+  cityPicker: {
     configs: {},
     default: {
       titleName: 'title',

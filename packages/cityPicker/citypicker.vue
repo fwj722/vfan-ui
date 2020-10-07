@@ -1,43 +1,43 @@
 <template>
   <div :class="categoryCls"
        :disabled="disabled">
-    <div class="v-categorypicker-show">
+    <div class="v-CityPicker-show">
       <div v-if="multiple&&objects.length"
-           class="v-categorypicker-multiple-tags">
+           class="v-CityPicker-multiple-tags">
         <span v-for="(obj, index) of objects"
               :key="index+''+obj.key"><span>{{getShow(obj)}}</span><i class="v-icon-close-min"
              @click.stop="remove(obj)"
              v-if="!disabled"></i></span>
       </div>
       <div v-else-if="!multiple&&object"
-           class="v-categorypicker-value-single">
+           class="v-CityPicker-value-single">
         <span>{{getShow(object)}}</span>
         <i class="v-icon-close"
            v-if="object&&!disabled"
            @mousedown="clear"></i>
       </div>
       <div v-else
-           class="v-categorypicker-placeholder">{{showPlaceholder}}</div>
+           class="v-CityPicker-placeholder">{{showPlaceholder}}</div>
     </div>
     <div :class="groupCls">
       <Tabs :datas="tabs"
             v-model="tab"
-            class="v-categorypicker-tabs"
+            class="v-CityPicker-tabs"
             keyName="key"
             titleName="title"
             @change="focusTab"></Tabs>
-      <div class="v-categorypicker-ul"
-           :class="{'v-categorypicker-single-picker': !multiple}">
+      <div class="v-CityPicker-ul"
+           :class="{'v-CityPicker-single-picker': !multiple}">
         <div v-for="data of list"
              :key="data.key"
-             class="v-categorypicker-item"
-             :class="{'v-categorypicker-item-selected': object && data.key == object.key}">
+             class="v-CityPicker-item"
+             :class="{'v-CityPicker-item-selected': object && data.key == object.key}">
           <i class="v-icon-loading"
              v-if="data.status.loading"></i>
           <Checkbox v-else-if="data.status.checkable&&multiple"
                     :checked="isChecked(data)"
                     @click.native="change(data, $event)"></Checkbox>
-          <span class="v-categorypicker-item-title"
+          <span class="v-CityPicker-item-title"
                 @click="openNew(data, $event)">{{data.title}}<span v-if="showChildCount && data.children.length">({{data.children.length}})</span></span>
         </div>
       </div>
@@ -51,17 +51,29 @@ import Dropdown from './../plugins/dropdown';
 import Locale from './../mixins/locale';
 import Message from './../plugins/message';
 import Checkbox from './../checkbox';
+import { getTotalData } from "./data/district"
 
 
-const prefix = 'v-categorypicker';
+const prefix = 'v-CityPicker';
 const topMenu = '-------';
 
 export default {
-  name: 'CategoryPicker',
+  name: 'CityPicker',
   mixins: [Locale],
   components: { Checkbox },
   props: {
-    option: Object,
+    option: {
+      type:Object,
+      default:()=>{
+        return {
+          keyName: 'id',
+          titleName: 'title',
+          dataMode: 'list',
+          parentName: 'parentId',
+          datas: getTotalData(),
+        }
+      }
+    },
     multiple: {
       type: Boolean,
       default: false
@@ -104,6 +116,13 @@ export default {
         title: this.t('h.categoryModal.total'),
         key: topMenu
       }],
+      params:Object.assign({
+        keyName: 'id',
+        titleName: 'title',
+        dataMode: 'list',
+        parentName: 'parentId',
+        datas: getTotalData(),
+      },this.option),
       tab: topMenu,
       categoryDatas: [],
       categoryObj: {},
@@ -127,7 +146,7 @@ export default {
         }
       }
     },
-    'option.datas': function () {
+    'params.datas': function () {
       this.initCategoryDatas();
     },
     value () {
@@ -145,8 +164,8 @@ export default {
   methods: {
     init () {
       this.$nextTick(() => {
-        let el = (this.el = this.$el.querySelector('.v-categorypicker-show'));
-        this.content = this.$el.querySelector('.v-categorypicker-group');
+        let el = (this.el = this.$el.querySelector('.v-CityPicker-show'));
+        this.content = this.$el.querySelector('.v-CityPicker-group');
         let that = this;
         this.dropdown = new Dropdown(el, {
           trigger: 'click',
@@ -384,7 +403,7 @@ export default {
       }
       if (this.multiple) {
         if (this.objects.length >= this.limit && !this.param.objects.some(item => item.key === data.key)) {
-          Message.error(this.t('h.categoryPicker.limitWords', {
+          Message.error(this.t('h.cityPicker.limitWords', {
             size: this.limit
           }));
           return;
@@ -415,14 +434,14 @@ export default {
   },
   computed: {
     showPlaceholder () {
-      return this.placeholder || this.t('h.categoryPicker.placeholder');
+      return this.placeholder || this.t('h.cityPicker.placeholder');
     },
     param () {
       if (this.config) {
-        return utils.extend({}, config.getOption('categoryPicker.default'), config.getOption(
-          `categoryPicker.configs.${this.config}`), this.option);
+        return utils.extend({}, config.getOption('cityPicker.default'), config.getOption(
+          `cityPicker.configs.${this.config}`), this.params);
       } else {
-        return utils.extend({}, config.getOption('categoryPicker.default'), this.option);
+        return utils.extend({}, config.getOption('cityPicker.default'), this.params);
       }
     },
     categoryCls () {

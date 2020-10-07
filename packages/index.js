@@ -8,7 +8,7 @@ import Message from "./message/src/message.js"
 import PanelSplit from "./panelsplit"
 import DatePicker from "./datePicker"
 import DateRangePicker from "./dateRangePicker"
-import CategoryPicker from "./categoryPicker"
+import CityPicker from "./cityPicker"
 import Poptip from "./poptip"
 import SwitchTab from "./switchTab"
 import Tabs from "./tabs"
@@ -35,7 +35,7 @@ import VPlayer from "./vplayer/src/vplayer"
 // import './fonts/font.scss'
 
 // 存储组件列表
-const components = [VButton, VCard, VPlayer, PanelSplit, DatePicker, DateRangePicker, CategoryPicker, Tabs, Poptip, Tooltip,SwitchTab];
+const components = [VButton, VCard, VPlayer, PanelSplit, DatePicker, DateRangePicker, CityPicker, Tabs, Poptip, Tooltip,SwitchTab];
 const filters = { hlang };
 const install = function (Vue, options = {}) {
   // 全局注册所有的组件
