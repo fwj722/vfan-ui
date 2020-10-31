@@ -3,7 +3,7 @@
     <slot></slot>
     <div slot="content" class="v-poptip">
       <div class="v-poptip-content">
-        <i v-if="!hideIcon" class="iconfont" :class="icon" :style="{color: iconColor}"></i>
+        <i v-if="!hideIcon" class="v-icon" :class="icon" :style="{color: iconColor}"></i>
         {{content}}
       </div>
       <div class="clearfix"><div class="float-right"><v-button type="text" @click="close">{{'h.common.cancel' | hlang}}</v-button><v-button type="primary" size="mini"  @click="trigger">{{'h.common.confirm' | hlang}}</v-button></div></div>

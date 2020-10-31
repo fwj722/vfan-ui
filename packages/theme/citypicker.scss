@@ -57,7 +57,7 @@
        &>span {
         line-height:22px
       }
-      &>.v-icon-close-min {
+      &>.iconguanbi {
         font-size:16px;
         color:#666666;
         display:inline-block;
@@ -77,7 +77,7 @@
         color:#999999 !important;
 	      cursor:default
       }
-      &.v-icon-close {
+      &.iconguanbi {
         line-height:22px;
         display:inline-block;
         font-size:12px;
@@ -91,7 +91,7 @@
         &:active {
           color:$--color-navyblue !important
         }
-        &.v-pop-trigger .v-CityPicker-multiple-tags>span>.v-icon-close {
+        &.v-pop-trigger .v-CityPicker-multiple-tags>span>.iconguanbi {
           // color:#379469 !important;
           background-color: red;
         }
@@ -148,7 +148,7 @@
     }
   }
   &-value-single{
-    &>.v-icon-close {
+    &>.iconguanbi {
       position:absolute;
       top:50%;
       right:8px;
@@ -156,8 +156,8 @@
       z-index:3;
       cursor:pointer;
       transition:color .2s ease;
-      color:#666666;
-      margin-top:-6px;
+      color:#b8b8b8;
+      transform: translateY(-50%);
       &:hover {
         color:$--color-primary !important
       }
@@ -166,7 +166,7 @@
       }
       &.v-pop-trigger{
         .v-CityPicker-value-single{
-          &>.v-icon-close {
+          &>.iconguanbi {
             color:#379469 !important
           }
         }
@@ -193,7 +193,7 @@
       &>span {
         line-height:22px
       }
-      &>.v-icon-close-min {
+      &>.iconguanbi {
         font-size:16px;
         color:#666666;
         display:inline-block;
@@ -211,7 +211,7 @@
         &.v-pop-trigger{
           .v-CityPicker-modal-multiple-tags{
             &>span{
-              &>.v-icon-close-min{
+              &>.iconguanbi{
                 color:#379469 !important
               }
             }

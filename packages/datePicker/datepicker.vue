@@ -1,4 +1,5 @@
 <template>
+
   <div :class="dateCls">
     <template v-if="!inline">
       <div v-if="noBorder" class="v-datetime-show text-hover">{{showDate||showPlaceholder}}</div>
@@ -14,7 +15,7 @@
           :placeholder="showPlaceholder"
         >
         <i class="v-icon-calendar" v-if="!showDate||disabled||!clearable"></i>
-        <i class="v-icon-close text-hover" v-else @click.stop="clear"></i>
+        <i class="v-icon iconguanbi text-hover" v-else @click.stop="clear"></i>
       </div>
     </template>
     <div :class="datePickerCls" class="v-date-picker">

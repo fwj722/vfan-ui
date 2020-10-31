@@ -1,4 +1,5 @@
 <template>
+
   <div class="v-date-content">
     <div class="v-date-header" v-if="type != 'time'">
       <span class="v-date-year-left-picker" @click.stop="updateView('default', -1)">

@@ -5,14 +5,14 @@
       <div v-if="multiple&&objects.length"
            class="v-CityPicker-multiple-tags">
         <span v-for="(obj, index) of objects"
-              :key="index+''+obj.key"><span>{{getShow(obj)}}</span><i class="v-icon-close-min"
+              :key="index+''+obj.key"><span>{{getShow(obj)}}</span><i class="v-icon iconguanbi"
              @click.stop="remove(obj)"
              v-if="!disabled"></i></span>
       </div>
       <div v-else-if="!multiple&&object"
            class="v-CityPicker-value-single">
         <span>{{getShow(object)}}</span>
-        <i class="v-icon-close"
+        <i class="v-icon  iconguanbi"
            v-if="object&&!disabled"
            @mousedown="clear"></i>
       </div>
@@ -25,7 +25,9 @@
             class="v-CityPicker-tabs"
             keyName="key"
             titleName="title"
-            @change="focusTab"></Tabs>
+            @change="focusTab">
+            <span class="v-tabs-ele v-icon iconiconfontshanchu" slot="right-ele" @mousedown="clear"></span>
+            </Tabs>
       <div class="v-CityPicker-ul"
            :class="{'v-CityPicker-single-picker': !multiple}">
         <div v-for="data of list"

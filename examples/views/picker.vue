@@ -19,7 +19,7 @@
     </div>
      <CityPicker ref="CityPicker" :option="param" :type="type" :showAllLevels="showAllLevels" :multiple="multiple" :showChildCount="showChildCount" v-model="value"></CityPicker>
      
-    
+    <CityPicker  v-model="CityPicker" :showAllLevels="false"></CityPicker>
   </div>
 </template>
 <script>
@@ -28,6 +28,7 @@
 export default {
   data() {
     return {
+      CityPicker:"",
       value: 330185,
       type: 'key',
       showChildCount: false,
@@ -36,7 +37,7 @@ export default {
       selectList:["单选","多选"],
       defaultSelect:"单选",
       selectLevelList:["是","否"],
-      showLevel:"是",
+      showLevel:"否",
       cityNum:["是","否"],
       showCityNum:"是",
       param: {

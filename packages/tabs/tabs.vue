@@ -4,6 +4,7 @@
       <span v-if="!$scopedSlots.item">{{a[title]}}</span>
       <slot v-else :tab="a" name="item"></slot>
     </div>
+    <slot name="right-ele"></slot>
   </div>
 </template>
 <script>
