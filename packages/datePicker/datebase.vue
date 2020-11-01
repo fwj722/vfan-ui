@@ -135,9 +135,9 @@ export default {
     nowView: Object,
     range: String,
     rangeEnd: String,
-    startWeek: {
+    startDay: {
       type: Number,
-      default: () => config.getOption('datepicker.startWeek')
+      default: () => config.getOption('datepicker.startDay')
     }
   },
   data() {
@@ -351,7 +351,7 @@ export default {
         this.t('h.date.weeks.saturday'),
         this.t('h.date.weeks.sunday')
       ];
-      let days = weeks.splice(0, this.startWeek - 1);
+      let days = weeks.splice(0, this.startDay - 1);
       weeks.push(...days);
       return weeks;
     },
@@ -377,12 +377,12 @@ export default {
         let lastdayofmonth = nowDate.endOf(manba.MONTH);
         let firstdayofmonth = nowDate.startOf(manba.MONTH);
         let startDay = firstdayofmonth.day();
-        if (startDay == this.startWeek) {
+        if (startDay == this.startDay) {
           startDay = -1;
-        } else if (this.startWeek > startDay) {
-          startDay = 7 - (this.startWeek - startDay) - 1;
+        } else if (this.startDay > startDay) {
+          startDay = 7 - (this.startDay - startDay) - 1;
         } else {
-          startDay = startDay - this.startWeek - 1;
+          startDay = startDay - this.startDay - 1;
         }
         let lastdayoflastmonth = firstdayofmonth.add(-1, manba.DAY);
         let dates = [];
@@ -500,13 +500,13 @@ export default {
         let date = manba(nowDate)
           .add(-1, manba.MONTH)
           .endOf(manba.MONTH)
-          .endOf(manba.WEEK, this.startWeek);
+          .endOf(manba.WEEK, this.startDay);
         let monthSpace = 0;
         if (date.month() == nowDate.month()) {
-          date = date.startOf(manba.WEEK, this.startWeek);
+          date = date.startOf(manba.WEEK, this.startDay);
           monthSpace = 1;
         } else {
-          date = date.add(7, manba.DATE).startOf(manba.WEEK, this.startWeek);
+          date = date.add(7, manba.DATE).startOf(manba.WEEK, this.startDay);
         }
         let month = date.month();
         let nextMonth = monthSpace + month;
@@ -518,7 +518,7 @@ export default {
               type: manba.WEEK,
               show: this.t('h.date.show.week', {
                 year: date.year(),
-                weeknum: date.getWeekOfYear(this.startWeek),
+                weeknum: date.getWeekOfYear(this.startDay),
                 daystart: date.format('MM-DD'),
                 dayend: manba(date)
                   .add(6)

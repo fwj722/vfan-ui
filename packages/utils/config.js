@@ -88,7 +88,7 @@ const config = {
     }
   },
   datepicker: {
-    startWeek: 1,
+    startDay: 1,
     format: {
       date: 'YYYY-MM-DD',
       month: 'YYYY-MM',

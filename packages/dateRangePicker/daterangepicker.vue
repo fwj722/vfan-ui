@@ -25,7 +25,7 @@
                    :type="type"
                    :now-view="nowView.start"
                    :format="nowFormat"
-                   :startWeek = "startWeek"
+                   :startDay = "startDay"
                    @updateView="updateView"
                    @input="setvalue"
                    @changeView="changeView"
@@ -38,7 +38,7 @@
                    :type="type"
                    :now-view="nowView.end"
                    :format="nowFormat"
-                   :startWeek = "startWeek"
+                   :startDay = "startDay"
                    @updateView="updateView"
                    @input="setvalue"
                    @changeView="changeView"
@@ -93,9 +93,9 @@ export default {
       type: String
     },
     value: Object,
-    startWeek: {
+    startDay: {
       type: Number,
-      default: () => config.getOption('datepicker.startWeek')
+      default: () => config.getOption('datepicker.startDay')
     }
   },
   watch: {

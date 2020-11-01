@@ -14,7 +14,7 @@
     font-size:15px;
     &>.v-tabs-item {
       padding:10px;
-      margin-bottom:-4px;
+      margin-bottom:-2px;
       border-bottom:3px solid transparent;
       &+div {
         margin-left:20px;
@@ -22,7 +22,7 @@
       &:hover,
       &-selected {
         color:$--color-primary;
-        border-bottom:3px solid $--color-primary
+        border-bottom:2px solid $--color-primary
       }
     }
   }

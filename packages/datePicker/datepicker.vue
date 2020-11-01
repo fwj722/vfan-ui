@@ -28,7 +28,7 @@
           :value="nowDate"
           :option="option"
           :type="type"
-          :startWeek="startWeek"
+          :startDay="startDay"
           :now-view="nowView"
           format="k"
           @updateView="updateView"
@@ -108,9 +108,9 @@ export default {
       type: String,
       default: 'bottom-start'
     },
-    startWeek: {
+    startDay: {
       type: Number,
-      default: () => config.getOption('datepicker.startWeek')
+      default: () => config.getOption('datepicker.startDay')
     },
     clearable: {
       type: Boolean,
@@ -242,7 +242,7 @@ export default {
           this.nowDate = this.nowView.format('k');
           if (initShow) {
             if (this.type == 'week') {
-              this.showDate = this.t('h.date.show.weekInput', { year: this.nowView.year(), week: this.nowView.getWeekOfYear(this.startWeek) });
+              this.showDate = this.t('h.date.show.weekInput', { year: this.nowView.year(), week: this.nowView.getWeekOfYear(this.startDay) });
             } else if (this.type == 'quarter') {
               this.showDate = this.t('h.date.show.quarter', { year: this.nowView.year(), quarter: Math.ceil(this.nowView.month() / 3) });
             } else {

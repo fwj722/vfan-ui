@@ -19,7 +19,7 @@
     </div>
      <CityPicker ref="CityPicker" :option="param" :type="type" :showAllLevels="showAllLevels" :multiple="multiple" :showChildCount="showChildCount" v-model="value"></CityPicker>
      
-    <CityPicker  v-model="CityPicker" :showAllLevels="false"></CityPicker>
+    <CityPicker :disabled="true"  v-model="CityPicker" :showAllLevels="false"></CityPicker>
   </div>
 </template>
 <script>
@@ -43,19 +43,19 @@ export default {
       param: {
         keyName: 'id',
         titleName: 'title',
-        dataMode: 'list',
+        dataMode: 'tree',
         parentName: 'parentId',
         // datas: [],
         // 单选控制
-        selectable(data, level) {
-          console.log(data,level)
-          return !data.children || data.children.length == 0;
-        },
-        // 多选控制
-        checkable(data) {
-          // console.log(level)
-          return !data.children || data.children.length == 0;
-        }
+        // selectable(data, level) {
+        //   console.log(data,level)
+        //   return !data.children || data.children.length == 0;
+        // },
+        // // 多选控制
+        // checkable(data) {
+        //   // console.log(level)
+        //   return !data.children || data.children.length == 0;
+        // }
       }
     };
   },

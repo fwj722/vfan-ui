@@ -1,19 +1,19 @@
 
-.h-datetime-range .h-datetime-show {
+.v-datetime-range .v-datetime-show {
 	min-width:208px
 }
-.h-datetime-full-range .h-datetime-show {
+.v-datetime-full-range .v-datetime-show {
 	min-width:234px
 }
 
-.h-datetime-input-border {
+.v-datetime-input-border {
 	display:inline-block;
 	vertical-align:middle
 }
-.h-datetime-input-border .h-input {
+.v-datetime-input-border .v-input {
 	width:100%
 }
-.h-datetime-input-border .h-datetime-show:hover>input:not([disabled]),.h-datetime-input-border .h-pop-trigger>input:not([disabled]) {
+.v-datetime-input-border .v-datetime-show:hover>input:not([disabled]),.v-datetime-input-border .v-pop-trigger>input:not([disabled]) {
 	border-color:#45b984;
 	box-shadow:0 0 0 2px rgba(69,185,132,0.2)
 }

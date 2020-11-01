@@ -13,7 +13,7 @@ export default {
       type: Boolean,
       default: false
     },
-    datas: [Object, Array],
+    data: [Object, Array],
     disabled: {
       type: Boolean,
       default: false
@@ -49,11 +49,11 @@ export default {
   },
   computed: {
     arr() {
-      if (!this.datas && !this.dict) {
-        console.error('[HeyUI Error] Switchlist Component: Datas or dict parameters need to be defined at least.');
+      if (!this.data && !this.dict) {
+        console.error('缺少参数data，对tab组件进行切换，必须要定义数据参数。');
         return [];
       }
-      let datas = this.datas;
+      let datas = this.data;
       if (this.dict) {
         datas = config.getDict(this.dict);
       }

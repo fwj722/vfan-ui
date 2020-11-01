@@ -1,8 +1,8 @@
 <template>
   <div>
       <p id="btn1">value:{{value}}</p>
-      <p><switchTab v-model="format" :datas="['YYYY-MM-DD', 'DDMMYYYY', 'YYYYMMDD']" @change="value = null"></switchTab></p>
-      <DatePicker v-model="value" :disabled="disabled" :readonly="readonly" :clearable="clearable" :format="format"></DatePicker>
+      <p><switchTab v-model="format" :datas="['YYYY-MM-DD', 'DD/MM/YYYY', 'YYYYMMDD']" @change="value = null"></switchTab></p>
+      <DatePicker v-model="value"  :format="format"></DatePicker>
   
    <div id="btn2">
       <p><switchTab v-model="type" :datas="{year: '年', month: '月', quarter: '季度', week: '周', date: '日'}"></switchTab></p>

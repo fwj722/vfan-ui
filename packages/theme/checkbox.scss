@@ -1,4 +1,5 @@
-.h-checkbox .h-checkbox-native {
+@import "./common/var";
+.v-checkbox .v-checkbox-native {
 	-webkit-appearance:none;
 	display:inline-block;
 	width:16px;
@@ -15,11 +16,11 @@
 	outline:none;
 	background-color:#ffffff
 }
-.h-checkbox .h-checkbox-native[checked],.h-checkbox .h-checkbox-native[indeterminate] {
-	background-color:#45b984;
-	border:1px solid #45b984
+.v-checkbox .v-checkbox-native[checked],.v-checkbox .v-checkbox-native[indeterminate] {
+	background-color:$--color-primary;
+	border:1px solid $--color-primary;
 }
-.h-checkbox .h-checkbox-native:after {
+.v-checkbox .v-checkbox-native:after {
 	box-sizing:content-box;
 	content:"";
 	border:2px solid #ffffff;
@@ -33,7 +34,7 @@
 	transition:all .2s;
 	transform:rotate(45deg) scale(0)
 }
-.h-checkbox .h-checkbox-native[indeterminate]:after {
+.v-checkbox .v-checkbox-native[indeterminate]:after {
 	content:"";
 	width:8px;
 	height:0px;
@@ -41,66 +42,66 @@
 	top:6px;
 	transform:rotate(0deg) scale(1)
 }
-.h-checkbox .h-checkbox-native[checked]:after {
+.v-checkbox .v-checkbox-native[checked]:after {
 	transform:rotate(45deg) scale(1)
 }
-.h-checkbox .h-checkbox-native:hover {
-	border-color:#45b984
+.v-checkbox .v-checkbox-native:hover {
+	border-color:$--color-primary;
 }
-.h-checkbox .h-checkbox-native[disabled],.h-checkbox .h-checkbox-native[readonly] {
+.v-checkbox .v-checkbox-native[disabled],.v-checkbox .v-checkbox-native[readonly] {
 	pointer-events:painted;
 	cursor:not-allowed;
 	border-color:#d3d3d3;
 	background-color:#f5f5f5
 }
-.h-checkbox .h-checkbox-native[disabled]:after,.h-checkbox .h-checkbox-native[readonly]:after {
+.v-checkbox .v-checkbox-native[disabled]:after,.v-checkbox .v-checkbox-native[readonly]:after {
 	border-color:#d3d3d3
 }
-.h-checkbox .h-checkbox-native[disabled][checked],.h-checkbox .h-checkbox-native[readonly][checked],.h-checkbox .h-checkbox-native[disabled][indeterminate],.h-checkbox .h-checkbox-native[readonly][indeterminate] {
+.v-checkbox .v-checkbox-native[disabled][checked],.v-checkbox .v-checkbox-native[readonly][checked],.v-checkbox .v-checkbox-native[disabled][indeterminate],.v-checkbox .v-checkbox-native[readonly][indeterminate] {
 	background-color:#d3d3d3
 }
-.h-checkbox .h-checkbox-native[disabled][checked]:after,.h-checkbox .h-checkbox-native[readonly][checked]:after,.h-checkbox .h-checkbox-native[disabled][indeterminate]:after,.h-checkbox .h-checkbox-native[readonly][indeterminate]:after {
+.v-checkbox .v-checkbox-native[disabled][checked]:after,.v-checkbox .v-checkbox-native[readonly][checked]:after,.v-checkbox .v-checkbox-native[disabled][indeterminate]:after,.v-checkbox .v-checkbox-native[readonly][indeterminate]:after {
 	border-color:#ffffff
 }
-.h-checkbox {
+.v-checkbox {
 	display:inline-block
 }
-.h-checkbox>label {
+.v-checkbox>label {
 	margin-right:15px;
 	display:inline-block
 }
-.h-checkbox>label:last-child {
+.v-checkbox>label:last-child {
 	margin-right:0
 }
-.h-checkbox>label>:nth-child(2) {
+.v-checkbox>label>:nth-child(2) {
 	margin-left:5px
 }
-.h-checkbox>label span {
+.v-checkbox>label span {
 	line-height:16px;
 	vertical-align:middle
 }
-.h-checkbox>label i {
+.v-checkbox>label i {
 	line-height:16px;
 	vertical-align:middle
 }
-.h-checkbox>label:hover>.h-checkbox-native {
-	border-color:#45b984
+.v-checkbox>label:hover>.v-checkbox-native {
+	border-color:$--color-primary;
 }
-.h-checkbox .h-checkbox-disabled {
+.v-checkbox .v-checkbox-disabled {
 	color:#999999;
 	pointer-events:painted;
 	cursor:not-allowed
 }
-.h-checkbox .h-checkbox-disabled:hover>.h-checkbox-native {
+.v-checkbox .v-checkbox-disabled:hover>.v-checkbox-native {
 	border-color:#d3d3d3
 }
-th.h-table-th-checkbox,
-td.h-table-td-checkbox {
+th.v-table-th-checkbox,
+td.v-table-td-checkbox {
 	text-align:center;
 	text-overflow:clip;
 	padding-left:0
 }
-.h-radio>label>.h-radio-icon {
+.v-radio>label>.v-radio-icon {
 	-webkit-appearance:none;
 	display:inline-block;
 	width:16px;
@@ -119,10 +120,10 @@ td.h-table-td-checkbox {
 	font-family:inherit;
 	outline:none
 }
-.h-radio>label>.h-radio-icon:after {
+.v-radio>label>.v-radio-icon:after {
 	content:"";
 	display:block;
-	background-color:#45b984;
+	background-color:$--color-primary;
 	transition:all linear .2s;
 	transform:scale(0);
 	width:8px;
@@ -132,64 +133,64 @@ td.h-table-td-checkbox {
 	left:3px;
 	top:3px
 }
-.h-radio>label>.h-radio-icon:checked,.h-radio>label>.h-radio-icon[checked] {
-	border-color:#45b984
+.v-radio>label>.v-radio-icon:checked,.v-radio>label>.v-radio-icon[checked] {
+	border-color:$--color-primary
 }
-.h-radio>label>.h-radio-icon:checked:after,.h-radio>label>.h-radio-icon[checked]:after {
+.v-radio>label>.v-radio-icon:checked:after,.v-radio>label>.v-radio-icon[checked]:after {
 	transform:scale(1)
 }
-.h-radio>label>.h-radio-icon:hover {
-	border-color:#45b984
+.v-radio>label>.v-radio-icon:hover {
+	border-color:$--color-primary;
 }
-.h-radio>label>.h-radio-icon[disabled] {
+.v-radio>label>.v-radio-icon[disabled] {
 	pointer-events:painted;
 	cursor:not-allowed;
 	border-color:#d3d3d3;
 	background-color:#f5f5f5
 }
-.h-radio>label>.h-radio-icon[disabled]:checked,.h-radio>label>.h-radio-icon[disabled][checked] {
+.v-radio>label>.v-radio-icon[disabled]:checked,.v-radio>label>.v-radio-icon[disabled][checked] {
 	background-color:#f5f5f5
 }
-.h-radio>label>.h-radio-icon[disabled]:checked:after,.h-radio>label>.h-radio-icon[disabled][checked]:after {
+.v-radio>label>.v-radio-icon[disabled]:checked:after,.v-radio>label>.v-radio-icon[disabled][checked]:after {
 	background-color:#d3d3d3
 }
-.h-radio {
+.v-radio {
 	display:inline-block
 }
-.h-radio>label {
+.v-radio>label {
 	margin-right:15px;
 	height:30px;
 	line-height:30px;
 	display:inline-block
 }
-.h-radio>label:last-child {
+.v-radio>label:last-child {
 	margin-right:0
 }
-.h-radio>label:hover>.h-radio-icon {
-	border-color:#45b984
+.v-radio>label:hover>.v-radio-icon {
+	border-color:$--color-primary;
 }
-.h-radio.h-radio-disabled>label {
+.v-radio.v-radio-disabled>label {
 	color:#999999;
 	pointer-events:painted;
 	cursor:not-allowed
 }
-.h-radio.h-radio-disabled>label:hover>.h-radio-icon {
+.v-radio.v-radio-disabled>label:hover>.v-radio-icon {
 	border-color:#d3d3d3
 }
-.form-content-width100 .h-radio>label,
-.form-content-width100 .h-checkbox>label {
+.form-content-width100 .v-radio>label,
+.form-content-width100 .v-checkbox>label {
 	height:30px;
 	line-height:30px
 }
-.h-form .h-form-item-content .h-radio>label,.h-form .h-form-item-content .h-checkbox>label {
+.v-form .v-form-item-content .v-radio>label,.v-form .v-form-item-content .v-checkbox>label {
 	height:30px;
 	line-height:30px
 }
-.h-transfer .h-transfer-source .h-transfer-list .h-transfer-item .h-checkbox,.h-transfer .h-transfer-target .h-transfer-list .h-transfer-item .h-checkbox,.h-transfer .h-transfer-source .h-transfer-list .h-transfer-item .h-checkbox label,.h-transfer .h-transfer-target .h-transfer-list .h-transfer-item .h-checkbox label {
+.v-transfer .v-transfer-source .v-transfer-list .v-transfer-item .v-checkbox,.v-transfer .v-transfer-target .v-transfer-list .v-transfer-item .v-checkbox,.v-transfer .v-transfer-source .v-transfer-list .v-transfer-item .v-checkbox label,.v-transfer .v-transfer-target .v-transfer-list .v-transfer-item .v-checkbox label {
 	display:block
 }
-th.h-table-th-radio,
-td.h-table-td-radio {
+th.v-table-th-radio,
+td.v-table-td-radio {
 	text-align:center;
 	text-overflow:clip;
 	padding-left:0
