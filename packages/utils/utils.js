@@ -133,7 +133,7 @@ export default utils.extend({}, utils, {
   },
   generateTree(data, param) {
     if (!this.isArray(data)) {
-      console.error('[HeyUI Error] GenerateTree Error：Data must be array。');
+      console.error('错误提示：GenerateTree错误，数据必须为数组');
       return null;
     }
     let result = [];

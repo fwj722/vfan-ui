@@ -3,18 +3,18 @@
   <div class="v-date-content">
     <div class="v-date-header" v-if="type != 'time'">
       <span class="v-date-year-left-picker" @click.stop="updateView('default', -1)">
-        <i class="v-icon-left"></i>
-        <i class="v-icon-left"></i>
+        <i class="v-icon v-icon-left"></i>
+        <i class="v-icon v-icon-left"></i>
       </span>
       <span class="v-date-montv-left-picker" @click.stop="updateView('month', -1)" v-show="view=='date'||view=='week'">
-        <i class="v-icon-left"></i>
+        <i class="v-icon v-icon-left"></i>
       </span>
       <span class="v-date-header-show" @click.stop="changeView('year')" v-if="view != 'year'">
-        {{nowView.year()}}{{'h.date.header.year'
+        {{nowView.year()}}{{'v.date.header.year'
         | hlang}}
       </span>
       <span class="v-date-header-show" v-if="view == 'year'">
-        {{nowView.year()-6}}&nbsp;&nbsp;-&nbsp;&nbsp;{{nowView.year()+5}}{{'h.date.header.year'
+        {{nowView.year()-6}}&nbsp;&nbsp;-&nbsp;&nbsp;{{nowView.year()+5}}{{'v.date.header.year'
         | hlang}}
       </span>
       <span class="v-date-header-show" @click.stop="changeView('month')" v-show="view != 'year' && view != 'month' && view != 'quarter'">
@@ -22,24 +22,24 @@
         - 1]}}
       </span>
       <span class="v-date-header-show" @click.stop="changeView('date')" v-show="view == 'hour' || view == 'minute'">
-        {{nowView.date()}}{{'h.date.header.day'
+        {{nowView.date()}}{{'v.date.header.day'
         | hlang}}
       </span>
       <span class="v-date-year-right-picker" @click.stop="updateView('default', 1)">
-        <i class="v-icon-right"></i>
-        <i class="v-icon-right"></i>
+        <i class="v-icon v-icon-right"></i>
+        <i class="v-icon v-icon-right"></i>
       </span>
       <span class="v-date-montv-right-picker" @click.stop="updateView('month', 1)" v-show="view=='date'||view=='week'">
-        <i class="v-icon-right"></i>
+        <i class="v-icon v-icon-right"></i>
       </span>
     </div>
     <div class="v-date-header" v-show="view=='minute'">
       <span class="v-date-montv-left-picker" @click.stop="updateView('hour', -1)">
-        <i class="v-icon-left"></i>
+        <i class="v-icon v-icon-left"></i>
       </span>
       <span class="v-date-header-show" @click.stop="changeView('hour')">{{nowView | hoursString}}</span>
       <span class="v-date-montv-right-picker" @click.stop="updateView('hour', 1)">
-        <i class="v-icon-right"></i>
+        <i class="v-icon v-icon-right"></i>
       </span>
     </div>
     <div :class="dateBodyCls">
@@ -343,13 +343,13 @@ export default {
     },
     weeks() {
       let weeks = [
-        this.t('h.date.weeks.monday'),
-        this.t('h.date.weeks.tuesday'),
-        this.t('h.date.weeks.wednesday'),
-        this.t('h.date.weeks.thursday'),
-        this.t('h.date.weeks.friday'),
-        this.t('h.date.weeks.saturday'),
-        this.t('h.date.weeks.sunday')
+        this.t('v.date.weeks.monday'),
+        this.t('v.date.weeks.tuesday'),
+        this.t('v.date.weeks.wednesday'),
+        this.t('v.date.weeks.thursday'),
+        this.t('v.date.weeks.friday'),
+        this.t('v.date.weeks.saturday'),
+        this.t('v.date.weeks.sunday')
       ];
       let days = weeks.splice(0, this.startDay - 1);
       weeks.push(...days);
@@ -357,18 +357,18 @@ export default {
     },
     months() {
       return [
-        this.t('h.date.months.january'),
-        this.t('h.date.months.february'),
-        this.t('h.date.months.march'),
-        this.t('h.date.months.april'),
-        this.t('h.date.months.may'),
-        this.t('h.date.months.june'),
-        this.t('h.date.months.july'),
-        this.t('h.date.months.august'),
-        this.t('h.date.months.september'),
-        this.t('h.date.months.october'),
-        this.t('h.date.months.november'),
-        this.t('h.date.months.december')
+        this.t('v.date.months.january'),
+        this.t('v.date.months.february'),
+        this.t('v.date.months.march'),
+        this.t('v.date.months.april'),
+        this.t('v.date.months.may'),
+        this.t('v.date.months.june'),
+        this.t('v.date.months.july'),
+        this.t('v.date.months.august'),
+        this.t('v.date.months.september'),
+        this.t('v.date.months.october'),
+        this.t('v.date.months.november'),
+        this.t('v.date.months.december')
       ];
     },
     dates() {
@@ -516,7 +516,7 @@ export default {
             genData({
               date: manba(date.time()),
               type: manba.WEEK,
-              show: this.t('h.date.show.week', {
+              show: this.t('v.date.show.week', {
                 year: date.year(),
                 weeknum: date.getWeekOfYear(this.startDay),
                 daystart: date.format('MM-DD'),
@@ -539,7 +539,7 @@ export default {
             genData({
               date: manba(date.time()),
               type: manba.MONTH,
-              show: this.t('h.date.show.quarter', {
+              show: this.t('v.date.show.quarter', {
                 year: date.year(),
                 quarter: index
               }),

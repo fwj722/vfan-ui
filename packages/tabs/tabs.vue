@@ -55,7 +55,7 @@ export default {
     },
     arr() {
       if (!this.datas && !this.dict) {
-        console.error('[HeyUI Error] Tabs Component: Datas or dict parameters need to be defined at least.');
+        console.error('错误提示：选项卡组件至少需要定义datas或dict参数');
         return [];
       }
       let datas = this.datas;

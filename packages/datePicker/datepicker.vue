@@ -15,7 +15,7 @@
           :placeholder="showPlaceholder"
         >
         <i class="v-icon-calendar" v-if="!showDate||disabled||!clearable"></i>
-        <i class="v-icon iconguanbi text-hover" v-else @click.stop="clear"></i>
+        <i class="v-icon v-icon-close text-hover" v-else @click.stop="clear"></i>
       </div>
     </template>
     <div :class="datePickerCls" class="v-date-picker">
@@ -38,8 +38,8 @@
       </div>
 
       <div class="v-date-footer" v-if="hasConfirm & !inline">
-        <button type="button" class="v-btn v-btn-text" @click="clear">{{'h.common.clear' | hlang}}</button>
-        <button type="button" class="v-btn v-btn-primary v-btn-s" @click="hide">{{'h.common.confirm' | hlang}}</button>
+        <button type="button" class="v-btn v-btn-text" @click="clear">{{'v.common.clear' | hlang}}</button>
+        <button type="button" class="v-btn v-btn-primary v-btn-s" @click="hide">{{'v.common.confirm' | hlang}}</button>
       </div>
     </div>
   </div>
@@ -242,9 +242,9 @@ export default {
           this.nowDate = this.nowView.format('k');
           if (initShow) {
             if (this.type == 'week') {
-              this.showDate = this.t('h.date.show.weekInput', { year: this.nowView.year(), week: this.nowView.getWeekOfYear(this.startDay) });
+              this.showDate = this.t('v.date.show.weekInput', { year: this.nowView.year(), week: this.nowView.getWeekOfYear(this.startDay) });
             } else if (this.type == 'quarter') {
-              this.showDate = this.t('h.date.show.quarter', { year: this.nowView.year(), quarter: Math.ceil(this.nowView.month() / 3) });
+              this.showDate = this.t('v.date.show.quarter', { year: this.nowView.year(), quarter: Math.ceil(this.nowView.month() / 3) });
             } else {
               this.showDate = this.nowView.format(this.nowFormat);
             }
@@ -280,7 +280,7 @@ export default {
   },
   computed: {
     showPlaceholder() {
-      return this.placeholder || this.t('h.datepicker.placeholder');
+      return this.placeholder || this.t('v.datepicker.placeholder');
     },
     nowFormat() {
       let format = this.format;

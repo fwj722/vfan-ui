@@ -1,5 +1,5 @@
 const lang = {
-  h: {
+  v: {
     locale: 'en-US',
     common: {
       cancel: 'Cancel',

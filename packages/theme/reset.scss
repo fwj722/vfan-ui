@@ -244,7 +244,7 @@ html,body,address,blockquote,dl,form,h1,h2,h3,h4,h5,h6,ol,table,ul,dd,dt,li,tbod
 	box-sizing:border-box
 }
 
-input[type=text],input[type=password],input[type=search],input[type=number],input[type=tel],input[type=url],input.h-input,textarea,.h-textarea {
+input[type=text],input[type=password],input[type=search],input[type=number],input[type=tel],input[type=url],input.v-input,textarea,.v-textarea {
 	min-width:1px;
 	position:relative;
 	background-color:#ffffff;
@@ -262,40 +262,40 @@ input[type=text],input[type=password],input[type=search],input[type=number],inpu
   outline:none;
   cursor: pointer;
 }
-input[type=text]:hover,input[type=password]:hover,input[type=search]:hover,input[type=number]:hover,input[type=tel]:hover,input[type=url]:hover,input.h-input:hover,textarea:hover,.h-textarea:hover {
+input[type=text]:hover,input[type=password]:hover,input[type=search]:hover,input[type=number]:hover,input[type=tel]:hover,input[type=url]:hover,input.v-input:hover,textarea:hover,.v-textarea:hover {
 	border-color:$--color-primary
 }
-input[type=text]:focus,input[type=password]:focus,input[type=search]:focus,input[type=number]:focus,input[type=tel]:focus,input[type=url]:focus,input.h-input:focus,textarea:focus,.h-textarea:focus {
+input[type=text]:focus,input[type=password]:focus,input[type=search]:focus,input[type=number]:focus,input[type=tel]:focus,input[type=url]:focus,input.v-input:focus,textarea:focus,.v-textarea:focus {
 	border-color:$--color-primary-light-1;
 	box-shadow:0 0 0 2px rgba(69,185,132,0.2)
 }
-input[type=text][disabled],input[type=password][disabled],input[type=search][disabled],input[type=number][disabled],input[type=tel][disabled],input[type=url][disabled],input.h-input[disabled],textarea[disabled],.h-textarea[disabled],input[type=text][readonly],input[type=password][readonly],input[type=search][readonly],input[type=number][readonly],input[type=tel][readonly],input[type=url][readonly],input.h-input[readonly],textarea[readonly],.h-textarea[readonly] {
+input[type=text][disabled],input[type=password][disabled],input[type=search][disabled],input[type=number][disabled],input[type=tel][disabled],input[type=url][disabled],input.v-input[disabled],textarea[disabled],.v-textarea[disabled],input[type=text][readonly],input[type=password][readonly],input[type=search][readonly],input[type=number][readonly],input[type=tel][readonly],input[type=url][readonly],input.v-input[readonly],textarea[readonly],.v-textarea[readonly] {
 	border-color:#d3d3d3
 }
-input[type=text][disabled]:focus,input[type=password][disabled]:focus,input[type=search][disabled]:focus,input[type=number][disabled]:focus,input[type=tel][disabled]:focus,input[type=url][disabled]:focus,input.h-input[disabled]:focus,textarea[disabled]:focus,.h-textarea[disabled]:focus,input[type=text][readonly]:focus,input[type=password][readonly]:focus,input[type=search][readonly]:focus,input[type=number][readonly]:focus,input[type=tel][readonly]:focus,input[type=url][readonly]:focus,input.h-input[readonly]:focus,textarea[readonly]:focus,.h-textarea[readonly]:focus {
+input[type=text][disabled]:focus,input[type=password][disabled]:focus,input[type=search][disabled]:focus,input[type=number][disabled]:focus,input[type=tel][disabled]:focus,input[type=url][disabled]:focus,input.v-input[disabled]:focus,textarea[disabled]:focus,.v-textarea[disabled]:focus,input[type=text][readonly]:focus,input[type=password][readonly]:focus,input[type=search][readonly]:focus,input[type=number][readonly]:focus,input[type=tel][readonly]:focus,input[type=url][readonly]:focus,input.v-input[readonly]:focus,textarea[readonly]:focus,.v-textarea[readonly]:focus {
 	box-shadow:none
 }
-input[type=text][readonly],input[type=password][readonly],input[type=search][readonly],input[type=number][readonly],input[type=tel][readonly],input[type=url][readonly],input.h-input[readonly],textarea[readonly],.h-textarea[readonly] {
+input[type=text][readonly],input[type=password][readonly],input[type=search][readonly],input[type=number][readonly],input[type=tel][readonly],input[type=url][readonly],input.v-input[readonly],textarea[readonly],.v-textarea[readonly] {
 	color:#555555;
 	box-shadow:none;
 	cursor:default
 }
-input[type=text][disabled],input[type=password][disabled],input[type=search][disabled],input[type=number][disabled],input[type=tel][disabled],input[type=url][disabled],input.h-input[disabled],textarea[disabled],.h-textarea[disabled] {
+input[type=text][disabled],input[type=password][disabled],input[type=search][disabled],input[type=number][disabled],input[type=tel][disabled],input[type=url][disabled],input.v-input[disabled],textarea[disabled],.v-textarea[disabled] {
 	color:#999999;
 	background-color:#f5f5f5;
 	pointer-events:painted;
 	cursor:not-allowed
 }
-.h-form-item-valid-error input[type=text],.h-form-item-valid-error input[type=password],.h-form-item-valid-error input[type=search],.h-form-item-valid-error input[type=number],.h-form-item-valid-error input[type=tel],.h-form-item-valid-error input[type=url],.h-form-item-valid-error input.h-input,.h-form-item-valid-error textarea,.h-form-item-valid-error .h-textarea {
+.v-form-item-valid-error input[type=text],.v-form-item-valid-error input[type=password],.v-form-item-valid-error input[type=search],.v-form-item-valid-error input[type=number],.v-form-item-valid-error input[type=tel],.v-form-item-valid-error input[type=url],.v-form-item-valid-error input.v-input,.v-form-item-valid-error textarea,.v-form-item-valid-error .v-textarea {
 	border-color:#E11617
 }
-.h-form-item-valid-error input[type=text]:focus,.h-form-item-valid-error input[type=password]:focus,.h-form-item-valid-error input[type=search]:focus,.h-form-item-valid-error input[type=number]:focus,.h-form-item-valid-error input[type=tel]:focus,.h-form-item-valid-error input[type=url]:focus,.h-form-item-valid-error input.h-input:focus,.h-form-item-valid-error textarea:focus,.h-form-item-valid-error .h-textarea:focus {
+.v-form-item-valid-error input[type=text]:focus,.v-form-item-valid-error input[type=password]:focus,.v-form-item-valid-error input[type=search]:focus,.v-form-item-valid-error input[type=number]:focus,.v-form-item-valid-error input[type=tel]:focus,.v-form-item-valid-error input[type=url]:focus,.v-form-item-valid-error input.v-input:focus,.v-form-item-valid-error textarea:focus,.v-form-item-valid-error .v-textarea:focus {
 	box-shadow:0 0 0 2px rgba(225,22,23,0.2)
 }
-input[type=text],input[type=password],input[type=search],input[type=number],input[type=tel],input[type=url],input.h-input {
+input[type=text],input[type=password],input[type=search],input[type=number],input[type=tel],input[type=url],input.v-input {
 	height:30px
 }
-textarea,.h-textarea {
+textarea,.v-textarea {
 	padding:7.5px
 }
 input[type=text]::-ms-clear {
@@ -307,8 +307,8 @@ input::-webkit-search-cancel-button {
 .no-select {
   user-select: none;
 }
-[class^="h-icon-"],[class*=" h-icon-"] {
-	font-family:'heyui' !important;
+[class^="v-icon-"],[class*=" v-icon-"] {
+	font-family:'v-icon' !important;
 	/* speak:none; */
 	font-style:normal;
 	font-weight:normal;
@@ -318,15 +318,15 @@ input::-webkit-search-cancel-button {
 	-webkit-font-smoothing:antialiased;
 	-moz-osx-font-smoothing:grayscale
 }
-[class^="h-icon-"],[class*=" h-icon-"] {
+[class^="v-icon-"],[class*=" v-icon-"] {
 	font-size:inherit;
 	display:inline-block;
 	vertical-align:-1px
 }
-.h-icon-loading,.h-icon-spinner {
-	animation:h-ani-loading-loop 1s linear infinite
+.v-icon-loading,.v-icon-spinner {
+	animation:v-ani-loading-loop 1s linear infinite
 }
-@keyframes h-ani-loading-loop {
+@keyframes v-ani-loading-loop {
 	from {
 	transform:rotate(0deg)
 }

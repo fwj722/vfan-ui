@@ -132,7 +132,7 @@ export default {
     checkList() {
       let checkStatus = this.checkStatus || [];
       if ((!utils.isNull(this.value) || !this.isSingle) && !utils.isArray(checkStatus)) {
-        console.warn(`[HeyUI WARNING] Checkbox Component: It's not allowed to use v-model with non-array value.`);
+        console.warn(`警告：复选框组件不允许使用具有非数组值的v-model`);
       }
       return utils.isArray(checkStatus) ? checkStatus : [];
     },

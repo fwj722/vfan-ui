@@ -6,7 +6,7 @@
         <i v-if="!hideIcon" class="v-icon" :class="icon" :style="{color: iconColor}"></i>
         {{content}}
       </div>
-      <div class="clearfix"><div class="float-right"><v-button type="text" @click="close">{{'h.common.cancel' | hlang}}</v-button><v-button type="primary" size="mini"  @click="trigger">{{'h.common.confirm' | hlang}}</v-button></div></div>
+      <div class="clearfix"><div class="float-right"><v-button type="text" @click="close">{{'v.common.cancel' | hlang}}</v-button><v-button type="primary" size="mini"  @click="trigger">{{'v.common.confirm' | hlang}}</v-button></div></div>
     </div>
   </Tooltip>
 </template>

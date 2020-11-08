@@ -5,14 +5,14 @@
       <div v-if="multiple&&objects.length"
            class="v-CityPicker-multiple-tags">
         <span v-for="(obj, index) of objects"
-              :key="index+''+obj.key"><span>{{getShow(obj)}}</span><i class="v-icon iconguanbi"
+              :key="index+''+obj.key"><span>{{getShow(obj)}}</span><i class="v-icon v-icon-close"
              @click.stop="remove(obj)"
              v-if="!disabled"></i></span>
       </div>
       <div v-else-if="!multiple&&object"
            class="v-CityPicker-value-single">
         <span>{{getShow(object)}}</span>
-        <i class="v-icon  iconguanbi"
+        <i class="v-icon v-icon-close"
            v-if="object&&!disabled"
            @mousedown="clear"></i>
       </div>
@@ -26,7 +26,7 @@
             keyName="key"
             titleName="title"
             @change="focusTab">
-            <span class="v-tabs-ele v-icon iconiconfontshanchu" slot="right-ele" @mousedown="clear"></span>
+            <span class="v-tabs-ele v-icon v-iconiconfontshanchu" slot="right-ele" @mousedown="clear"></span>
             </Tabs>
       <div class="v-CityPicker-ul"
            :class="{'v-CityPicker-single-picker': !multiple}">
@@ -115,7 +115,7 @@ export default {
       objects: [],
       object: null,
       tabs: [{
-        title: this.t('h.categoryModal.total'),
+        title: this.t('v.categoryModal.total'),
         key: topMenu
       }],
       params:Object.assign({
@@ -156,7 +156,7 @@ export default {
         this.parse();
         this.tab = topMenu;
         this.tabs = [{
-          title: this.t('h.categoryModal.total'),
+          title: this.t('v.categoryModal.total'),
           key: topMenu
         }];
         this.list = this.categoryDatas;
@@ -184,7 +184,7 @@ export default {
     refresh () {
       this.tab = topMenu;
       this.tabs = [{
-        title: this.t('h.categoryModal.total'),
+        title: this.t('v.categoryModal.total'),
         key: topMenu
       }];
       this.initCategoryDatas();
@@ -405,7 +405,7 @@ export default {
       }
       if (this.multiple) {
         if (this.objects.length >= this.limit && !this.param.objects.some(item => item.key === data.key)) {
-          Message.error(this.t('h.cityPicker.limitWords', {
+          Message.error(this.t('v.cityPicker.limitWords', {
             size: this.limit
           }));
           return;
@@ -436,7 +436,7 @@ export default {
   },
   computed: {
     showPlaceholder () {
-      return this.placeholder || this.t('h.cityPicker.placeholder');
+      return this.placeholder || this.t('v.cityPicker.placeholder');
     },
     param () {
       if (this.config) {

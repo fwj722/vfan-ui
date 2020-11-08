@@ -61,10 +61,10 @@ class Notify {
         let attr = '';
         let color = '';
         if (b == 'cancel') {
-          name = b.name || locale.t('h.common.cancel');
+          name = b.name || locale.t('v.common.cancel');
           attr = b;
         } else if (b == 'ok') {
-          name = b.name || locale.t('h.common.confirm');
+          name = b.name || locale.t('v.common.confirm');
           attr = 'ok';
           color = 'primary';
         } else if (utils.isObject(b)) {

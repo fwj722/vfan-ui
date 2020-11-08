@@ -57,7 +57,7 @@
        &>span {
         line-height:22px
       }
-      &>.iconguanbi {
+      &>.v-icon-close {
         font-size:16px;
         color:#666666;
         display:inline-block;
@@ -77,7 +77,7 @@
         color:#999999 !important;
 	      cursor:default
       }
-      &.iconguanbi {
+      &.v-icon-close {
         line-height:22px;
         display:inline-block;
         font-size:12px;
@@ -91,7 +91,7 @@
         &:active {
           color:$--color-navyblue !important
         }
-        &.v-pop-trigger .v-CityPicker-multiple-tags>span>.iconguanbi {
+        &.v-pop-trigger .v-CityPicker-multiple-tags>span>.v-icon-close {
           // color:#379469 !important;
           background-color: red;
         }
@@ -148,7 +148,7 @@
     }
   }
   &-value-single{
-    &>.iconguanbi {
+    &>.v-icon-close {
       position:absolute;
       top:50%;
       right:8px;
@@ -166,7 +166,7 @@
       }
       &.v-pop-trigger{
         .v-CityPicker-value-single{
-          &>.iconguanbi {
+          &>.v-icon-close {
             color:#379469 !important
           }
         }
@@ -193,7 +193,7 @@
       &>span {
         line-height:22px
       }
-      &>.iconguanbi {
+      &>.v-icon-close {
         font-size:16px;
         color:#666666;
         display:inline-block;
@@ -211,7 +211,7 @@
         &.v-pop-trigger{
           .v-CityPicker-modal-multiple-tags{
             &>span{
-              &>.iconguanbi{
+              &>.v-icon-close{
                 color:#379469 !important
               }
             }

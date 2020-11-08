@@ -48,9 +48,9 @@
 
       <div class="h-date-footer">
         <button type="button" class="h-btn h-btn-text h-btn-s"
-                @click="clear">{{'h.common.clear' | hlang}}</button>
+                @click="clear">{{'v.common.clear' | hlang}}</button>
         <button type="button" class="h-btn h-btn-primary h-btn-s"
-                @click="confirm">{{'h.common.confirm' | hlang}}</button>
+                @click="confirm">{{'v.common.confirm' | hlang}}</button>
       </div>
     </div>
   </div>
@@ -269,7 +269,7 @@ export default {
   },
   computed: {
     showPlaceholder() {
-      return this.placeholder || this.t('h.datepicker.placeholder');
+      return this.placeholder || this.t('v.datepicker.placeholder');
     },
     nowFormat() {
       let format = this.format || config.getOption('datepicker.format')[this.type];
@@ -282,7 +282,7 @@ export default {
       if (!utils.isObject(this.value)) {
         return '';
       }
-      return `${this.value.start || this.t('h.datepicker.start')} - ${this.value.end || this.t('h.datepicker.end')}`;
+      return `${this.value.start || this.t('v.datepicker.start')} - ${this.value.end || this.t('v.datepicker.end')}`;
     },
     shortcuts() {
       let shortcuts = [];
