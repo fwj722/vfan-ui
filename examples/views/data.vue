@@ -17,7 +17,6 @@
       <p>value:{{value}}</p>
       <DatePicker v-model="value" type="datetime"  id="btn3"></DatePicker>
   </div>
-  <button @click.stop="showGuide">显示引导层</button>
   </div>
 </template>
 
@@ -34,45 +33,7 @@ export default {
     };
   },
   methods:{
-    showGuide () {
-      const guideArr = [{
-        element: '#btn1',
-        popover: {
-          // className: 'first-step-popover-class',
-          title: 'Title on Popover',
-          description: 'Body of the popover',
-          position: 'right'
-        }
-      },
-      {
-        element: '#btn2',
-        popover: {
-          title: 'Title on Popover',
-          description: 'Body of the popover',
-          position: 'bottom'
-        }
-      }, {
-        element: '#btn3',
-        popover: {
-          title: 'Title on Popover',
-          description: 'Body of the popover',
-          position: 'right'
-        }
-      }]
-      this.$guide(guideArr, {
-          doneBtnText: "完成", //结束按钮的文字
-          stageBackground: "#fff", //突出显示元素的背景颜色
-          nextBtnText: "下一步", //下一步按钮的文字
-          prevBtnText: "上一步", //上一步按钮的文字
-          closeBtnText: "关闭", //关闭按钮的文字
-          // onHighlightStarted:Element=> {},//元素即将突出显示时调用
-          // onHighlighted:Element=> {},//元素完全突出显示时调用
-          // onDeselected:Element=> {},//取消选择元素时调用
-          // onReset:Element=> {},//当要清除叠加时调用
-          // onNext:Element=> {},//在任何步骤中移动到下一步时调用
-          // onPrevious :Element=> {}//在任何步骤中移动到上一步时调用
-        })
-    },
+  
   }
 };
 </script>

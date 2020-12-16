@@ -43,7 +43,7 @@ export default {
       param: {
         keyName: 'id',
         titleName: 'title',
-        dataMode: 'tree',
+        dataMode: 'list',
         parentName: 'parentId',
         // datas: [],
         // 单选控制

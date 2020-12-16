@@ -75,7 +75,6 @@
     <v-card shadow="hover">鼠标悬浮时显示</v-card>
     <br />
     <v-card class="never" shadow="never">从不显示</v-card>
-    <button  @click.stop="showGuide">显示引导层</button>
     <div class="video"
          style="width:800px;height:500px;margin:10px auto 100px;">
       <v-player type="video"
@@ -153,75 +152,7 @@ export default {
   mounted () {
   },
   methods: {
-    showGuide () {
-      debugger
-      const guideArr = [{
-        element: '#btn1',
-        popover: {
-          // className: 'first-step-popover-class',
-          title: 'Title on Popover',
-          description: 'Body of the popover',
-          position: 'right'
-        }
-      },
-      {
-        element: '#btn2',
-        popover: {
-          title: 'Title on Popover',
-          description: 'Body of the popover',
-          position: 'bottom'
-        }
-      },
-      {
-        element: '#card',
-        popover: {
-          title: 'Title on Popover',
-          description: 'Body of the popover',
-          position: 'right'
-        }
-      }, {
-        element: '#btn3',
-        popover: {
-          title: 'Title on Popover',
-          description: 'Body of the popover',
-          position: 'right'
-        }
-      }, {
-        element: '.never',
-        popover: {
-          title: 'Title on Popover',
-          description: 'Body of the popover',
-          position: 'top'
-        }
-      }, {
-        element: '.row',
-        popover: {
-          title: 'Title on Popover',
-          description: 'Body of the popover',
-          position: 'bottom'
-        }
-      }, {
-        element: '.video',
-        popover: {
-          title: 'Title on Popover',
-          description: 'Body of the popover',
-          position: 'bottom'
-        }
-      }]
-      this.$guide(guideArr, {
-          doneBtnText: "完成", //结束按钮的文字
-          stageBackground: "#fff", //突出显示元素的背景颜色
-          nextBtnText: "下一步", //下一步按钮的文字
-          prevBtnText: "上一步", //上一步按钮的文字
-          closeBtnText: "关闭", //关闭按钮的文字
-          // onHighlightStarted:Element=> {},//元素即将突出显示时调用
-          // onHighlighted:Element=> {},//元素完全突出显示时调用
-          // onDeselected:Element=> {},//取消选择元素时调用
-          // onReset:Element=> {},//当要清除叠加时调用
-          // onNext:Element=> {},//在任何步骤中移动到下一步时调用
-          // onPrevious :Element=> {}//在任何步骤中移动到上一步时调用
-        })
-    },
+   
     getMessage (n) {
       this.$message({
         message: "信息提示",

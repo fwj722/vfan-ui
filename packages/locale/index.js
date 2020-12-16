@@ -1,6 +1,6 @@
 import zhLang from './lang/zh-CN';
 import enLang from './lang/en-US';
-import utils from './../utils/utils';
+import utils from './../utils/tools';
 import Format from './../utils/format';
 
 const format = Format();

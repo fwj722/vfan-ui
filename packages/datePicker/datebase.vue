@@ -55,7 +55,7 @@
 <script>
 import manba from 'manba';
 import config from './../utils/config';
-import utils from './../utils/utils';
+import utils from './../utils/tools';
 import Locale from './../mixins/locale';
 
 const dateprefix = 'v-date';

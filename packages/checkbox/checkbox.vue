@@ -13,7 +13,7 @@
 </template>
 <script>
 import config from './../utils/config';
-import utils from './../utils/utils';
+import utils from './../utils/tools';
 import Message from './../plugins/message';
 import Locale from './../mixins/locale';
 

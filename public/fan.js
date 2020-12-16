@@ -22,28 +22,6 @@
         this.dom = [].slice.call(document.getElementsByTagName(param))
       }
       return this
-
-      // var idExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/
-      // var classExpr = /^(?:\s*(<[\w\W]+>)[^>]*|.([\w-]*))$/
-      // if (idExpr.test(node)) {
-      //   var idMatch = idExpr.exec(node)
-      //   this.dom = document.getElementById(idMatch[2])
-      // } else if (classExpr.test(node)) {
-      //   var classMatch = classExpr.exec(node)
-      //   var allElement = document.getElementsByTagName('*')
-      //   var ClassMatch = []
-      //   for (var i = 0, l = allElement.length; i < l; i++) {
-      //     if (
-      //       allElement[i].className.match(
-      //         new RegExp('(\\s|^)' + classMatch[2] + '(\\s|$)')
-      //       )
-      //     ) {
-      //       ClassMatch.push(allElement[i])
-      //     }
-      //   }
-      //   this.dom = ClassMatch
-      // }
-      // return this;
     },
     trim: "".trim && !"".trim.call("\uFEFF\xA0") ?
 		function( text ) {
@@ -51,8 +29,6 @@
 				"" :
 				"".trim.call( text );
 		} :
-
-		// Otherwise use our own trimming functionality
 		function( text ) {
 			return text == null ?
 				"" :

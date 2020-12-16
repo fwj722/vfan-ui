@@ -48,7 +48,7 @@
 </template>
 <script>
 import config from './../utils/config';
-import utils from './../utils/utils';
+import utils from './../utils/tools';
 import Dropdown from './../plugins/dropdown';
 import Locale from './../mixins/locale';
 import Message from './../plugins/message';

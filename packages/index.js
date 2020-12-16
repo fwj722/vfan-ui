@@ -14,25 +14,12 @@ import SwitchTab from "./switchTab"
 import Tabs from "./tabs"
 import Tooltip from "./tooltip"
 import "./theme/index.scss";
-// import "./theme/index.css"
-import "./guide/style/guide.scss";
-import guide from  "./guide/utils/guide";
+
 import waves from "./utils/waves"
 import hlang from './filters/hlang';
 
 
-import VPlayer from "./vplayer/src/vplayer"
-
-// import Dialog from './dialog'
-// import Input from './input'
-// import Checkbox from './checkbox'
-// import Radio from './radio'
-// import RadioGroup from './radio-group'
-// import Switch from './switch'
-// import CheckboxGroup from './checkbox-group'
-// import Form from './form'
-// import FormItem from './form-item'
-// import './fonts/font.scss'
+import VPlayer from "./vplayer/src/vplayer";
 
 // 存储组件列表
 const components = [VButton, VCard, VPlayer, PanelSplit, DatePicker, DateRangePicker, CityPicker, Tabs, Poptip, Tooltip,SwitchTab];
@@ -56,7 +43,7 @@ const install = function (Vue, options = {}) {
   // 指令
   Vue.prototype.$message = Message.message;
   Vue.prototype.waves = waves;
-  Vue.prototype.$guide = guide;
+
 };
 // 判断是否是直接引入文件,如果是，就不用调用 Vue.use()
 if (typeof window !== "undefined" && window.Vue) {

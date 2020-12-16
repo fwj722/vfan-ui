@@ -48,7 +48,7 @@
 import manba from 'manba';
 
 import config from './../utils/config';
-import utils from './../utils/utils';
+import utils from './../utils/tools';
 import Dropdown from './../plugins/dropdown';
 import dateBase from './datebase';
 import Locale from './../mixins/locale';
