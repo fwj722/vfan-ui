@@ -1,0 +1,69 @@
+@mixin shadow($blur, $transparent, $shadow: 3px) {  
+  box-shadow : 0 $shadow $blur rgba(0,0,0,$transparent);
+}
+
+@mixin animation($start:-6px){
+  transform : translateY($start);
+  opacity : 0;
+}
+
+$duration : 150ms;
+$down : "animate-down";
+$up : "animate-up";
+
+div.v-dropdown-caller{
+  display : inline-block;
+  &.v-dropdown-caller--full-width{
+    display : block;
+  }
+}
+
+div.v-dropdown-container{
+  display  :inline-block;
+  margin  :0;
+  padding : 0;
+  top : 0;
+  left : 0;
+  border : 1px solid #D6D7D7;
+  position  :absolute;
+  box-sizing : border-box;
+  background-color : white;
+  -webkit-border-radius  :2px;
+  border-radius : 2px;
+  overflow : hidden;
+  z-index  :3000;
+  @include shadow(12px, 0.2);
+  will-change  :opacity, transform;
+  &.v-dropdown-embed{
+    position : relative;
+    box-shadow : 0 1px 6px rgba(0,0,0,0.12) !important;
+    z-index  :100;
+  }
+  &.v-dropdown-no-border{
+    border : 0;
+    @include shadow(8px, 0.3);
+  }
+}
+
+.#{$down}-enter,
+.#{$down}-leave-to{
+  @include animation();
+}
+
+.#{$up}-enter,
+.#{$up}-leave-to{
+  @include animation(6px);
+}
+.#{$down}-enter-active,
+.#{$down}-leave-active,
+.#{$up}-enter-active,
+.#{$up}-leave-active{
+  transition : opacity $duration, transform $duration;
+}
+.#{$down}-enter-to,
+.#{$down}-leave,
+.#{$up}-enter-to,
+.#{$up}-leave{
+  transform : none;
+  opacity  :1;
+}

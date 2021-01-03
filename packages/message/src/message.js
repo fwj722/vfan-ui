@@ -15,7 +15,7 @@
  * type:success,error,info,warning
  */
 var messageBox = Object.assign({
-  message: function (options) {
+  message: (options) =>{
     var defaults = {
       message: " 提示消息",
       time: "2000",

@@ -1,0 +1,23 @@
+/*
+* STYLE
+* 自定义滚动条
+*/
+.v-column::-webkit-scrollbar-track,
+.v-picker::-webkit-scrollbar-track{
+  background-color: #fff;
+}
+.v-column::-webkit-scrollbar,
+.v-picker::-webkit-scrollbar{
+  width: 6px;
+  height: 6px;
+  background-color: #fff;
+}
+.v-column::-webkit-scrollbar-thumb ,
+.v-picker::-webkit-scrollbar-thumb {
+  background-color:#fff;
+  border-radius: 3px;
+}
+.v-column::-webkit-scrollbar-thumb:hover,
+.v-picker::-webkit-scrollbar-thumb:hover{
+  background-color: #868686;
+}

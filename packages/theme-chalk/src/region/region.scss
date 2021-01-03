@@ -1,0 +1,42 @@
+div.v-city-picker{
+  display :inline-block;
+  select{
+    width: auto;
+    display: inline-block;
+    overflow: hidden;
+    box-sizing :content-box;
+    padding: 0 12px;
+    margin-right: 5px;
+  }
+}
+div.v-button-block{
+  display: block !important;
+}
+.v-caller-container{
+  display: block;
+  .button-wrap{
+    position: relative;
+    padding-right:26px;
+    text-align: left;
+    .v-clear-btn{
+      position: absolute;
+      right: 10px;
+    }
+  }
+  .el-button:focus, 
+  .el-button:hover,
+  .v-opened{
+      border-color: #409EFF;
+      background-color: #ffffff;
+  }
+}
+.v-icon-arrow-toggle{
+  transition: 100ms;
+  position: absolute;
+  right: 10px;
+}
+.v-opened{
+  .v-icon-arrow-toggle{
+    transform :rotate(-180deg);
+  }
+}

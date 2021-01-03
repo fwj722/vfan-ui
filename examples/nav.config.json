@@ -1,0 +1,86 @@
+{
+  "component": [
+    {
+      "name": "开发指南",
+      "children": [
+        {
+          "path": "/installation",
+          "name": "安装"
+        },
+        {
+          "path": "/quickstart",
+          "name": "快速上手"
+        },
+        {
+          "path": "/i18n",
+          "name": "国际化[文档待编写]"
+        }
+      ]
+    },
+    {
+      "name": "组件",
+      "groups": [
+        {
+          "groupName": "Basic",
+          "list": [
+            {
+              "path": "/button",
+              "title": "Button 按钮"
+            },
+            {
+              "path": "/card",
+              "title": "Card 卡片"
+            },
+            {
+              "path": "/message",
+              "title": "Message 消息"
+            },
+            {
+              "path": "/panelSplit",
+              "title": "PanelSplit 面板分割"
+            }
+          ]
+        },
+        {
+          "groupName": "Form",
+          "list": [
+            {
+              "path": "/region",
+              "title": "Region 地区选择"
+            },
+            {
+              "path": "/timePicker",
+              "title": "TimePicker 时间选择器"
+            },
+            {
+              "path": "/datePicker",
+              "title": "DatePicker 日期选择器"
+            }
+          ]
+        },
+        {
+          "groupName": "Media",
+          "list": [
+            {
+              "path": "/vplayer",
+              "title": "Vplayer 视频"
+            }
+          ]
+        },
+        {
+          "groupName": "Others",
+          "list": [
+            {
+              "path": "/loading",
+              "title": "Loading 加载"
+            },
+            {
+              "path": "/transition",
+              "title": "Transition 过渡"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
