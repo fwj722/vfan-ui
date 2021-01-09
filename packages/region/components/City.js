@@ -133,7 +133,7 @@ export default {
       if (input){
         this.$emit('input', this.picked.map(val => val.key))
       }
-      this.$emit('values', this.picked)
+      this.$emit('change', this.picked)
     },
     /**
      * 判断v-model/value是否等于picked

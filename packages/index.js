@@ -6,8 +6,9 @@ import messageBox from "./message"
 import Poptip from "./poptip"
 import PanelSplit from "./panelsplit"
 import Region from "./region"
+import Wave from "./wave"
 const version = '0.0.49'
-const components = [ VButton, VCard, Poptip, PanelSplit ,Region]
+const components = [ VButton, VCard, Poptip, PanelSplit ,Region,Wave]
 const install = (Vue, options = {}) => {
   if (Object.keys(options).length) {
     if (typeof options.i18n === 'string') Region.props.i18n.default = options.i18n
