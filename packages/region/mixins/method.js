@@ -44,7 +44,7 @@ export default {
           })
         this.$emit('input', model)
       }
-      this.$emit('values', JSON.parse(JSON.stringify(this.region)))
+      this.$emit('change', JSON.parse(JSON.stringify(this.region)))
     },
     /**
      *检查model和region数据是否相等

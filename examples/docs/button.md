@@ -10,7 +10,7 @@
 ```html
 <ul class="list">
 	<li>
-        <v-button type="default">默认按钮</v-button>
+        <v-button type="primary">默认按钮</v-button>
         <v-button type="primary">主要按钮</v-button>
         <v-button type="success">成功按钮</v-button>
         <v-button type="warning">警告按钮</v-button>

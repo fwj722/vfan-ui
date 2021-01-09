@@ -4,13 +4,10 @@ import Button from '../docs/button.md'
 import Card from '../docs/card.md'
 import Message from '../docs/message.md'
 import PanelSplit from '../docs/panelSplit.md'
+import Region from '../docs/region.md'
+import Wave from '../docs/wave.md'
 import VueRouter from 'vue-router';
 const routes = [
-  // {
-  //   path: '/',
-  //   component: Installation,
-  //   name: 'default'
-  // },
   {
     path: '/installation',
     name: 'Installation',
@@ -35,6 +32,16 @@ const routes = [
     path: '/panelSplit',
     name: 'PanelSplit',
     component: PanelSplit
+  },
+  {
+    path: '/wave',
+    name: 'Wave',
+    component: Wave
+  },
+  {
+    path: '/region',
+    name: 'region',
+    component: Region
   }
 ]
 Vue.use(VueRouter)

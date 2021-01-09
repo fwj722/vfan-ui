@@ -38,6 +38,10 @@
             {
               "path": "/panelSplit",
               "title": "PanelSplit 面板分割"
+            },
+            {
+              "path": "/wave",
+              "title": "Wave 水波容器"
             }
           ]
         },

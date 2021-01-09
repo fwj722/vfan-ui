@@ -100,7 +100,7 @@ export default {
       this.fixedControl =
         bottom > document.documentElement.clientHeight &&
         top + 44 <= document.documentElement.clientHeight;
-      this.$refs.control.style.left = this.fixedControl ? `${left}px` : "0";
+      this.$refs.control.style.left = this.fixedControl ? `${left-20}px` : "0";
     },
 
     removeScrollHandler () {
@@ -305,7 +305,7 @@ export default {
     &.is-fixed {
       position: fixed;
       bottom: 0;
-      width: 868px;
+      width: 960px;
     }
 
     i {

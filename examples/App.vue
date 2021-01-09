@@ -84,10 +84,10 @@ body,
   padding: 10px 24px;
   box-shadow: 0 8px 12px #ebedf0;
 }
-@media screen and (min-width: 1140px) {
+@media screen and (min-width: 1200px) {
   .header-inner,
   .container-wrap {
-    width: 1140px;
+    width: 1200px;
     margin: 0 auto;
   }
 }
