@@ -23,7 +23,7 @@ export default {
   mounted () {
     setTimeout(() => {
       this.close();
-    }, 100000);
+    }, 1000);
   },
 };
 </script>

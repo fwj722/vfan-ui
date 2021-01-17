@@ -23,17 +23,14 @@
           <li class="nav-item">
             <router-link
               active-class="active"
-              to="/component">指南
+              to="/" exact>指南
             </router-link>
           </li>
           <li class="nav-item">
             <router-link
-              active-class="active"
-              to="/">组件
+              to="/installation">组件
             </router-link>
           </li>
-         
-         
 
           <!-- gap -->
           <li class="nav-item">

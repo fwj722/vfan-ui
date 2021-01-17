@@ -1,0 +1,31 @@
+{
+  "name": "vfan-lib",
+  "version": "0.1.0",
+  "description": "基于原生的一个JavaScript类库，超小包，复用率达到95%以上",
+  "main": "./vfan/index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "vfan",
+    "string",
+    "array"
+  ],
+  "author": "fanwenjing <1508488207@qq.com>",
+  "license": "MIT",
+  "homepage": "",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  }
+}

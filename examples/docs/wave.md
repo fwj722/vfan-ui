@@ -34,7 +34,7 @@
 
 wave组件默认的水波颜色为透明度为0.3的白色，可以添加waveColor属性来自定义水波的颜色。
 
-:::demo。
+:::demo
 
 ```html
  <v-wave waveColor="rgba(255,0,0,0.6)">

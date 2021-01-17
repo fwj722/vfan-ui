@@ -5,34 +5,18 @@
         <header-model class="header-inner"></header-model>
       </el-header>
       <div class="container-layout">
-  
-          <el-container class="container-wrap">
-            <el-aside width="220px"
-                      class="aside-wrap">
-              <menu-model :data="navsData['component']"></menu-model>
-            </el-aside>
-            <el-main>
-              <router-view></router-view>
-            </el-main>
-          </el-container>
+          <router-view></router-view>
       </div>
     </el-container>
   </div>
 </template>
 <script>
 import HeaderModel from "./components/header";
-import MenuModel from "./components/menu";
-import navsData from './nav.config.json';
+
+
 export default {
   components: {
-    HeaderModel,
-    MenuModel
-  },
-
-  data () {
-    return {
-      navsData
-    };
+    HeaderModel
   },
   methods: {}
 };
@@ -84,10 +68,17 @@ body,
   padding: 10px 24px;
   box-shadow: 0 8px 12px #ebedf0;
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1400px) {
   .header-inner,
   .container-wrap {
-    width: 1200px;
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+  .header-inner,
+  .container-wrap {
+    width: 94%;
     margin: 0 auto;
   }
 }

@@ -23,7 +23,8 @@
   "dependencies": {
     "core-js": "^3.4.4",
     "node-sass": "^4.14.1",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "xgplayer": "^2.16.2"
   },
   "peerDependencies": {
     "vue": "^2.6.11"

@@ -5,10 +5,6 @@
       "children": [
         {
           "path": "/installation",
-          "name": "安装"
-        },
-        {
-          "path": "/quickstart",
           "name": "快速上手"
         },
         {
@@ -83,6 +79,21 @@
               "title": "Transition 过渡"
             }
           ]
+        }
+      ]
+    }
+  ],
+  "methods":[
+    {
+      "name": "方法库",
+      "children": [
+        {
+          "path": "/installation",
+          "name": "快速上手"
+        },
+        {
+          "path": "/i18n",
+          "name": "国际化[文档待编写]"
         }
       ]
     }
