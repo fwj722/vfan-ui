@@ -38,6 +38,10 @@
             {
               "path": "/wave",
               "title": "Wave 水波容器"
+            },
+            {
+              "path": "/upload",
+              "title": "upload 文件上传"
             }
           ]
         },
@@ -50,7 +54,7 @@
             },
             {
               "path": "/timePicker",
-              "title": "TimePicker 时间选择器"
+              "title": "范围日期"
             },
             {
               "path": "/datePicker",
@@ -71,10 +75,6 @@
           "groupName": "Others",
           "list": [
             {
-              "path": "/loading",
-              "title": "Loading 加载"
-            },
-            {
               "path": "/transition",
               "title": "Transition 过渡"
             }
@@ -88,12 +88,24 @@
       "name": "方法库",
       "children": [
         {
-          "path": "/installation",
-          "name": "快速上手"
+          "path": "/string",
+          "name": "String字符串"
         },
         {
-          "path": "/i18n",
-          "name": "国际化[文档待编写]"
+          "path": "/array",
+          "name": "Array数组"
+        },
+        {
+          "path": "/date",
+          "name": "Date日期时间"
+        },
+        {
+          "path": "/data",
+          "name": "Data数据深拷贝"
+        },
+        {
+          "path": "/tool",
+          "name": "防抖|节流|导出"
         }
       ]
     }

@@ -9,6 +9,13 @@ import Message from '../docs/message.md'
 import PanelSplit from '../docs/panelSplit.md'
 import Region from '../docs/region.md'
 import Wave from '../docs/wave.md'
+import Upload from '../docs/upload.md'
+//方法
+import Strings from '../docs/library/string.md'
+import Arrays from '../docs/library/array.md'
+import Dates from '../docs/library/date.md'
+import Datas from '../docs/library/data.md'
+import Tools from '../docs/library/tools.md'
 import VueRouter from 'vue-router';
 const routes = [
   {
@@ -53,6 +60,11 @@ const routes = [
         component: Wave
       },
       {
+        path: '/upload',
+        name: 'upload',
+        component: Upload
+      },
+      {
         path: '/region',
         name: 'region',
         component: Region
@@ -62,7 +74,35 @@ const routes = [
   {
     path: '/methods',
     name: 'methods',
-    component: methods
+    component: methods,
+    redirect:"/string",
+    children:[
+      {
+        path: '/string',
+        name: 'string',
+        component: Strings
+      },
+      {
+        path: '/array',
+        name: 'array',
+        component: Arrays
+      },
+      {
+        path: '/date',
+        name: 'date',
+        component: Dates
+      },
+      {
+        path: '/data',
+        name: 'data',
+        component: Datas
+      },
+      {
+        path: '/tool',
+        name: 'tool',
+        component: Tools
+      },
+    ]
   }
 ]
 Vue.use(VueRouter)

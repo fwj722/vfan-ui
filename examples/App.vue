@@ -38,7 +38,7 @@ body,
   width: 100%;
   left: 0;
   top: 0;
-  z-index: 9999;
+  z-index: 100;
   box-shadow: 0 10px 14px 0px rgba(42, 93, 179, 0.3);
 }
 .container-wrap {
@@ -62,7 +62,7 @@ body,
   top: 0;
   bottom: 0;
   margin-top: 60px;
-  z-index: 9999;
+  z-index: 99;
   width: 220px;
   background: #fff;
   padding: 10px 24px;
