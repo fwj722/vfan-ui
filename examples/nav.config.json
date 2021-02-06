@@ -53,8 +53,12 @@
               "title": "Region 地区选择"
             },
             {
-              "path": "/timePicker",
-              "title": "范围日期"
+              "path": "/rangePicker",
+              "title": "rangePicker 范围日期"
+            },
+            {
+              "path": "/intervalPicker",
+              "title": "intervalPicker 区间日期"
             },
             {
               "path": "/datePicker",
@@ -63,11 +67,31 @@
           ]
         },
         {
-          "groupName": "Media",
+          "groupName": "高阶组件",
           "list": [
             {
               "path": "/vplayer",
               "title": "Vplayer 视频"
+            },
+            {
+              "path": "/superProcess",
+              "title": "superProcess 流程图"
+            },
+            {
+              "path": "/word",
+              "title": "word 文件预览"
+            },
+            {
+              "path": "/excel",
+              "title": "excel 文件预览"
+            },
+            {
+              "path": "/ppt",
+              "title": "ppt 文件预览"
+            },
+            {
+              "path": "/pdf",
+              "title": "pdf 文件预览"
             }
           ]
         },
