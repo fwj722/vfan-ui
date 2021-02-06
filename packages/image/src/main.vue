@@ -16,13 +16,12 @@
       :style="imageStyle"
       :class="{ 'el-image__inner--center': alignCenter, 'el-image__preview': preview }"/>
     <template v-if="preview">
-      <image-viewer :z-index="zIndex" :initial-index="imageIndex" v-if="showViewer" :on-close="closeViewer" :url-list="previewSrcList"/>
+      <v-image-viewer :z-index="zIndex" :initial-index="imageIndex" v-if="showViewer" :on-close="closeViewer" :url-list="previewSrcList"/>
     </template>
   </div>
 </template>
 
 <script>
-  import ImageViewer from './image-viewer';
   import Locale from 'element-ui/src/mixins/locale';
   import { on, off, getScrollContainer, isInContainer } from 'element-ui/src/utils/dom';
   import { isString, isHtmlElement } from 'element-ui/src/utils/types';
@@ -37,12 +36,10 @@
   };
   let prevOverflow = '';
   export default {
-    name: 'v-image',
+    name: 'vImage',
     mixins: [Locale],
     inheritAttrs: false,
-    components: {
-      ImageViewer
-    },
+
     props: {
       src: String,
       fit: String,

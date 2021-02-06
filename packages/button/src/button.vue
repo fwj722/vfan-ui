@@ -22,7 +22,7 @@
   >
     <i class="el-icon-loading" v-if="loading"></i>
     <i class="icon" :class="icon" v-if="icon && !loading"></i>
-    <span class="defaultCls" v-if="$slots.default">
+    <span class="defaultCls" :class="{'isCircle':circle}" v-if="$slots.default">
       <slot></slot>
     </span>
   </button>

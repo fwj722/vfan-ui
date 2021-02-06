@@ -7,7 +7,7 @@ import search from '../mixins/fixSearch'
 import dropdown from './dropdown'
 
 export default {
-  name: 'Vregion',
+  name: 'VCityRegion',
   mixins: [search, selector],
   inheritAttrs: false,
   components: { dropdown },

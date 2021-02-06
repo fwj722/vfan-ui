@@ -1,4 +1,5 @@
 export default {
+  name:"VColumnRegion",
   render () {
     return (
       <ul class="v-column">

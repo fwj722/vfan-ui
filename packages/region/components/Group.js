@@ -15,7 +15,7 @@ import {
 } from '../constants'
 
 export default {
-  name: 'VCityGroup',
+  name: 'VGroupRegion',
   mixins: [data, method, search, selector],
   inheritAttrs: false,
   components: { dropdown },

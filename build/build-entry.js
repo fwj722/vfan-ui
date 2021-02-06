@@ -11,7 +11,7 @@ const tips = `/* eslint-disable */
 
 function buildPackagesEntry() {
   const uninstallComponents = ['Message'];
-  const UI_FLAG_NAME = 'Fe';
+  const UI_FLAG_NAME = 'V';
   const importList = Components.map(
     name => `import ${UI_FLAG_NAME}${uppercamelize(name)} from './${name}'`
   );

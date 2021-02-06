@@ -1,51 +1,59 @@
 <template>
   <transition name="viewer-fade">
-    <div tabindex="-1" ref="el-image-viewer__wrapper" class="el-image-viewer__wrapper" :style="{ 'z-index': zIndex }">
-      <div class="el-image-viewer__mask" @click.self="handleMaskClick"></div>
+    <div tabindex="-1"
+         ref="el-image-viewer__wrapper"
+         class="el-image-viewer__wrapper"
+         :style="{ 'z-index': zIndex }">
+      <div class="el-image-viewer__mask"></div>
       <!-- CLOSE -->
-      <span class="el-image-viewer__btn el-image-viewer__close" @click="hide">
+      <span class="el-image-viewer__btn el-image-viewer__close"
+            @click="hide">
         <i class="el-icon-close"></i>
       </span>
       <!-- ARROW -->
       <template v-if="!isSingle">
-        <span
-          class="el-image-viewer__btn el-image-viewer__prev"
-          :class="{ 'is-disabled': !infinite && isFirst }"
-          @click="prev">
-          <i class="el-icon-arrow-left"/>
+        <span class="el-image-viewer__btn el-image-viewer__prev"
+              :class="{ 'is-disabled': !infinite && isFirst }"
+              @click="prev">
+          <i class="el-icon-arrow-left" />
         </span>
-        <span
-          class="el-image-viewer__btn el-image-viewer__next"
-          :class="{ 'is-disabled': !infinite && isLast }"
-          @click="next">
-          <i class="el-icon-arrow-right"/>
+        <span class="el-image-viewer__btn el-image-viewer__next"
+              :class="{ 'is-disabled': !infinite && isLast }"
+              @click="next">
+          <i class="el-icon-arrow-right" />
         </span>
       </template>
       <!-- ACTIONS -->
       <div class="el-image-viewer__btn el-image-viewer__actions">
         <div class="el-image-viewer__actions__inner">
-          <i class="el-icon-zoom-out" @click="handleActions('zoomOut')"></i>
-          <i class="el-icon-zoom-in" @click="handleActions('zoomIn')"></i>
+          <i class="el-icon-zoom-out"
+             @click="handleActions('zoomOut')"></i>
+          <i class="el-icon-zoom-in"
+             @click="handleActions('zoomIn')"></i>
           <i class="el-image-viewer__actions__divider"></i>
-          <i :class="mode.icon" @click="toggleMode"></i>
+          <i :class="mode.icon"
+             @click="toggleMode"></i>
           <i class="el-image-viewer__actions__divider"></i>
-          <i class="el-icon-refresh-left" @click="handleActions('anticlocelise')"></i>
-          <i class="el-icon-refresh-right" @click="handleActions('clocelise')"></i>
-          <i class="el-icon-close"  @click="hide"></i>
+          <i class="el-icon-refresh-left"
+             @click="handleActions('anticlocelise')"></i>
+          <i class="el-icon-refresh-right"
+             @click="handleActions('clocelise')"></i>
+          <i class="el-icon-close"
+             @click="hide"></i>
         </div>
       </div>
       <!-- CANVAS -->
       <div class="el-image-viewer__canvas">
-        <template  v-for="(url, i) in urlList">
-          <img  v-if="i === index"
-          ref="img"
-          class="el-image-viewer__img"
-          :key="url"
-          :src="currentImg"
-          :style="imgStyle"
-          @load="handleImgLoad"
-          @error="handleImgError"
-          @mousedown="handleMouseDown">
+        <template v-for="(url, i) in urlList">
+          <img v-if="i === index"
+               ref="img"
+               class="el-image-viewer__img"
+               :key="url"
+               :src="currentImg"
+               :style="imgStyle"
+               @load="handleImgLoad"
+               @error="handleImgError"
+               @mousedown="handleMouseDown">
         </template>
       </div>
     </div>
@@ -67,7 +75,7 @@ const Mode = {
 };
 const mousewheelEventName = isFirefox() ? 'DOMMouseScroll' : 'mousewheel';
 export default {
-  name: 'elImageViewer',
+  name: 'VImageViewer',
   props: {
     urlList: {
       type: Array,
@@ -79,11 +87,11 @@ export default {
     },
     onSwitch: {
       type: Function,
-      default: () => {}
+      default: () => { }
     },
     onClose: {
       type: Function,
-      default: () => {}
+      default: () => { }
     },
     initialIndex: {
       type: Number,
@@ -98,7 +106,7 @@ export default {
       default: true
     }
   },
-  data() {
+  data () {
     return {
       index: this.initialIndex,
       isShow: false,
@@ -115,19 +123,19 @@ export default {
     };
   },
   computed: {
-    isSingle() {
+    isSingle () {
       return this.urlList.length <= 1;
     },
-    isFirst() {
+    isFirst () {
       return this.index === 0;
     },
-    isLast() {
+    isLast () {
       return this.index === this.urlList.length - 1;
     },
-    currentImg() {
+    currentImg () {
       return this.urlList[this.index];
     },
-    imgStyle() {
+    imgStyle () {
       const { scale, deg, offsetX, offsetY, enableTransition } = this.transform;
       const style = {
         transform: `scale(${scale}) rotate(${deg}deg)`,
@@ -143,12 +151,12 @@ export default {
   },
   watch: {
     index: {
-      handler: function(val) {
+      handler: function (val) {
         this.reset();
         this.onSwitch(val);
       }
     },
-    currentImg(val) {
+    currentImg (val) {
       this.$nextTick(_ => {
         const $img = this.$refs.img[0];
         if (!$img.complete) {
@@ -158,11 +166,11 @@ export default {
     }
   },
   methods: {
-    hide() {
+    hide () {
       this.deviceSupportUninstall();
       this.onClose();
     },
-    deviceSupportInstall() {
+    deviceSupportInstall () {
       this._keyDownHandler = rafThrottle(e => {
         const keyCode = e.keyCode;
         switch (keyCode) {
@@ -209,20 +217,20 @@ export default {
       on(document, 'keydown', this._keyDownHandler);
       on(document, mousewheelEventName, this._mouseWheelHandler);
     },
-    deviceSupportUninstall() {
+    deviceSupportUninstall () {
       off(document, 'keydown', this._keyDownHandler);
       off(document, mousewheelEventName, this._mouseWheelHandler);
       this._keyDownHandler = null;
       this._mouseWheelHandler = null;
     },
-    handleImgLoad(e) {
+    handleImgLoad (e) {
       this.loading = false;
     },
-    handleImgError(e) {
+    handleImgError (e) {
       this.loading = false;
       e.target.alt = '加载失败';
     },
-    handleMouseDown(e) {
+    handleMouseDown (e) {
       if (this.loading || e.button !== 0) return;
       const { offsetX, offsetY } = this.transform;
       const startX = e.pageX;
@@ -237,12 +245,12 @@ export default {
       });
       e.preventDefault();
     },
-    handleMaskClick() {
+    handleMaskClick () {
       if (this.maskClosable) {
         this.hide();
       }
     },
-    reset() {
+    reset () {
       this.transform = {
         scale: 1,
         deg: 0,
@@ -251,7 +259,7 @@ export default {
         enableTransition: false
       };
     },
-    toggleMode() {
+    toggleMode () {
       if (this.loading) return;
       const modeNames = Object.keys(Mode);
       const modeValues = Object.values(Mode);
@@ -260,17 +268,17 @@ export default {
       this.mode = Mode[modeNames[nextIndex]];
       this.reset();
     },
-    prev() {
+    prev () {
       if (this.isFirst && !this.infinite) return;
       const len = this.urlList.length;
       this.index = (this.index - 1 + len) % len;
     },
-    next() {
+    next () {
       if (this.isLast && !this.infinite) return;
       const len = this.urlList.length;
       this.index = (this.index + 1) % len;
     },
-    handleActions(action, options = {}) {
+    handleActions (action, options = {}) {
       if (this.loading) return;
       const { zoomRate, rotateDeg, enableTransition } = {
         zoomRate: 0.2,
@@ -282,11 +290,11 @@ export default {
       switch (action) {
         case 'zoomOut':
           if (transform.scale > 0.2) {
-            transform.scale = parseFloat((transform.scale - zoomRate).toFixed(3));
+            transform.scale = parseFloat((transform.scale - zoomRate*2).toFixed(3));
           }
           break;
         case 'zoomIn':
-          transform.scale = parseFloat((transform.scale + zoomRate).toFixed(3));
+          transform.scale = parseFloat((transform.scale + zoomRate*2).toFixed(3));
           break;
         case 'clocelise':
           transform.deg += rotateDeg;
@@ -298,7 +306,7 @@ export default {
       transform.enableTransition = enableTransition;
     }
   },
-  mounted() {
+  mounted () {
     this.deviceSupportInstall();
     if (this.appendToBody) {
       document.body.appendChild(this.$el);
@@ -307,7 +315,7 @@ export default {
     // focus wrapper so arrow key can't cause inner scroll behavior underneath
     this.$refs['el-image-viewer__wrapper'].focus();
   },
-  destroyed() {
+  destroyed () {
     // if appendToBody is true, remove DOM node after destroy
     if (this.appendToBody && this.$el && this.$el.parentNode) {
       this.$el.parentNode.removeChild(this.$el);

@@ -12,7 +12,7 @@ import method from '../mixins/method'
 import select from './Select'
 
 export default {
-  name: 'VSelectRegionGroup',
+  name: 'VSelectGroupRegion',
   mixins: [data, method],
   components: {
     'v-select': select

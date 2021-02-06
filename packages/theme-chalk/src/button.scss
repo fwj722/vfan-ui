@@ -26,6 +26,10 @@
   & .defaultCls{
     display: inline-block;
   }
+  & .isCircle{
+    width: 14px;
+    height: 14px;
+  }
   
 	@include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, $--button-border-radius);
   

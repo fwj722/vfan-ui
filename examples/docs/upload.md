@@ -13,7 +13,7 @@
             style="width: 100px; height: 100px"
             :src="url" 
             :preview-src-list="srcList">
-          </v-image>
+          </v-image >
         </div>
     </li>
 </ul>

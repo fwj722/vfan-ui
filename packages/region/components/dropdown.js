@@ -8,7 +8,7 @@
 // import './../styles/dropdown.scss'
 
 export default {
-  name: 'v-dropdown',
+  name: 'VDropdown',
   props: {
     /**
      * 下拉框的对齐方向

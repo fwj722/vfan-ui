@@ -1,7 +1,7 @@
 {
-  "name": "feui-theme-chalk",
+  "name": "vfanui-theme-chalk",
   "version": "1.0.0",
-  "description": "FeUi component chalk theme.",
+  "description": "VFanUi component chalk theme.",
   "main": "lib/index.css",
   "style": "lib/index.css",
   "files": [

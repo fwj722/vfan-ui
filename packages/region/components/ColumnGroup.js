@@ -9,7 +9,7 @@ import column from './Column'
 import { PROVINCE_LEVEL } from '../constants.js'
 
 export default {
-  name: 'VColumnGroup',
+  name: 'VColumnGroupRegion',
   mixins: [data, method, selector],
   inheritAttrs: false,
   components: {

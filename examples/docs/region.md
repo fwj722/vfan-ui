@@ -44,6 +44,18 @@ export default {
 ```
 :::
 
+### 通栏显示
+
+:::demo 可以使用`fullWidth`属性来设置是否通栏展示，它接受一个`Boolean`值。
+
+```html
+<ul class="list">
+	<li>
+    	 <v-region :fullWidth="true" type="group"></v-region>
+    </li>
+</ul>
+```
+:::
 ### 禁用状态
 
 :::demo 可以使用`disabled`属性来定义是否可用，它接受一个`Boolean`值。
@@ -112,6 +124,7 @@ export default {
 | size     | 尺寸   | string  |   medium / small / mini            |    —     |
 | type     | 类型   | string    | group/ column / select/ city | group  |
 | v-model/value | 默认选中值 | object\|array | — | — |
+| fullWidth | 是否通栏展示 | array | — | false |
 | disabled | 禁用选择元素 | boolean    | false/true | false   |
 | city | 展示 `城市` 级别 | boolean    | false/true | true |
 | area | 展示 区/县 级别 | boolean    | false/true | true |
