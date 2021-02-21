@@ -1,0 +1,67 @@
+.v-select {
+  display: inline-block;
+  .el-input__inner {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+}
+.v-select-dropdown {
+  &.multiple {
+    .vue-recycle-scroller__item-view {
+      .vr-scroller__item {
+        padding-left: 10px;
+      }
+      &:hover {
+        background-color: #f5f7fa;
+      }
+    }
+    .el-checkbox-group {
+      padding-top: 0;
+    }
+  }
+
+  .el-input-search {
+    margin: 6px 8px 4px 8px;
+    box-sizing: border-box;
+    width: calc(100% - 16px);
+    .el-input__inner {
+      padding-right: 0;
+      height: 26px;
+      line-height: 26px;
+    }
+    .el-input__icon{
+      height: 26px;
+      line-height: 26px;
+    }
+  }
+  .el-checkbox-group {
+    padding: 5px 0;
+  }
+
+  .vue-recycle-scroller__item-view {
+    .vr-scroller__item {
+      padding-left: 20px;
+      padding-right: 10px;
+      height: 22px;
+      line-height: 22px;
+      font-size: 12px;
+      .el-checkbox {
+        display: block;
+      }
+      .el-checkbox__label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: calc(100% - 24px);
+        vertical-align: middle;
+      }
+    }
+
+    .el-checkbox__label {
+      font-size: 12px;
+      color: #606266;
+    }
+  }
+}

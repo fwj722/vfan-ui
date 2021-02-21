@@ -22,7 +22,10 @@
   },
   "dependencies": {
     "core-js": "^3.4.4",
+    "moment": "^2.29.1",
     "node-sass": "^4.14.1",
+    "scrollparent": "^2.0.1",
+    "vue-observe-visibility": "^1.0.0",
     "webpack-cli": "^3.3.11",
     "xgplayer": "^2.16.2"
   },

@@ -1,15 +1,14 @@
 <template>
   <div>
     <div class="main-cnt">
-      <div>
-        <div class="banner">
+      <div class="banner">
           <div class="banner-desc">
             <h1>VFan-ui</h1>
             <!-- <h2>一套基于Vue的通用业务组件库</h2> -->
             <p>一套基于Vue的通用业务组件库,弥补和扩展了主流组件库所缺少的组件，方便在业务中使用，减少重复造轮子。</p>
           </div>
         </div>
-        <div class="jumbotron"><img src="static/theme-index-blue.c38b733.png"
+        <div class="jumbotron"><img src="@/assets/images/11.png"
                alt="">
           <div class="jumbotron-red"
                style="height: 0px;"><img src="static/theme-index-blue.c38b733.png"
@@ -18,28 +17,28 @@
         <div class="cards">
           <ul class="container">
             <li>
-              <div class="card"><img src="@/assets/images/ico22.png"
+              <div class="card"><img src="@/assets/images/1.png"
                      alt="">
                 <h3>精简</h3>
                 <p>代码精简，组件的复用性和扩展性强。</p>
               </div>
             </li>
               <li>
-              <div class="card"><img src="@/assets/images/ico23.png"
+              <div class="card"><img src="@/assets/images/2.png"
                      alt="">
                 <h3>灵活</h3>
                 <p>直接引入和按需引入，可以根据需要灵活选择。</p>
               </div>
             </li>
             <li>
-              <div class="card"><img src="@/assets/images/ico23.png"
+              <div class="card"><img src="@/assets/images/3.png"
                      alt="">
                 <h3>组件</h3>
                 <p>使用组件 Demo 快速体验交互细节；使用前端框架封装的代码帮助工程师快速开发。</p>
               </div>
             </li>
             <li>
-              <div class="card"><img src="@/assets/images/ico24.png"
+              <div class="card"><img src="@/assets/images/4.png"
                      alt="">
                 <h3>延伸性强</h3>
                 <p>组件的延伸性强，不强依赖于某个组件库，可以根据项目中不同的组件库，轻松植入。</p>
@@ -48,7 +47,6 @@
           
           </ul>
         </div>
-      </div>
     </div>
   </div>
 </template>
@@ -64,7 +62,8 @@ export default {
   margin-top: -80px;
   padding: 80px 0 340px;
   box-sizing: border-box;
-  min-height: 100%;
+  // min-height: 100%;
+  overflow: hidden;
 }
 @media (max-width: 1140px) {
   .cards[data-v-10b2420c] {
@@ -77,6 +76,10 @@ export default {
 }
 .banner {
   text-align: center;
+}
+.jumbotron{
+  text-align: center;
+    padding: 60px 10px;
 }
 .banner-desc {
   padding-top: 20px;
@@ -133,7 +136,7 @@ export default {
   }
   img {
     margin: 66px auto 60px;
-    width: 160px;
+    // width: 160px;
     height: 120px;
   }
   h3 {

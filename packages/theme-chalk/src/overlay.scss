@@ -1,0 +1,24 @@
+.v-overlay{
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  min-width: 200px;
+  min-height: 100px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #abb6c6;
+    font-size: 38px;
+    cursor: pointer;
+  }
+}

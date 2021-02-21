@@ -8,6 +8,10 @@ import Card from '../docs/card.md'
 import Message from '../docs/message.md'
 import PanelSplit from '../docs/panelSplit.md'
 import Region from '../docs/region.md'
+import RangePicker from '../docs/rangePicker.md'
+import Word from '../docs/word.md'
+import Excel from '../docs/excel.md'
+import Ppt from '../docs/ppt.md'
 import Wave from '../docs/wave.md'
 import Upload from '../docs/upload.md'
 //方法
@@ -16,6 +20,9 @@ import Arrays from '../docs/library/array.md'
 import Dates from '../docs/library/date.md'
 import Datas from '../docs/library/data.md'
 import Tools from '../docs/library/tools.md'
+
+
+
 import VueRouter from 'vue-router';
 const routes = [
   {
@@ -68,6 +75,26 @@ const routes = [
         path: '/region',
         name: 'region',
         component: Region
+      },
+      {
+        path: '/rangePicker',
+        name: 'rangePicker',
+        component: RangePicker
+      },
+      {
+        path: '/word',
+        name: 'word',
+        component: Word
+      },
+      {
+        path: '/excel',
+        name: 'excel',
+        component: Excel
+      },
+      {
+        path: '/ppt',
+        name: 'ppt',
+        component: Ppt
       }
     ]
   },

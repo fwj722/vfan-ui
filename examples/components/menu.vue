@@ -28,6 +28,7 @@
               active-class="active"
               :to="navItem.path"
               exact
+              :title="navItem.title"
               v-text="navItem.title || navItem.name">
             </router-link>
           </li>
@@ -49,6 +50,7 @@
                   active-class="active"
                   :to="navItem.path"
                   exact
+                  :title="navItem.title"
                   v-text="navItem.title"></router-link>
               </li>
             </ul>

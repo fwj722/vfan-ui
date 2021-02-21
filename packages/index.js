@@ -10,6 +10,12 @@ import VPlayer from './player'
 import VPoptip from './poptip'
 import VRegion from './region'
 import VWave from './wave'
+import VRangePicker from './rangePicker'
+import VSelect from './select'
+import VRecycleScroller from './recycle-scroller';
+import VResizeObserver from './resize-observer';
+import VFilePreview from './filePreview';
+import VOverlay from './overlay';
 const version = '0.2.22'
 const components = [
   VButton,
@@ -21,12 +27,15 @@ const components = [
   VPlayer,
   VPoptip,
   VRegion,
-  VWave
+  VWave,
+  VRangePicker, VSelect, VRecycleScroller, VResizeObserver, VFilePreview,VOverlay
 ]
 const install = Vue => {
   components.forEach(Component => {
     Vue.use(Component)
   })
+  Vue.prototype.$msg = VMessage.message;
+
 };
 /* istanbul ignore if */
 if (typeof window !== 'undefined' && window.Vue) {
@@ -44,7 +53,8 @@ export {
   VPlayer,
   VPoptip,
   VRegion,
-  VWave
+  VWave,
+  VRangePicker, VSelect, VRecycleScroller, VResizeObserver, VFilePreview,VOverlay
 }
 export default {
   install,

@@ -9,7 +9,7 @@
         },
         {
           "path": "/i18n",
-          "name": "国际化[文档待编写]"
+          "name": "国际化【待实现】"
         }
       ]
     },
@@ -58,11 +58,11 @@
             },
             {
               "path": "/intervalPicker",
-              "title": "intervalPicker 区间日期"
+              "title": "【文档待编写】intervalPicker 区间日期"
             },
             {
               "path": "/datePicker",
-              "title": "DatePicker 日期选择器"
+              "title": "【文档待编写】DatePicker 日期选择器"
             }
           ]
         },
@@ -71,11 +71,11 @@
           "list": [
             {
               "path": "/vplayer",
-              "title": "Vplayer 视频"
+              "title": "【文档待编写】Vplayer 视频"
             },
             {
               "path": "/superProcess",
-              "title": "superProcess 流程图"
+              "title": "【文档待编写】superProcess 流程图"
             },
             {
               "path": "/word",
@@ -91,7 +91,7 @@
             },
             {
               "path": "/pdf",
-              "title": "pdf 文件预览"
+              "title": "【文档待编写】pdf 文件预览"
             }
           ]
         },
@@ -100,7 +100,7 @@
           "list": [
             {
               "path": "/transition",
-              "title": "Transition 过渡"
+              "title": "【文档待编写】Transition 过渡"
             }
           ]
         }

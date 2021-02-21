@@ -1,5 +1,4 @@
 import utils from './tools'
-
 const rclass = /[\t\r\n\f]/g
 const rnotwhite = (/\S+/g)
 

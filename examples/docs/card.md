@@ -42,7 +42,7 @@
     <ul class="list-float w4">
         <li>
             <v-card :body-style="{ padding: '0px' }">
-                <img src="//pic.qqtn.com/up/2017-3/2017032015031831844.jpg" class="image" />
+                <img src="//pic.qqtn.com/up/2017-3/2017032015031831844.jpg" style="width: 100%;"/>
                 <div style="padding: 14px;">
                     <span>超可爱狗狗萌宠</span>
                     <div class="bottom clearfix">
@@ -54,7 +54,7 @@
         </li>
         <li>
             <v-card :body-style="{ padding: '0px' }">
-                <img src="//pic.qqtn.com/up/2017-3/2017032015031831844.jpg" class="image" />
+                <img src="//pic.qqtn.com/up/2017-3/2017032015031831844.jpg"  style="width: 100%;"/>
                 <div style="padding: 14px;">
                     <span>超可爱狗狗萌宠</span>
                     <div class="bottom clearfix">
@@ -66,7 +66,7 @@
         </li>
         <li>
             <v-card :body-style="{ padding: '0px' }">
-                <img src="//pic.qqtn.com/up/2017-3/2017032015031831844.jpg" class="image" />
+                <img src="//pic.qqtn.com/up/2017-3/2017032015031831844.jpg"  style="width: 100%;" />
                 <div style="padding: 14px;">
                     <span>超可爱狗狗萌宠</span>
                     <div class="bottom clearfix">
@@ -78,7 +78,7 @@
         </li>
         <li>
             <v-card :body-style="{ padding: '0px' }">
-                <img src="//pic.qqtn.com/up/2017-3/2017032015031831844.jpg" class="image" />
+                <img src="//pic.qqtn.com/up/2017-3/2017032015031831844.jpg"  style="width: 100%;" />
                 <div style="padding: 14px;">
                     <span>超可爱狗狗萌宠</span>
                     <div class="bottom clearfix">
@@ -90,9 +90,6 @@
         </li>
     </ul>
     <style lang="scss" scoped>
-        .image {
-            width: 100%;
-        }
         .bottom button {
             float: right;
         }
