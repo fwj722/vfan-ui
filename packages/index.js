@@ -4,7 +4,6 @@ import VButton from './button'
 import VCard from './card'
 import VImage from './image'
 import VImageviewer from './imageviewer'
-import VMessage from './message'
 import VPanelsplit from './panelsplit'
 import VPlayer from './player'
 import VPoptip from './poptip'
@@ -16,13 +15,14 @@ import VRecycleScroller from './recycle-scroller';
 import VResizeObserver from './resize-observer';
 import VFilePreview from './filePreview';
 import VOverlay from './overlay';
+import $msg from './message'
+import $copy from './plugins/clipboard/clipboard';
 const version = '0.2.22'
 const components = [
   VButton,
   VCard,
   VImage,
   VImageviewer,
-  VMessage,
   VPanelsplit,
   VPlayer,
   VPoptip,
@@ -30,11 +30,17 @@ const components = [
   VWave,
   VRangePicker, VSelect, VRecycleScroller, VResizeObserver, VFilePreview,VOverlay
 ]
+const prototypes = {
+  $copy,
+  $msg
+};
 const install = Vue => {
   components.forEach(Component => {
     Vue.use(Component)
   })
-  Vue.prototype.$msg = VMessage.message;
+  Object.keys(prototypes).forEach(key => {
+    Vue.prototype[key] = prototypes[key];
+  });
 
 };
 /* istanbul ignore if */
@@ -48,7 +54,6 @@ export {
   VCard,
   VImage,
   VImageviewer,
-  VMessage,
   VPanelsplit,
   VPlayer,
   VPoptip,

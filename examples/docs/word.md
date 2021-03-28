@@ -6,7 +6,7 @@
 
 ```html
     <div>
-        <v-button type="primary" @click="showOverlay">预览word</v-button>
+        <!--<v-button type="primary" @click="showOverlay">预览word</v-button>-->
         <v-overlay :show="show" :showBtn="true"  @click="showOverlay">
           <v-file-preview class="preview-wrap" url="https://image.ms200.cn/file/3.docx"/>
         </v-overlay>

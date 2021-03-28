@@ -14,8 +14,7 @@ npm install vfan-ui -S
 ```js
   import Vue from 'vue';
   import vfanUi from 'vfan-ui';
-  import App from './App.vue';
-  import "vfan-ui/dist/vfan-ui.css";
+  import "vfan-ui/lib/vfan-ui.css";
 
   Vue.use(vfanUi);
 

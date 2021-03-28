@@ -138,4 +138,4 @@ function checkIcon(value) {
     );
   }
 }
-export default messageBox
+export default messageBox.message

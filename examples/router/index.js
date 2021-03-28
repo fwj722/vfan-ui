@@ -14,6 +14,7 @@ import Excel from '../docs/excel.md'
 import Ppt from '../docs/ppt.md'
 import Wave from '../docs/wave.md'
 import Upload from '../docs/upload.md'
+import Clipboard from '../docs/clipboard.md'
 //方法
 import Strings from '../docs/library/string.md'
 import Arrays from '../docs/library/array.md'
@@ -70,6 +71,11 @@ const routes = [
         path: '/upload',
         name: 'upload',
         component: Upload
+      },
+      {
+        path: '/clipboard',
+        name: 'clipboard',
+        component: Clipboard
       },
       {
         path: '/region',

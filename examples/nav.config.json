@@ -41,7 +41,11 @@
             },
             {
               "path": "/upload",
-              "title": "upload 文件上传"
+              "title": "upload 文件预览"
+            },
+            {
+              "path": "/clipboard",
+              "title": "clipboard 复制到剪贴板"
             }
           ]
         },
@@ -79,15 +83,15 @@
             },
             {
               "path": "/word",
-              "title": "word 文件预览"
+              "title": "【文档待编写】word 文件预览"
             },
             {
               "path": "/excel",
-              "title": "excel 文件预览"
+              "title": "【文档待编写】excel 文件预览"
             },
             {
               "path": "/ppt",
-              "title": "ppt 文件预览"
+              "title": "【文档待编写】ppt 文件预览"
             },
             {
               "path": "/pdf",
