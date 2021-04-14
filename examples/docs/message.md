@@ -8,6 +8,7 @@
 ```html
 <ul class="list">
 	<li>
+    <el-input v-int v-model="input" placeholder="请输入内容"></el-input>
      <v-button @click="getMessage(1)"  type="success" shadow>成功提示</v-button>
     <v-button @click="getMessage(2)" type="danger" shadow>失败提示</v-button>
     <v-button @click="getMessage(3)" type="warning" shadow>消息提示</v-button>
@@ -16,6 +17,11 @@
 </ul>
 <script>
 export default {
+  data(){
+    return {
+      input:""
+    }
+  },
   methods: {
     getMessage (n) {
       this.$msg({

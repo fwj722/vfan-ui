@@ -17,6 +17,9 @@ import VFilePreview from './filePreview';
 import VOverlay from './overlay';
 import $msg from './message'
 import $copy from './plugins/clipboard/clipboard';
+
+import directive from './directive/index';
+
 const version = '0.2.22'
 const components = [
   VButton,
@@ -35,12 +38,16 @@ const prototypes = {
   $msg
 };
 const install = Vue => {
+  // 组件
   components.forEach(Component => {
     Vue.use(Component)
   })
+  //绑定到原型的全局方法
   Object.keys(prototypes).forEach(key => {
     Vue.prototype[key] = prototypes[key];
   });
+  // 指令
+  Vue.use(directive.directive);
 
 };
 /* istanbul ignore if */
@@ -59,7 +66,13 @@ export {
   VPoptip,
   VRegion,
   VWave,
-  VRangePicker, VSelect, VRecycleScroller, VResizeObserver, VFilePreview,VOverlay
+  VRangePicker, 
+  VSelect, 
+  VRecycleScroller, 
+  VResizeObserver, 
+  VFilePreview,
+  VOverlay,
+  directive
 }
 export default {
   install,
